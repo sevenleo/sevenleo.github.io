@@ -11,5 +11,5 @@
 \GITHUB\sevenleo.github.io\tabs\games\dotrun.json 
 \GITHUB\sevenleo.github.io\tabs\games\youtube-games.json 
 \GITHUB\sevenleo.github.io\tabs\tutoriais\youtube-tutoriais.json 
-\GITHUB\sevenleo.github.io\tabs\websites\epqb-eq-ufrj.json 
-\GITHUB\sevenleo.github.io\tabs\websites\eq-ufrj.json 
+\GITHUB\sevenleo.github.io\tabs\sites\epqb-eq-ufrj.json 
+\GITHUB\sevenleo.github.io\tabs\sites\eq-ufrj.json 
