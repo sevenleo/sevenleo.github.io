@@ -1,0 +1,184 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+    background-color: #121212;
+    color: #a4bad4;
+}
+
+h1,
+h2,
+h3 {
+    color: #5b89bd;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 1.8em;
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h3 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.contact-info a {
+    color: #5b89bd;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.experience-item,
+.education-item,
+.project-item {
+    margin-bottom: 15px;
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.experience-item h3,
+.education-item h3,
+.project-item h3 {
+    margin-bottom: 2px;
+}
+
+.date {
+    font-style: italic;
+    color: #a4bad4;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+a {
+    color: #5b89bd;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skill {
+    background-color: #333;
+    color: #f8f8f2;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #999;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #5b89bd;
+    display: block;
+    margin-bottom: 15px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section h2 svg,
+.experience-item h3 svg,
+.education-item h3 svg,
+.project-item h3 svg,
+.contact-info p svg {
+    width: 20px;
+    height: 20px;
+    fill: #5b89bd;
+    vertical-align: middle;
+}
+
+/* Estilos para as tabs */
+.project-tabs {
+    display: flex;
+    border-bottom: 1px solid #666;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: transparent;
+    border: none;
+    color: #f8f8f2;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    /* Borda inferior transparente por padrão */
+    transition: border-color 0.3s ease;
+}
+
+.tab-button.active {
+    border-bottom-color: #5b89bd;
+    /* Borda inferior verde quando ativo */
+    color: #5b89bd;
+    /* Cor do texto verde quando ativo */
+}
+
+.tab-button:hover {
+    color: #5b89bd;
+}
+
+.tab-content {
+    display: none;
+    /* Esconde todos os conteúdos por padrão */
+}
+
+.tab-content.active {
+    display: block;
+    /* Exibe o conteúdo da tab ativa */
+}
