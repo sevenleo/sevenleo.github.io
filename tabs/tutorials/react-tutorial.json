@@ -1,0 +1,11 @@
+{
+  "title": "Tutorial de React para Iniciantes",
+  "link": "https://www.youtube.com/playlist?list=PLXYIy3lRbJYeRYfYUQ0XpCK2Fgr5UKApy",
+  "date": "Março 2020",
+  "status": "desativado",
+  "details": [
+    "Série de tutoriais para aprender React do zero",
+    "Conceitos básicos de componentes, props e state",
+    "Projeto prático de uma aplicação de lista de tarefas"
+  ]
+}

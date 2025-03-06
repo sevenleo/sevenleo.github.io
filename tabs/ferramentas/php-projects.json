@@ -2,6 +2,7 @@
   "title": "Projetos em PHP",
   "link": "http://sevenleo.infinityfreeapp.com",
   "date": "Repositório Online",
+  "desativado": true,
   "details": [
     "Projetos simples ou testes de desenvolvimento em PHP"
   ]
