@@ -76,6 +76,77 @@ async function createDynamicTabs() {
     }
 }
 
+// Function to load academic records
+async function loadAcademicRecords() {
+    try {
+        const academicContainer = document.getElementById('academic-container');
+        if (!academicContainer) return;
+
+        // Get the list of JSON files from items.txt
+        const response = await fetch('items.txt');
+        if (!response.ok) {
+            throw new Error('Failed to load items.txt');
+        }
+
+        const content = await response.text();
+
+        const academicFiles = content.split('\n')
+            .map(line => line.trim())
+            .filter(line => line && line.includes('academic'))
+            .map(line => {
+                // Extract path and normalize separators
+                line = line.substring(line.indexOf('academic')).replace(/[\\\/]+/g, '/');
+                return line.replace(/\\/g, '/');
+            });
+
+        console.log("academicFiles: " + academicFiles);
+        
+
+
+        // Load and display each academic record
+        for (const filePath of academicFiles) {
+            try {
+                const cleanPath = filePath.trim();
+                if (!cleanPath) continue;
+
+                const response = await fetch(cleanPath);
+                const data = await response.json();
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'education-item';
+
+                const title = document.createElement('h3');
+                title.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                    </svg>
+                    ${data.title}`;
+
+                const details = document.createElement('p');
+                details.className = 'date';
+                details.textContent = `${data.institution} | ${data.type} | ${data.status === 'concluido' ? 'Concluído' : 'Em andamento'} (${data.date})`;
+
+                const detailsList = document.createElement('ul');
+                data.details.forEach(detail => {
+                    const li = document.createElement('li');
+                    li.textContent = detail;
+                    detailsList.appendChild(li);
+                });
+
+                itemDiv.appendChild(title);
+                itemDiv.appendChild(details);
+                itemDiv.appendChild(detailsList);
+                academicContainer.appendChild(itemDiv);
+            } catch (error) {
+                console.error('Error loading academic record:', error);
+            }
+        }
+    } catch (error) {
+        console.error('Error loading academic records:', error);
+    }
+}
+
 // Function to create tab buttons and content containers
 function createTabElements(tabs) {
     const projectSection = document.querySelector('.project-tabs').parentElement;
@@ -286,8 +357,6 @@ async function loadExperienceItems() {
                 return line.replace(/\\/g, '/');
             });
             
-        console.log("files: " + files);
-
         // Get the experience section
         const experienceSection = document.querySelector('.section:nth-of-type(2)');
         if (!experienceSection) {
@@ -301,7 +370,6 @@ async function loadExperienceItems() {
         
         // Load all experience JSON files       
         for (const jsonFile of files) {
-            console.log("jsonFile: " + jsonFile);
             try {
                 const response = await fetch(jsonFile);
                 if (!response.ok) {
@@ -346,4 +414,5 @@ document.addEventListener('DOMContentLoaded', async function() {
     await loadProjectItems();
     await loadSkills();
     await loadExperienceItems();
+    await loadAcademicRecords();
 });
