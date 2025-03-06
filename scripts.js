@@ -56,8 +56,6 @@ async function createDynamicTabs() {
 
                 const ignore = new Set(["tabs", "node-ecstatic","..",".",""]);
                 if (!ignore.has(folderName)) {
-                    console.log("folderName: " + folderName);
-                    folderName = toTitleCase(folderName);
                     tabFolders.push(folderName);
                 }
             }
@@ -126,54 +124,92 @@ async function loadProjectItems() {
     for (const tab of tabs) {
         try {
             const tabName = tab.replace(/^.*[\/]/, '');
-            const response = await fetch(`tabs/${tabName}/items.json`);
-            if (!response.ok) {
-                throw new Error(`Failed to load items for ${tabName}`);
-            }
-            
-            const items = await response.json();
             const tabContainer = document.getElementById(tabName);
             
             // Clear existing content
             tabContainer.innerHTML = '';
             
-            // Add each project item
-            items.forEach(item => {
-                const projectItem = document.createElement('div');
-                projectItem.className = 'project-item';
-                
-                let externalLinkHtml = '';
-                if (item.link) {
-                    externalLinkHtml = `
-                        <a href="${item.link}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg"
-                            height="24" viewBox="0 0 24 24" width="24">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path color="#c4ebff" fill="#c4ebff"
-                                d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
-                        </svg></a>
-                    `;
+            // Fetch the list of files in the tab directory
+            const dirResponse = await fetch(`tabs/${tabName}/`);
+            if (!dirResponse.ok) {
+                throw new Error(`Failed to fetch directory listing for ${tabName}`);
+            }
+            
+            const dirText = await dirResponse.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(dirText, 'text/html');
+            
+            // Extract JSON file names from the directory listing
+            const jsonFiles = [];
+            const links = doc.querySelectorAll('a');
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.toLowerCase().endsWith('.json')) {
+                    jsonFiles.push(href);
                 }
-                
-                projectItem.innerHTML = `
-                    <h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 16l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z" />
-                        </svg>
-                        ${item.title}
-                        ${externalLinkHtml}
-                    </h3>
-                    <p class="date">${item.date}</p>
-                    <ul>
-                        ${item.details.map(detail => `<li>${detail}</li>`).join('')}
-                    </ul>
-                `;
-                
-                tabContainer.appendChild(projectItem);
             });
+            
+            // If no JSON files found, try to load the default items.json
+            if (jsonFiles.length === 0) {
+                jsonFiles.push('items.json');
+            }
+            
+            // Load all JSON files for this tab
+            for (const jsonFile of jsonFiles) {
+                try {
+                    // const response = await fetch(`tabs/${tabName}/${jsonFile}`);
+                    const response = await fetch(`${jsonFile}`);
+                    if (!response.ok) {
+                        console.warn(`Failed to load ${jsonFile} for ${tabName}, skipping...`);
+                        continue;
+                    }
+                    
+                    const items = await response.json();
+                    
+                    // Handle both single object and array cases
+                    const itemsArray = Array.isArray(items) ? items : [items];
+
+                    // Add each project item
+                    itemsArray.forEach(item => {
+                        const projectItem = document.createElement('div');
+                        projectItem.className = 'project-item';
+                        
+                        let externalLinkHtml = '';
+                        if (item.link) {
+                            externalLinkHtml = `
+                                <a href="${item.link}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                    height="24" viewBox="0 0 24 24" width="24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path color="#c4ebff" fill="#c4ebff"
+                                        d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+                                </svg></a>
+                            `;
+                        }
+                        
+                        projectItem.innerHTML = `
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 16l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z" />
+                                </svg>
+                                ${item.title}
+                                ${externalLinkHtml}
+                            </h3>
+                            <p class="date">${item.date}</p>
+                            <ul>
+                                ${item.details.map(detail => `<li>${detail}</li>`).join('')}
+                            </ul>
+                        `;
+                        
+                        tabContainer.appendChild(projectItem);
+                    });
+                } catch (jsonError) {
+                    console.error(`Error loading ${jsonFile} for ${tabName}:`, jsonError);
+                }
+            }
         } catch (error) {
-            console.error(`Error loading ${tab} items:`, error);
+            console.error(`Error processing tab ${tab}:`, error);
         }
     }
 }
