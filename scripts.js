@@ -13,6 +13,10 @@ function openTab(tabName, event) {
     event.currentTarget.className += " active";
 }
 
+function toTitleCase(str) {
+    return str.replace(/\b\w/g, char => char.toUpperCase());
+}
+
 // Function to dynamically create tabs based on folders in the tabs directory
 async function createDynamicTabs() {
     try {
@@ -32,21 +36,26 @@ async function createDynamicTabs() {
         const links = doc.querySelectorAll('a');
         links.forEach(link => {
             const href = link.getAttribute('href');
-
             if (href) {
             //if (href && href.endsWith('/')) {
-                let folderName = href; // Remove trailing slash
+                /*let folderName = href; 
                 console.log("folderName: " + folderName);
+                folderName = folderName.split(/[/\\]/).filter(Boolean).pop();
+                folderName = folderName.toLowerCase();
+                if (folderName !== '' && folderName !== ' ' && folderName !== '/' && folderName !== '.' && folderName !== '..' && folderName !== '/tabs' && folderName !== 'node-ecstatic') {
+                    //folderName = folderName.to Title Case();
+                    tabFolders.push(folderName);
+                }*/
 
-                try {
-                    // folderName = folderName.split('/tabs/').pop().slice(0, -2);
-                    folderName = folderName.split('/tabs/').pop();
-                } catch (error) {
-                    console.error('Error splitting folderName:', error);
-                }
+                let folderName = href;
+                //console.log("folderName: " + folderName);
 
-                
-                if (folderName !== '' && folderName !== ' ' && folderName !== '/' && folderName !== '.' && folderName !== '..' && folderName !== '/tabs') {
+                folderName = folderName.split(/[/\\]/).filter(Boolean).pop().toLowerCase();
+
+                const ignorar = new Set(["tabs", "node-ecstatic","..","."]);
+
+                if (!ignorar.has(folderName)) {
+                    folderName = toTitleCase(folderName);
                     tabFolders.push(folderName);
                 }
             }

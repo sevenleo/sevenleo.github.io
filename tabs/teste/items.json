@@ -1,0 +1,34 @@
+[
+  {
+    "title": "EQ.UFRJ.BR",
+    "link": "http://www.eq.ufrj.br/",
+    "date": "Projeto Contínuo",
+    "details": [
+      "Manutenção e desenvolvimento do Website."
+    ]
+  },
+  {
+    "title": "EPQB.EQ.UFRJ.BR",
+    "link": "http://epqb.eq.ufrj.br/",
+    "date": "Projeto Contínuo",
+    "details": [
+      "Manutenção e desenvolvimento do Website - frontend e backend (intranet)"
+    ]
+  },
+  {
+    "title": "Projetos em PHP",
+    "link": "http://sevenleo.infinityfreeapp.com",
+    "date": "Repositório Online",
+    "details": [
+      "Projetos simples ou testes de desenvolvimento em PHP"
+    ]
+  },
+  {
+    "title": "Projetos em Python",
+    "link": "https://projetosleo.herokuapp.com/",
+    "date": "Repositório Online",
+    "details": [
+      "Projetos simples ou testes de desenvolvimento em Python"
+    ]
+  }
+]
