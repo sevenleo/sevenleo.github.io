@@ -1,7 +1,6 @@
-\GITHUB\sevenleo.github.io\items copy.txt 
-\GITHUB\sevenleo.github.io\academic\estacio.json 
-\GITHUB\sevenleo.github.io\academic\sos.json 
-\GITHUB\sevenleo.github.io\academic\ufrj.json 
+\GITHUB\sevenleo.github.io\academics\estacio.json 
+\GITHUB\sevenleo.github.io\academics\sos.json 
+\GITHUB\sevenleo.github.io\academics\ufrj.json 
 \GITHUB\sevenleo.github.io\experiences\escola-quimica-ufrj.json 
 \GITHUB\sevenleo.github.io\experiences\riachuelo.json 
 \GITHUB\sevenleo.github.io\skills\skills.json 

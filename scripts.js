@@ -92,10 +92,10 @@ async function loadAcademicRecords() {
 
         const academicFiles = content.split('\n')
             .map(line => line.trim())
-            .filter(line => line && line.includes('academic'))
+            .filter(line => line && line.includes('academics'))
             .map(line => {
                 // Extract path and normalize separators
-                line = line.substring(line.indexOf('academic')).replace(/[\\\/]+/g, '/');
+                line = line.substring(line.indexOf('academics')).replace(/[\\\/]+/g, '/');
                 return line.replace(/\\/g, '/');
             });
 
