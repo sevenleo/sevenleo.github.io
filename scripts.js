@@ -190,6 +190,17 @@ async function loadProjectItems() {
                         let startMark = '';
                         let endMark = '';
 
+                        let itemIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 16l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z" />
+                                </svg>`;
+
+
+                        if (item.icon != "" && item.icon != null && item.icon != undefined) {
+                            itemIcon = item.icon;
+                        }
+
                         // Check if the project is disabled
                         if (item.status === "desativado"){
                             // titleStyle = 'style="text-decoration: line-through;"';
@@ -198,20 +209,12 @@ async function loadProjectItems() {
                             endMark = '';
                         }
 
-                        // Check if the project is starred
-                        if (item.status === "fav"){
-                            titleStyle = '';
-                            startMark = '⭐ ';
-                            endMark = '';
-                        }
+
+
 
                         projectItem.innerHTML = `
                             <h3 ${titleStyle}>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 16l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z" />
-                                </svg>
+                                ${itemIcon}
                                 ${startMark}${item.title}${endMark}
                                 ${externalLinkHtml}
                             </h3>
