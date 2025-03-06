@@ -65,14 +65,14 @@ async function createDynamicTabs() {
         if (tabFolders.length === 0) {
             console.warn('Could not detect tab folders, falling back to default tabs');
             // return ['E1','websites', 'bots', 'tutorials', 'games'];
-            return ['E1'];
+            return ["bots", "ferramentas", "games", "tutoriais", "websites", "E1"];
         }
         return tabFolders;
     } catch (error) {
         console.error('Error creating dynamic tabs:', error);
         // Fallback to known tabs if there's an error
         // return ['E2','websites', 'bots', 'tutorials', 'games'];
-        return ['E2'];
+        return ["bots", "ferramentas", "games", "tutoriais", "websites", "E2"];
     }
 }
 
