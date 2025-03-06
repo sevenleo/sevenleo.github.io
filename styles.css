@@ -65,28 +65,46 @@ h3 {
 .experience-item,
 .education-item,
 .project-item {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     background-color: #1e1e1e;
-    padding: 15px;
+    padding: 20px;
     border-radius: 8px;
+    border-left: 4px solid #5b89bd;
+    transition: transform 0.2s;
+}
+
+.experience-item:hover,
+.education-item:hover,
+.project-item:hover {
+    transform: translateX(5px);
+}
+
+.experience-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
 .experience-item h3,
 .education-item h3,
 .project-item h3 {
-    margin-bottom: 2px;
+    margin: 0;
+    color: #5b89bd;
+    font-size: 1.3em;
 }
 
 .date {
     font-style: italic;
     color: #a4bad4;
-    padding-left: 20px;
+    font-size: 0.9em;
 }
 
 .position {
-    font-style: italic;
-    color: #a4bad4;
-    padding-left: 20px;
+    font-weight: 500;
+    color: #7fa8d3;
+    font-size: 1em;
 }
 
 ul {
