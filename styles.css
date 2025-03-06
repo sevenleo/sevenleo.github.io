@@ -156,21 +156,38 @@ header {
     gap: 5px;
     padding-bottom: 5px;
 }
-
 .tab-button {
     background-color: transparent;
     border: none;
     color: #f8f8f2;
-    padding: 10px 6px;
+    padding: 8px 0.5px; /* Default padding for mobile */
     font-size: 1.1em;
     cursor: pointer;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, padding 0.3s ease;
     flex-shrink: 0;
+}
 
-    /* Borda inferior transparente por padrão */
-    transition: border-color 0.3s ease;
+/* Media query for tablets */
+@media screen and (min-width: 768px) {
+    .tab-button {
+        padding: 10px 8px;
+    }
+}
+
+/* Media query for desktop */
+@media screen and (min-width: 1024px) {
+    .tab-button {
+        padding: 10px 12px;
+    }
+}
+
+/* Media query for large desktop */
+@media screen and (min-width: 1440px) {
+    .tab-button {
+        padding: 10px 16px;
+    }
 }
 
 .tab-button.active {

@@ -13,4 +13,3 @@
 \GITHUB\sevenleo.github.io\tabs\tutoriais\youtube-tutoriais.json 
 \GITHUB\sevenleo.github.io\tabs\websites\epqb-eq-ufrj.json 
 \GITHUB\sevenleo.github.io\tabs\websites\eq-ufrj.json 
-
