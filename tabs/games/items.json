@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Dotrun",
+    "link": "dotrun/index.html",
+    "date": "Projeto Pessoal - Mini-Games",
+    "details": [
+      "Conjunto de divertidos mini-games que usam a mesma engine (desenvolvida em Unity3d)."
+    ]
+  },
+  {
+    "title": "Asteroids 3D",
+    "link": "asteroids/index.html",
+    "date": "Projeto Pessoal - Jogo 3D",
+    "details": [
+      "Lembre o clássico jogo Asteroids que fez sucesso no arcade na década de 80. <a href=\"https://pt.wikipedia.org/wiki/Asteroids\" target=\"_blank\"><i>(wiki)</i></a>",
+      "Agora pense nele desenvolvido em 3d com muito mais ação..."
+    ]
+  },
+  {
+    "title": "Vídeos de Jogos",
+    "link": "https://www.youtube.com/playlist?list=PLYjQvKE6yiHy4KXxJiy8u2E9x6k5v56cZ",
+    "date": "Canal do YouTube",
+    "details": [
+      "Vídeos de outros jogos desenvolvidos"
+    ]
+  }
+]
