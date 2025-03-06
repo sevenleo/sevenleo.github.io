@@ -12,19 +12,101 @@ function openTab(tabName, event) {
     event.currentTarget.className += " active";
 }
 
+// Function to dynamically create tabs based on folders in the tabs directory
+async function createDynamicTabs() {
+    try {
+        // Fetch the list of directories in the tabs folder
+        const response = await fetch('tabs/');
+        if (!response.ok) {
+            throw new Error('Failed to fetch tabs directory');
+        }
+        
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        
+        // Extract folder names from the directory listing
+        const tabFolders = [];
+        const links = doc.querySelectorAll('a');
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            // Check if it's a directory (ends with /) and not parent directory (..) or current directory (.)
+            if (href && href.endsWith('/')) {
+                const folderName = href.slice(0, -1); // Remove trailing slash
+                if (folderName !== '/tabs/' && folderName !== '/tabs/.' && folderName !== '/tabs/..') {
+                    tabFolders.push(folderName);
+                }
+            }
+        });
+        
+        // If we couldn't get the directory listing, fall back to known tabs
+        if (tabFolders.length === 0) {
+            console.warn('Could not detect tab folders, falling back to default tabs');
+            return ['websites', 'bots', 'tutorials', 'games'];
+        }
+        return tabFolders;
+    } catch (error) {
+        console.error('Error creating dynamic tabs:', error);
+        // Fallback to known tabs if there's an error
+        return ['websites', 'bots', 'tutorials', 'games'];
+    }
+}
+
+// Function to create tab buttons and content containers
+function createTabElements(tabs) {
+    const projectSection = document.querySelector('.project-tabs').parentElement;
+    
+    // Clear existing tab buttons and content
+    const existingTabsContainer = document.querySelector('.project-tabs');
+    existingTabsContainer.innerHTML = '';
+    
+    // Remove existing tab content divs
+    const existingTabContents = document.querySelectorAll('.tab-content');
+    existingTabContents.forEach(tab => tab.remove());
+    
+    // Create new tab buttons
+    tabs.forEach((tab, index) => {
+        // Get just the folder name without the path
+        const folderName = tab.replace(/^.*[\/]/, '');
+        
+        // Create tab button with first letter capitalized
+        const tabButton = document.createElement('button');
+        tabButton.className = 'tab-button' + (index === 0 ? ' active' : '');
+        tabButton.onclick = function(event) { openTab(folderName, event); };
+        const displayName = folderName.charAt(0).toUpperCase() + folderName.slice(1);
+        tabButton.textContent = displayName;
+        existingTabsContainer.appendChild(tabButton);
+        
+        // Create tab content container
+        const tabContent = document.createElement('div');
+        tabContent.id = folderName;
+        tabContent.className = 'tab-content';
+        tabContent.style.display = index === 0 ? 'block' : 'none';
+        projectSection.appendChild(tabContent);
+    });
+    
+    return tabs;
+}
+
 // Function to load project items from JSON files
 async function loadProjectItems() {
-    const tabs = ['websites', 'bots', 'tutorials', 'games'];
+    // Get dynamic tabs
+    const tabs = await createDynamicTabs();
     
+    // Create tab elements
+    createTabElements(tabs);
+    
+    // Load content for each tab
     for (const tab of tabs) {
         try {
-            const response = await fetch(`tabs/${tab}/items.json`);
+            const tabName = tab.replace(/^.*[\/]/, '');
+            const response = await fetch(`tabs/${tabName}/items.json`);
             if (!response.ok) {
-                throw new Error(`Failed to load items for ${tab}`);
+                throw new Error(`Failed to load items for ${tabName}`);
             }
             
             const items = await response.json();
-            const tabContainer = document.getElementById(tab);
+            const tabContainer = document.getElementById(tabName);
             
             // Clear existing content
             tabContainer.innerHTML = '';
