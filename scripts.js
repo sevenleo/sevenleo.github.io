@@ -198,6 +198,13 @@ async function loadProjectItems() {
                             endMark = '';
                         }
 
+                        // Check if the project is starred
+                        if (item.status === "fav"){
+                            titleStyle = '';
+                            startMark = '⭐ ';
+                            endMark = '';
+                        }
+
                         projectItem.innerHTML = `
                             <h3 ${titleStyle}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
