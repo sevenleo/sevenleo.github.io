@@ -1,3 +1,4 @@
+//CARREGA
 function openTab(tabName, event) {
     var i, tabContent, tabButtons;
     tabContent = document.getElementsByClassName("tab-content");
@@ -22,6 +23,7 @@ async function createDynamicTabs() {
         }
         
         const text = await response.text();
+        //console.log("text: " + text);
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
         
@@ -30,10 +32,21 @@ async function createDynamicTabs() {
         const links = doc.querySelectorAll('a');
         links.forEach(link => {
             const href = link.getAttribute('href');
-            // Check if it's a directory (ends with /) and not parent directory (..) or current directory (.)
-            if (href && href.endsWith('/')) {
-                const folderName = href.slice(0, -1); // Remove trailing slash
-                if (folderName !== '/tabs/' && folderName !== '/tabs/.' && folderName !== '/tabs/..') {
+
+            if (href) {
+            //if (href && href.endsWith('/')) {
+                let folderName = href; // Remove trailing slash
+                console.log("folderName: " + folderName);
+
+                try {
+                    // folderName = folderName.split('/tabs/').pop().slice(0, -2);
+                    folderName = folderName.split('/tabs/').pop();
+                } catch (error) {
+                    console.error('Error splitting folderName:', error);
+                }
+
+                
+                if (folderName !== '' && folderName !== ' ' && folderName !== '/' && folderName !== '.' && folderName !== '..' && folderName !== '/tabs') {
                     tabFolders.push(folderName);
                 }
             }
@@ -42,13 +55,15 @@ async function createDynamicTabs() {
         // If we couldn't get the directory listing, fall back to known tabs
         if (tabFolders.length === 0) {
             console.warn('Could not detect tab folders, falling back to default tabs');
-            return ['websites', 'bots', 'tutorials', 'games'];
+            // return ['E1','websites', 'bots', 'tutorials', 'games'];
+            return ['E1'];
         }
         return tabFolders;
     } catch (error) {
         console.error('Error creating dynamic tabs:', error);
         // Fallback to known tabs if there's an error
-        return ['websites', 'bots', 'tutorials', 'games'];
+        // return ['E2','websites', 'bots', 'tutorials', 'games'];
+        return ['E2'];
     }
 }
 
