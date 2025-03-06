@@ -1,0 +1,15 @@
+\GITHUB\sevenleo.github.io\tabs\bots\compraali.json 
+\GITHUB\sevenleo.github.io\tabs\bots\gsuite-azure.json 
+\GITHUB\sevenleo.github.io\tabs\bots\guiaprovas.json 
+\GITHUB\sevenleo.github.io\tabs\bots\horario-bbb.json 
+\GITHUB\sevenleo.github.io\tabs\bots\horario-no-limite.json 
+\GITHUB\sevenleo.github.io\tabs\ferramentas\figurinhas.json 
+\GITHUB\sevenleo.github.io\tabs\ferramentas\it.json 
+\GITHUB\sevenleo.github.io\tabs\ferramentas\php-projects.json 
+\GITHUB\sevenleo.github.io\tabs\ferramentas\python-projects.json 
+\GITHUB\sevenleo.github.io\tabs\games\asteroids.json 
+\GITHUB\sevenleo.github.io\tabs\games\dotrun.json 
+\GITHUB\sevenleo.github.io\tabs\games\youtube-games.json 
+\GITHUB\sevenleo.github.io\tabs\tutoriais\youtube-tutoriais.json 
+\GITHUB\sevenleo.github.io\tabs\websites\epqb-eq-ufrj.json 
+\GITHUB\sevenleo.github.io\tabs\websites\eq-ufrj.json 

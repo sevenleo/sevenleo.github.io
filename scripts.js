@@ -114,53 +114,48 @@ function createTabElements(tabs) {
 
 // Function to load project items from JSON files
 async function loadProjectItems() {
-    // Get dynamic tabs
-    const tabs = await createDynamicTabs();
+    // Read items.txt to get the list of JSON files
+    const response = await fetch('tabs/items.txt');
+    if (!response.ok) {
+        throw new Error('Failed to load items.txt');
+    }
     
+    const content = await response.text();
+    const files = content.split('\n')
+        .map(line => line.trim())
+        .filter(line => line && line.includes('tabs'))
+        .map(line => {
+            // Extract path after 'tabs' and normalize separators
+            const path = line.substring(line.indexOf('tabs')).replace(/[\\\/]+/g, '/');
+            return path;
+        });
+
+    // Get unique tab names from the file paths
+    const tabs = [...new Set(files.map(file => {
+        const parts = file.split('/');
+        return parts[1]; // Get the folder name after 'tabs/'
+    }))];
+
     // Create tab elements
     createTabElements(tabs);
-    
+
     // Load content for each tab
     for (const tab of tabs) {
         try {
-            const tabName = tab.replace(/^.*[\/]/, '');
-            const tabContainer = document.getElementById(tabName);
+            const tabContainer = document.getElementById(tab);
             
             // Clear existing content
             tabContainer.innerHTML = '';
             
-            // Fetch the list of files in the tab directory
-            const dirResponse = await fetch(`tabs/${tabName}/`);
-            if (!dirResponse.ok) {
-                throw new Error(`Failed to fetch directory listing for ${tabName}`);
-            }
-            
-            const dirText = await dirResponse.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(dirText, 'text/html');
-            
-            // Extract JSON file names from the directory listing
-            const jsonFiles = [];
-            const links = doc.querySelectorAll('a');
-            links.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href && href.toLowerCase().endsWith('.json')) {
-                    jsonFiles.push(href);
-                }
-            });
-            
-            // If no JSON files found, try to load the default items.json
-            if (jsonFiles.length === 0) {
-                jsonFiles.push('items.json');
-            }
+            // Get JSON files for this tab
+            const tabFiles = files.filter(file => file.startsWith(`tabs/${tab}/`) && file.endsWith('.json'));
             
             // Load all JSON files for this tab
-            for (const jsonFile of jsonFiles) {
+            for (const jsonFile of tabFiles) {
                 try {
-                    // const response = await fetch(`tabs/${tabName}/${jsonFile}`);
-                    const response = await fetch(`${jsonFile}`);
+                    const response = await fetch(jsonFile);
                     if (!response.ok) {
-                        console.warn(`Failed to load ${jsonFile} for ${tabName}, skipping...`);
+                        console.warn(`Failed to load ${jsonFile} for ${tab}, skipping...`);
                         continue;
                     }
                     
@@ -196,21 +191,16 @@ async function loadProjectItems() {
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 16l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z" />
                                 </svg>`;
 
-
                         if (item.icon != "" && item.icon != null && item.icon != undefined) {
                             itemIcon = item.icon;
                         }
 
                         // Check if the project is disabled
                         if (item.status === "desativado"){
-                            // titleStyle = 'style="text-decoration: line-through;"';
                             titleStyle = '';
                             startMark = '[OFF] ';
                             endMark = '';
                         }
-
-
-
 
                         projectItem.innerHTML = `
                             <h3 ${titleStyle}>
@@ -227,7 +217,7 @@ async function loadProjectItems() {
                         tabContainer.appendChild(projectItem);
                     });
                 } catch (jsonError) {
-                    console.error(`Error loading ${jsonFile} for ${tabName}:`, jsonError);
+                    console.error(`Error loading ${jsonFile} for ${tab}:`, jsonError);
                 }
             }
         } catch (error) {
