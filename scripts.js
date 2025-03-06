@@ -115,7 +115,7 @@ function createTabElements(tabs) {
 // Function to load project items from JSON files
 async function loadProjectItems() {
     // Read items.txt to get the list of JSON files
-    const response = await fetch('tabs/items.txt');
+    const response = await fetch('items.txt');
     if (!response.ok) {
         throw new Error('Failed to load items.txt');
     }
@@ -226,5 +226,124 @@ async function loadProjectItems() {
     }
 }
 
-// Load project items when the page loads
-document.addEventListener('DOMContentLoaded', loadProjectItems);
+// Function to load skills from JSON file
+async function loadSkills() {
+    try {
+        const response = await fetch('skills/skills.json');
+        if (!response.ok) {
+            throw new Error('Failed to load skills data');
+        }
+        
+        const skillsData = await response.json();
+        
+        // Update primary skills
+        const primarySkillsList = document.querySelector('.skills-list');
+        if (primarySkillsList) {
+            primarySkillsList.innerHTML = '';
+            
+            skillsData.primary_skills.forEach(skill => {
+                const skillSpan = document.createElement('span');
+                skillSpan.className = 'skill';
+                skillSpan.textContent = skill;
+                primarySkillsList.appendChild(skillSpan);
+            });
+        }
+        
+        // Update complementary skills
+        const complementarySkillsList = document.querySelectorAll('.skills-list')[1];
+        if (complementarySkillsList) {
+            complementarySkillsList.innerHTML = '';
+            
+            skillsData.complementary_skills.forEach(skill => {
+                const skillSpan = document.createElement('span');
+                skillSpan.className = 'skill';
+                skillSpan.textContent = skill;
+                complementarySkillsList.appendChild(skillSpan);
+            });
+        }
+    } catch (error) {
+        console.error('Error loading skills:', error);
+    }
+}
+
+// Function to load experience items from JSON files
+async function loadExperienceItems() {
+    try {
+        // Get the list of JSON files from items.txt
+        const response = await fetch('items.txt');
+        if (!response.ok) {
+            throw new Error('Failed to load items.txt');
+        }
+        
+        const content = await response.text();
+
+        const files = content.split('\n')
+            .map(line => line.trim())
+            .filter(line => line && line.includes('experiences'))
+            .map(line => {
+                // Extract path and normalize separators
+                line = line.substring(line.indexOf('experiences')).replace(/[\\\/]+/g, '/');
+                return line.replace(/\\/g, '/');
+            });
+            
+        console.log("files: " + files);
+
+        // Get the experience section
+        const experienceSection = document.querySelector('.section:nth-of-type(2)');
+        if (!experienceSection) {
+            throw new Error('Experience section not found');
+        }
+        
+        // Clear existing experience items except the heading
+        const heading = experienceSection.querySelector('h2');
+        experienceSection.innerHTML = '';
+        experienceSection.appendChild(heading);
+        
+        // Load all experience JSON files       
+        for (const jsonFile of files) {
+            console.log("jsonFile: " + jsonFile);
+            try {
+                const response = await fetch(jsonFile);
+                if (!response.ok) {
+                    console.warn(`Failed to load ${jsonFile}, skipping...`);
+                    continue;
+                }
+                
+                const item = await response.json();
+                
+                // Create experience item
+                const experienceItem = document.createElement('div');
+                experienceItem.className = 'experience-item';
+                
+                experienceItem.innerHTML = `
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M2 10l-2-2v8h20v-8l-2 2H2zm9-7h2v2H9V3zm-4 0h2v2H5V3zm8 0h2v2h-2V3zm4 0h2v2h-2V3zm-8 14h2v2H9v-2zm-4 0h2v2H5v-2zm8 0h2v2h-2v-2zm4 0h2v2h-2v-2zM7 9h2v2H7V9zm0-4h2v2H7V5zm0 8h2v2H7v-2zm4 4h2v2h-2v-2zm0-4h2v2H7v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 8h2v2h-2v-2zm0-4h2v2h-2v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 4h2v2h-2v-2zm0-8h2v8h-2V9z" />
+                        </svg>
+                        ${item.company}
+                        </h3>
+                    <p class="date">${item.period}</p>
+                    <p class="position">${item.position}</p>
+                    <ul>
+                        ${item.responsibilities}
+                    </ul>
+                `;
+                
+                experienceSection.appendChild(experienceItem);
+            } catch (jsonError) {
+                console.error(`Error loading experience file ${jsonFile}:`, jsonError);
+            }
+        }
+    } catch (error) {
+        console.error('Error loading experience items:', error);
+    }
+}
+
+// Load all content when the page loads
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadProjectItems();
+    await loadSkills();
+    await loadExperienceItems();
+});

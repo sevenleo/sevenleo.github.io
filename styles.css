@@ -80,6 +80,13 @@ h3 {
 .date {
     font-style: italic;
     color: #a4bad4;
+    padding-left: 20px;
+}
+
+.position {
+    font-style: italic;
+    color: #a4bad4;
+    padding-left: 20px;
 }
 
 ul {
