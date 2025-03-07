@@ -365,6 +365,56 @@ async function loadPersonal() {
     }
 }
 
+async function loadSocials() {
+    try {
+        const personalData = await fetchData('personal.json');
+
+        const socials = document.querySelector('.socials');
+        if (socials) {
+            socials.innerHTML = '';
+
+            personalData.socials.forEach(social => {
+                // Create paragraph element to wrap the social item
+                const paragraph = document.createElement('p');
+                
+                // Format the link properly
+                let link = social.link;
+                if (link.includes('@') && !link.startsWith('mailto:')) {
+                    // Email address
+                    link = 'mailto:' + link;
+                } else if (!link.startsWith('http://') && !link.startsWith('https://') && !link.startsWith('mailto:')) {
+                    // Web URL without protocol
+                    link = 'https://' + link;
+                }
+                
+                // Create SVG element
+                let iconContent = social.icon;
+                if (!iconContent.startsWith('<svg')) {
+                    iconContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${iconContent}</svg>`;
+                }
+                
+                // Add SVG to paragraph
+                paragraph.innerHTML = iconContent;
+                
+                // Create anchor element
+                const socialLink = document.createElement('a');
+                socialLink.href = link;
+                socialLink.target = '_blank';
+                socialLink.textContent = social.link;
+                
+                // Add anchor to paragraph
+                paragraph.appendChild(socialLink);
+                
+                // Add paragraph to socials container
+                socials.appendChild(paragraph);
+            });
+        }
+    } catch (error) {
+        console.error('Error loading personal infos:', error);
+    }
+}
+
+
 // Function to load experience items from JSON files
 async function loadExperienceItems() {
     try {
@@ -425,9 +475,10 @@ async function loadExperienceItems() {
 
 // Load all content when the page loads
 document.addEventListener('DOMContentLoaded', async function() {
-    //await loadSkills();
-    //await loadPersonal();
-    //await loadProjectItems();
-    //await loadExperienceItems();
-    //await loadAcademicRecords();
+    await loadSkills();
+    await loadPersonal();
+    await loadSocials();
+    await loadProjectItems();
+    await loadExperienceItems();
+    await loadAcademicRecords();
 });

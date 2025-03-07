@@ -40,25 +40,25 @@ h3 {
     margin-bottom: 20px;
 }
 
-.contact-info {
+.socials {
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.contact-info p {
+.socials p {
     margin: 5px 0;
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.contact-info a {
+.socials a {
     color: #5b89bd;
 }
 
-.contact-info a:hover {
+.socials a:hover {
     text-decoration: underline;
 }
 
@@ -161,7 +161,7 @@ header {
 .experience-item h3 svg,
 .education-item h3 svg,
 .project-item h3 svg,
-.contact-info p svg {
+.socials p svg {
     width: 20px;
     height: 20px;
     fill: #5b89bd;
