@@ -1,7 +1,10 @@
+\GITHUB\sevenleo.github.io\index.txt 
+\GITHUB\sevenleo.github.io\personal.json 
 \GITHUB\sevenleo.github.io\academics\estacio.json 
 \GITHUB\sevenleo.github.io\academics\sos.json 
 \GITHUB\sevenleo.github.io\academics\ufrj.json 
 \GITHUB\sevenleo.github.io\experiences\escola-quimica-ufrj.json 
+\GITHUB\sevenleo.github.io\experiences\jovem-note-10.json 
 \GITHUB\sevenleo.github.io\experiences\riachuelo.json 
 \GITHUB\sevenleo.github.io\skills\skills.json 
 \GITHUB\sevenleo.github.io\tabs\bots\compraali.json 
@@ -14,7 +17,9 @@
 \GITHUB\sevenleo.github.io\tabs\ferramentas\php-projects.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\python-projects.json 
 \GITHUB\sevenleo.github.io\tabs\games\asteroids.json 
+\GITHUB\sevenleo.github.io\tabs\games\dotrun.json 
 \GITHUB\sevenleo.github.io\tabs\games\youtube-games.json 
 \GITHUB\sevenleo.github.io\tabs\sites\epqb-eq-ufrj.json 
 \GITHUB\sevenleo.github.io\tabs\sites\eq-ufrj.json 
+\GITHUB\sevenleo.github.io\tabs\sites\investigalim.json 
 \GITHUB\sevenleo.github.io\tabs\tutoriais\youtube-tutoriais.json 
