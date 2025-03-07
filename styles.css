@@ -63,18 +63,145 @@ h3 {
 }
 
 .experience-item,
-.education-item,
-.project-item {
+.education-item {
     margin-bottom: 20px;
     background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 12px;
     border-left: 4px solid #5b89bd;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .experience-item:hover,
-.education-item:hover,
+.education-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.experience-item h3,
+.education-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    color: #7fa8d3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.experience-item .date,
+.education-item .date {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.experience-item .position {
+    font-size: 1.2em;
+    color: #a4bad4;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.education-item .institution {
+    font-size: 1.1em;
+    color: #a4bad4;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+/* Enhanced styling for experience and education items */
+.experience-item .responsibilities ul,
+.education-item ul {
+    margin-top: 15px;
+    padding-left: 25px;
+}
+
+.experience-item .responsibilities li,
+.education-item li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 5px;
+}
+
+.date-text {
+    font-style: italic;
+    color: #777;
+}
+
+/* Add a subtle highlight effect on hover */
+.experience-item:hover .position,
+.education-item:hover .institution {
+    color: #8fc7ff;
+}
+
+/* Improve the visual hierarchy of the status badges */
+.status-badge {
+    margin-left: 10px;
+    transition: all 0.2s ease;
+}
+
+.experience-item:hover .status-badge,
+.education-item:hover .status-badge {
+    transform: scale(1.05);
+}
+
+/* Add a subtle separator between sections */
+.experience-item + .experience-item,
+.education-item + .education-item {
+    margin-top: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .experience-item,
+    .education-item {
+        padding: 20px 15px;
+    }
+    
+    .experience-item h3,
+    .education-item h3 {
+        font-size: 1.3em;
+    }
+}
+
+.experience-item li,
+.education-item li {
+    margin-bottom: 8px;
+    color: #a4bad4;
+    line-height: 1.5;
+    position: relative;
+}
+
+.experience-item li::before,
+.education-item li::before {
+    content: '•';
+    color: #5b89bd;
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.status-completed {
+    background-color: #2d5a88;
+    color: #a4bad4;
+}
+
+.status-ongoing {
+    background-color: #4a3f35;
+    color: #d4a76a;
+}
 .project-item:hover {
     transform: translateX(5px);
 }

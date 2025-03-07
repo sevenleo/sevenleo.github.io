@@ -138,9 +138,16 @@ async function loadAcademicRecords() {
                     </svg>
                     ${data.title}`;
 
+                const institution = document.createElement('p');
+                institution.className = 'institution';
+                institution.textContent = data.institution;
+
                 const details = document.createElement('p');
                 details.className = 'date';
-                details.textContent = `${data.institution} | ${data.type} | ${data.status === 'concluido' ? 'Concluído' : 'Em andamento'} (${data.date})`;
+                const statusBadge = `<span class="status-badge ${data.status === 'concluido' ? 'status-completed' : 'status-ongoing'}">
+                    ${data.status === 'concluido' ? 'Concluído' : 'Em andamento'}
+                </span>`;
+                details.innerHTML = `${data.type} ${statusBadge} <span class="date-text">(${data.date})</span>`;
 
                 const detailsList = document.createElement('ul');
                 data.details.forEach(detail => {
@@ -150,6 +157,7 @@ async function loadAcademicRecords() {
                 });
 
                 itemDiv.appendChild(title);
+                itemDiv.appendChild(institution);
                 itemDiv.appendChild(details);
                 itemDiv.appendChild(detailsList);
                 academicContainer.appendChild(itemDiv);
@@ -446,21 +454,45 @@ async function loadExperienceItems() {
                 const experienceItem = document.createElement('div');
                 experienceItem.className = 'experience-item';
                 
-                experienceItem.innerHTML = `
-                    <h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M2 10l-2-2v8h20v-8l-2 2H2zm9-7h2v2H9V3zm-4 0h2v2H5V3zm8 0h2v2h-2V3zm4 0h2v2h-2V3zm-8 14h2v2H9v-2zm-4 0h2v2H5v-2zm8 0h2v2h-2v-2zm4 0h2v2h-2v-2zM7 9h2v2H7V9zm0-4h2v2H7V5zm0 8h2v2H7v-2zm4 4h2v2h-2v-2zm0-4h2v2H7v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 8h2v2h-2v-2zm0-4h2v2h-2v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 4h2v2h-2v-2zm0-8h2v8h-2V9z" />
-                        </svg>
-                        ${item.company}
-                        </h3>
-                    <p class="date">${item.period}</p>
-                    <p class="position">${item.position}</p>
-                    <ul>
-                        ${item.responsibilities}
-                    </ul>
+                // Create company heading with icon
+                const companyHeading = document.createElement('h3');
+                companyHeading.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M2 10l-2-2v8h20v-8l-2 2H2zm9-7h2v2H9V3zm-4 0h2v2H5V3zm8 0h2v2h-2V3zm4 0h2v2h-2V3zm-8 14h2v2H9v-2zm-4 0h2v2H5v-2zm8 0h2v2h-2v-2zm4 0h2v2h-2v-2zM7 9h2v2H7V9zm0-4h2v2H7V5zm0 8h2v2H7v-2zm4 4h2v2h-2v-2zm0-4h2v2H7v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 8h2v2h-2v-2zm0-4h2v2h-2v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 4h2v2h-2v-2zm0-8h2v8h-2V9z" />
+                    </svg>
+                    ${item.company}
                 `;
+                
+                // Create position element with highlighted styling
+                const position = document.createElement('p');
+                position.className = 'position';
+                position.textContent = item.position;
+                
+                // Create date element
+                const date = document.createElement('p');
+                date.className = 'date';
+                date.textContent = item.period;
+                
+                // Create a container for responsibilities
+                const responsibilitiesContainer = document.createElement('div');
+                responsibilitiesContainer.className = 'responsibilities';
+                
+                // Parse responsibilities - handle both string and array formats
+                let responsibilitiesList;
+                if (typeof item.responsibilities === 'string') {
+                    responsibilitiesList = item.responsibilities;
+                } else if (Array.isArray(item.responsibilities)) {
+                    responsibilitiesList = `<ul>${item.responsibilities.map(resp => `<li>${resp}</li>`).join('')}</ul>`;
+                }
+                
+                responsibilitiesContainer.innerHTML = responsibilitiesList;
+                
+                // Append all elements to the experience item
+                experienceItem.appendChild(companyHeading);
+                experienceItem.appendChild(position);
+                experienceItem.appendChild(date);
+                experienceItem.appendChild(responsibilitiesContainer);
                 
                 experienceSection.appendChild(experienceItem);
             } catch (jsonError) {
