@@ -17,17 +17,51 @@ function toTitleCase(str) {
     return str.replace(/\b\w/g, char => char.toUpperCase());
 }
 
+// Utility function to fetch JSON data
+async function fetchData(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to load data from ${url}`);
+    }
+    return await response.json();
+}
+
+// Utility function to fetch text data
+async function fetchTextData(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Failed to load text from ${url}`);
+    }
+    return await response.text();
+}
+
+// Utility function to normalize file paths
+function normalizeFilePath(path, baseFolder) {
+    // Extract path starting from the base folder and normalize separators
+    if (path.includes(baseFolder)) {
+        path = path.substring(path.indexOf(baseFolder)).replace(/[\\\\]+/g, '/');
+    }
+    return path.replace(/\\/g, '/');
+}
+
 // Function to dynamically create tabs based on folders in the tabs directory
 async function createDynamicTabs() {
     try {
         // Fetch the list of directories in the tabs folder
-        const response = await fetch('tabs/');
-        if (!response.ok) {
-            throw new Error('Failed to fetch tabs directory');
-        }
-        
-        const text = await response.text();
-        //console.log("text: " + text);
+        const tabFolders = await fetchTabFolders();
+        return tabFolders;
+    } catch (error) {
+        console.error('Error creating dynamic tabs:', error);
+        // Fallback to known tabs if there's an error
+        return ["bots", "ferramentas", "games", "tutoriais", "sites", "E2"];
+    }
+}
+
+// Function to fetch tab folders
+async function fetchTabFolders() {
+    try {
+        // Fetch the list of directories in the tabs folder
+        const text = await fetchTextData('tabs/');
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
         
@@ -40,16 +74,16 @@ async function createDynamicTabs() {
                 let folderName = href.trim();
 
                 try {
-                    folderName = folderName.split(/[/\\]/).filter(Boolean).pop().toLowerCase();
+                    folderName = folderName.split(/[\/\\]/).filter(Boolean).pop().toLowerCase();
                 } catch (error) {
                     try {
-                        folderName = folderName.split(/[/\\]/).pop().toLowerCase();
+                        folderName = folderName.split(/[\/\\]/).pop().toLowerCase();
                     } catch (error) {
                         try {
-                            let parts = folderName.split(/[/\\]/).filter(Boolean);
+                            let parts = folderName.split(/[\/\\]/).filter(Boolean);
                             folderName = parts.length > 0 ? parts.pop().toLowerCase() : folderName;
                         } catch (error) {
-                            //mantem o valor original de foldername
+                            //maintain original folderName value
                         }
                     }
                 }
@@ -64,15 +98,11 @@ async function createDynamicTabs() {
         // If we couldn't get the directory listing, fall back to known tabs
         if (tabFolders.length === 0) {
             console.warn('Could not detect tab folders, falling back to default tabs');
-            // return ['E1','websites', 'bots', 'tutorials', 'games'];
-            return ["bots", "ferramentas", "games", "tutoriais", "websites", "E1"];
+            return ["bots", "ferramentas", "games", "tutoriais", "sites", "E1"];
         }
         return tabFolders;
     } catch (error) {
-        console.error('Error creating dynamic tabs:', error);
-        // Fallback to known tabs if there's an error
-        // return ['E2','websites', 'bots', 'tutorials', 'games'];
-        return ["bots", "ferramentas", "games", "tutoriais", "websites", "E2"];
+        throw new Error(`Failed to fetch tab folders: ${error.message}`);
     }
 }
 
@@ -83,21 +113,12 @@ async function loadAcademicRecords() {
         if (!academicContainer) return;
 
         // Get the list of JSON files from index.txt
-        const response = await fetch('index.txt');
-        if (!response.ok) {
-            throw new Error('Failed to load index.txt');
-        }
-
-        const content = await response.text();
+        const content = await fetchTextData('index.txt');
 
         const academicFiles = content.split('\n')
             .map(line => line.trim())
             .filter(line => line && line.includes('academics'))
-            .map(line => {
-                // Extract path and normalize separators
-                line = line.substring(line.indexOf('academics')).replace(/[\\\/]+/g, '/');
-                return line.replace(/\\/g, '/');
-            });
+            .map(line => normalizeFilePath(line, 'academics'));
 
         console.log("academicFiles: " + academicFiles);
         
@@ -107,8 +128,7 @@ async function loadAcademicRecords() {
                 const cleanPath = filePath.trim();
                 if (!cleanPath) continue;
 
-                const response = await fetch(cleanPath);
-                const data = await response.json();
+                const data = await fetchData(cleanPath);
 
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'education-item';
@@ -183,21 +203,13 @@ function createTabElements(tabs) {
 
 // Function to load project items from JSON files
 async function loadProjectItems() {
-    // Read index.txt to get the list of JSON files
-    const response = await fetch('index.txt');
-    if (!response.ok) {
-        throw new Error('Failed to load index.txt');
-    }
-    
-    const content = await response.text();
-    const files = content.split('\n')
-        .map(line => line.trim())
-        .filter(line => line && line.includes('tabs'))
-        .map(line => {
-            // Extract path after 'tabs' and normalize separators
-            const path = line.substring(line.indexOf('tabs')).replace(/[\\/]+/g, '/');
-            return path;
-        });
+    try {
+        // Read index.txt to get the list of JSON files
+        const content = await fetchTextData('index.txt');
+        const files = content.split('\n')
+            .map(line => line.trim())
+            .filter(line => line && line.includes('tabs'))
+            .map(line => normalizeFilePath(line, 'tabs'));
 
     // Get unique tab names from the file paths
     const tabs = [...new Set(files.map(file => {
@@ -222,13 +234,7 @@ async function loadProjectItems() {
             // Load all JSON files for this tab
             for (const jsonFile of tabFiles) {
                 try {
-                    const response = await fetch(jsonFile);
-                    if (!response.ok) {
-                        console.warn(`Failed to load ${jsonFile} for ${tab}, skipping...`);
-                        continue;
-                    }
-                    
-                    const items = await response.json();
+                    const items = await fetchData(jsonFile);
                     
                     // Handle both single object and array cases
                     const itemsArray = Array.isArray(items) ? items : [items];
@@ -293,17 +299,15 @@ async function loadProjectItems() {
             console.error(`Error processing tab ${tab}:`, error);
         }
     }
+    } catch (error) {
+        console.error('Error loading project items:', error);
+    }
 }
 
 // Function to load skills from JSON file
 async function loadSkills() {
     try {
-        const response = await fetch('skills/skills.json');
-        if (!response.ok) {
-            throw new Error('Failed to load skills data');
-        }
-        
-        const skillsData = await response.json();
+        const skillsData = await fetchData('skills/skills.json');
         
         // Update primary skills
         const primarySkillsList = document.querySelector('.skills-list');
@@ -339,21 +343,12 @@ async function loadSkills() {
 async function loadExperienceItems() {
     try {
         // Get the list of JSON files from index.txt
-        const response = await fetch('index.txt');
-        if (!response.ok) {
-            throw new Error('Failed to load index.txt');
-        }
-        
-        const content = await response.text();
+        const content = await fetchTextData('index.txt');
 
         const files = content.split('\n')
             .map(line => line.trim())
             .filter(line => line && line.includes('experiences'))
-            .map(line => {
-                // Extract path and normalize separators
-                line = line.substring(line.indexOf('experiences')).replace(/[\\/]+/g, '/');
-                return line.replace(/\\/g, '/');
-            });
+            .map(line => normalizeFilePath(line, 'experiences'));
             
         // Get the experience section
         const experienceSection = document.querySelector('.section:nth-of-type(2)');
@@ -369,13 +364,7 @@ async function loadExperienceItems() {
         // Load all experience JSON files       
         for (const jsonFile of files) {
             try {
-                const response = await fetch(jsonFile);
-                if (!response.ok) {
-                    console.warn(`Failed to load ${jsonFile}, skipping...`);
-                    continue;
-                }
-                
-                const item = await response.json();
+                const item = await fetchData(jsonFile);
                 
                 // Create experience item
                 const experienceItem = document.createElement('div');
@@ -498,21 +487,12 @@ async function fetchAcademicRecords() {
         if (!academicContainer) return;
 
         // Get the list of JSON files from index.txt
-        const response = await fetch('index.txt');
-        if (!response.ok) {
-            throw new Error('Failed to load index.txt');
-        }
-
-        const content = await response.text();
+        const content = await fetchTextData('index.txt');
 
         const academicFiles = content.split('\n')
             .map(line => line.trim())
             .filter(line => line && line.includes('academics'))
-            .map(line => {
-                // Extract path and normalize separators
-                line = line.substring(line.indexOf('academics')).replace(/[\\/]+/g, '/');
-                return line.replace(/\\/g, '/');
-            });
+            .map(line => normalizeFilePath(line, 'academics'));
 
         console.log("academicFiles: " + academicFiles);
         
@@ -522,8 +502,7 @@ async function fetchAcademicRecords() {
                 const cleanPath = filePath.trim();
                 if (!cleanPath) continue;
 
-                const response = await fetch(cleanPath);
-                const data = await response.json();
+                const data = await fetchData(cleanPath);
 
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'education-item';
@@ -824,8 +803,8 @@ async function fetchExperienceItems() {
 
 // Load all content when the page loads
 document.addEventListener('DOMContentLoaded', async function() {
-    await fetchProjectItems();
-    await fetchSkills();
-    await fetchExperienceItems();
-    await fetchAcademicRecords();
+    await loadProjectItems();
+    await loadSkills();
+    await loadExperienceItems();
+    await loadAcademicRecords();
 });
