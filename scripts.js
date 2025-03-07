@@ -82,10 +82,10 @@ async function loadAcademicRecords() {
         const academicContainer = document.getElementById('academic-container');
         if (!academicContainer) return;
 
-        // Get the list of JSON files from items.txt
-        const response = await fetch('items.txt');
+        // Get the list of JSON files from index.txt
+        const response = await fetch('index.txt');
         if (!response.ok) {
-            throw new Error('Failed to load items.txt');
+            throw new Error('Failed to load index.txt');
         }
 
         const content = await response.text();
@@ -185,10 +185,10 @@ function createTabElements(tabs) {
 
 // Function to load project items from JSON files
 async function loadProjectItems() {
-    // Read items.txt to get the list of JSON files
-    const response = await fetch('items.txt');
+    // Read index.txt to get the list of JSON files
+    const response = await fetch('index.txt');
     if (!response.ok) {
-        throw new Error('Failed to load items.txt');
+        throw new Error('Failed to load index.txt');
     }
     
     const content = await response.text();
@@ -340,10 +340,10 @@ async function loadSkills() {
 // Function to load experience items from JSON files
 async function loadExperienceItems() {
     try {
-        // Get the list of JSON files from items.txt
-        const response = await fetch('items.txt');
+        // Get the list of JSON files from index.txt
+        const response = await fetch('index.txt');
         if (!response.ok) {
-            throw new Error('Failed to load items.txt');
+            throw new Error('Failed to load index.txt');
         }
         
         const content = await response.text();
