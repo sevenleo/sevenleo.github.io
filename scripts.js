@@ -1,4 +1,3 @@
-//CARREGA
 function openTab(tabName, event) {
     var i, tabContent, tabButtons;
     tabContent = document.getElementsByClassName("tab-content");
@@ -337,6 +336,35 @@ async function loadSkills() {
     }
 }
 
+// Function to load personal info from JSON file
+async function loadPersonal() {
+    try {
+        const personalData = await fetchData('personal.json');
+        
+        const title = document.querySelector('#title');
+        if (title) {
+            title.textContent = personalData.name;
+        }
+
+        const name = document.querySelector('#name');
+        if (name) {
+            name.textContent = personalData.name;
+        }
+
+        const photo = document.querySelector('.profile-photo');
+        if (photo) {
+            photo.src = personalData.photo;
+        }
+        
+        const description = document.querySelector('#description');
+        if (description) {
+            description.textContent = personalData.description;
+        }
+    } catch (error) {
+        console.error('Error loading personal infos:', error);
+    }
+}
+
 // Function to load experience items from JSON files
 async function loadExperienceItems() {
     try {
@@ -397,8 +425,9 @@ async function loadExperienceItems() {
 
 // Load all content when the page loads
 document.addEventListener('DOMContentLoaded', async function() {
-    await loadProjectItems();
-    await loadSkills();
-    await loadExperienceItems();
-    await loadAcademicRecords();
+    //await loadSkills();
+    //await loadPersonal();
+    //await loadProjectItems();
+    //await loadExperienceItems();
+    //await loadAcademicRecords();
 });
