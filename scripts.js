@@ -354,7 +354,7 @@ async function loadSkills() {
 // Function to load personal info from JSON file
 async function loadPersonal() {
     try {
-        const personalData = await fetchData('personal.json');
+        const personalData = await fetchData('personal/personal.json');
         
         const title = document.querySelector('#title');
         if (title) {
