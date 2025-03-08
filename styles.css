@@ -299,6 +299,7 @@ svg {
     text-align: center;
   }
 
+
  .profile-photo {
     margin-left: auto;
     margin-right: auto;
@@ -307,6 +308,8 @@ svg {
   .socials {
       justify-content: center;
   }
+
+
 }
 
 @media screen and (min-width: 1024px), screen and (min-width: 1440px) {
