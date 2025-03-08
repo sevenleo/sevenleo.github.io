@@ -382,7 +382,7 @@ async function loadPersonal() {
 
 async function loadSocials() {
     try {
-        const personalData = await fetchData('personal.json');
+        const personalData = await fetchData('personal/personal.json');
 
         const socials = document.querySelector('.socials');
         if (socials) {

@@ -1,5 +1,4 @@
 \GITHUB\sevenleo.github.io\index.txt 
-\GITHUB\sevenleo.github.io\test.txt 
 \GITHUB\sevenleo.github.io\academics\estacio.json 
 \GITHUB\sevenleo.github.io\academics\sos.json 
 \GITHUB\sevenleo.github.io\academics\ufrj.json 
@@ -9,11 +8,11 @@
 \GITHUB\sevenleo.github.io\personal\personal.json 
 \GITHUB\sevenleo.github.io\skills\skills.json 
 \GITHUB\sevenleo.github.io\tabs\bots\compraali.json 
-\GITHUB\sevenleo.github.io\tabs\bots\gsuite-azure.json 
 \GITHUB\sevenleo.github.io\tabs\bots\guiaprovas.json 
 \GITHUB\sevenleo.github.io\tabs\bots\horario-bbb.json 
 \GITHUB\sevenleo.github.io\tabs\bots\horario-no-limite.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\figurinhas.json 
+\GITHUB\sevenleo.github.io\tabs\ferramentas\gsuite-azure.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\it.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\php-projects.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\python-projects.json 
