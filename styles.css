@@ -293,6 +293,25 @@ svg {
   .tab-button {
     padding: 10px 15px;
   }
+  
+  /* Center header content on mobile */
+  header {
+    text-align: center;
+  }
+  
+  header h1 {
+    text-align: center;
+  }
+  
+  .profile-photo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .socials {
+    justify-content: center;
+  }
+
 }
 
 @media screen and (min-width: 1024px), screen and (min-width: 1440px) {
