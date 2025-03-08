@@ -202,13 +202,9 @@ svg {
 }
 
 .status-completed {
-  /*background-color: #2d5a88;
-  color: var(--text-color);*/
 }
 
 .status-ongoing {
-  /*background-color: #4a3f35;
-  color: #d4a76a;*/
 }
 
 /* Headers */
@@ -302,16 +298,15 @@ svg {
   header h1 {
     text-align: center;
   }
-  
-  .profile-photo {
+
+ .profile-photo {
     margin-left: auto;
     margin-right: auto;
   }
   
   .socials {
-    justify-content: center;
+      justify-content: center;
   }
-
 }
 
 @media screen and (min-width: 1024px), screen and (min-width: 1440px) {
