@@ -193,22 +193,22 @@ svg {
 /* Status badges */
 .status-badge {
   display: inline-block;
-  padding: 4px 8px;
+  /*padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.85em;
   font-weight: 500;
   margin-left: 10px;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease;*/
 }
 
 .status-completed {
-  background-color: #2d5a88;
-  color: var(--text-color);
+  /*background-color: #2d5a88;
+  color: var(--text-color);*/
 }
 
 .status-ongoing {
-  background-color: #4a3f35;
-  color: #d4a76a;
+  /*background-color: #4a3f35;
+  color: #d4a76a;*/
 }
 
 /* Headers */

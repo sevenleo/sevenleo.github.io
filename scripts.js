@@ -147,10 +147,17 @@ async function loadAcademicRecords() {
                 const statusBadge = `<span class="status-badge ${data.status === 'concluido' ? 'status-completed' : 'status-ongoing'}">
                     ${data.status === 'concluido' ? 'Concluído' : 'Em andamento'}
                 </span>`;
-                details.innerHTML = `${data.type} ${statusBadge} <span class="date-text">(${data.date})</span>`;
+                details.innerHTML = ``;
+                details.innerHTML += data.type;
+                details.innerHTML += ' - ';
+                details.innerHTML += statusBadge;
+                details.innerHTML += ' - ';
+                details.innerHTML += `<span class="date-text">${data.date}`;
+                details.innerHTML += `</span>`;
 
                 const detailsList = document.createElement('ul');
                 data.details.forEach(detail => {
+                    if (!detail) return;
                     const li = document.createElement('li');
                     li.textContent = detail;
                     detailsList.appendChild(li);
@@ -422,7 +429,6 @@ async function loadSocials() {
     }
 }
 
-
 // Function to load experience items from JSON files
 async function loadExperienceItems() {
     try {
@@ -481,9 +487,25 @@ async function loadExperienceItems() {
                 // Parse responsibilities - handle both string and array formats
                 let responsibilitiesList;
                 if (typeof item.responsibilities === 'string') {
-                    responsibilitiesList = item.responsibilities;
+                    if (item.responsibilities.trim() !== '') {
+                        responsibilitiesList = item.responsibilities;
+                    } else {
+                        responsibilitiesList = '';
+                    }
                 } else if (Array.isArray(item.responsibilities)) {
-                    responsibilitiesList = `<ul>${item.responsibilities.map(resp => `<li>${resp}</li>`).join('')}</ul>`;
+                    if (item.responsibilities.length > 0) {
+                        if (item.responsibilities.length === 1) {
+                            if (item.responsibilities[0].trim() === '') {
+                                responsibilitiesList = '';
+                            } else {
+                                responsibilitiesList = "<ul><li>"+item.responsibilities[0]+"</li></ul>";
+                            }
+                        } else {
+                            responsibilitiesList = `<ul>${item.responsibilities.map(resp => `<li>${resp}</li>`).join('')}</ul>`;
+                        }
+                    } else {
+                        responsibilitiesList = '';
+                    }
                 }
                 
                 responsibilitiesContainer.innerHTML = responsibilitiesList;
@@ -503,7 +525,6 @@ async function loadExperienceItems() {
         console.error('Error loading experience items:', error);
     }
 }
-
 
 // Load all content when the page loads
 document.addEventListener('DOMContentLoaded', async function() {
