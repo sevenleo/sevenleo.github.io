@@ -1,8 +1,10 @@
 {
+  
+  "disabled": true,
   "title": "Projetos em PHP",
   "link": "http://sevenleo.infinityfreeapp.com",
   "date": "Repositório Online",
-  "status": "desativado",
+  "status": "disabled",
   "details": [
     "Projetos simples ou testes de desenvolvimento em PHP"
   ]

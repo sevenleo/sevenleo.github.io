@@ -2,7 +2,7 @@
   "title": "Mapa de produtos (CompraAli)",
   "link": "https://compraali.herokuapp.com/",
   "date": "Projeto Pessoal",
-  "status": "desativado",
+  "status": "disabled",
   "details": [
     "Encontre produtos usados à venda perto de você."
   ]

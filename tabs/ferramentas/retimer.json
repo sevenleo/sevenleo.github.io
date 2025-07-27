@@ -2,6 +2,7 @@
     "title": "ReTimer",
     "link": "https://retimer.netlify.app",
     "date": "2025",
+    "icon": "retimer.png",
     "details": [
         "App de timer quer permite contar tempos cíclicos personalizados; Ideal para organizar ações repetitivas."
     ]

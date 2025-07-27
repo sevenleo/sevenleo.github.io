@@ -7,10 +7,6 @@
 \GITHUB\sevenleo.github.io\experiences\riachuelo.json 
 \GITHUB\sevenleo.github.io\personal\personal.json 
 \GITHUB\sevenleo.github.io\skills\skills.json 
-\GITHUB\sevenleo.github.io\tabs\bots\compraali.json 
-\GITHUB\sevenleo.github.io\tabs\bots\guiaprovas.json 
-\GITHUB\sevenleo.github.io\tabs\bots\horario-bbb.json 
-\GITHUB\sevenleo.github.io\tabs\bots\horario-no-limite.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\figurinhas.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\floatingactions.json 
 \GITHUB\sevenleo.github.io\tabs\ferramentas\gsuite-azure.json 
@@ -23,7 +19,11 @@
 \GITHUB\sevenleo.github.io\tabs\games\asteroids.json 
 \GITHUB\sevenleo.github.io\tabs\games\dotrun.json 
 \GITHUB\sevenleo.github.io\tabs\games\youtube-games.json 
-\GITHUB\sevenleo.github.io\tabs\sites\epqb-eq-ufrj.json 
-\GITHUB\sevenleo.github.io\tabs\sites\eq-ufrj.json 
+\GITHUB\sevenleo.github.io\tabs\robots\compraali.json 
+\GITHUB\sevenleo.github.io\tabs\robots\guiaprovas.json 
+\GITHUB\sevenleo.github.io\tabs\robots\horario-bbb.json 
+\GITHUB\sevenleo.github.io\tabs\robots\horario-no-limite.json 
+\GITHUB\sevenleo.github.io\tabs\sites\epqb-eq-ufrj-br.json 
+\GITHUB\sevenleo.github.io\tabs\sites\eq-ufrj-br.json 
 \GITHUB\sevenleo.github.io\tabs\sites\investigalim.json 
 \GITHUB\sevenleo.github.io\tabs\tutoriais\youtube-tutoriais.json 

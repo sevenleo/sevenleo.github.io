@@ -2,6 +2,7 @@
   "title": "Horário-BBB",
   "link": "https://www.twitter.com/horariobbb",
   "date": "Projeto Pessoal",
+  "status": "archived",
   "details": [
     "Bot social (Twitter e Telegram) que notifica diariamente sobre os horários do programa Big Brother Brasil (BBB)"
   ]

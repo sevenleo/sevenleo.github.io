@@ -2,6 +2,7 @@
   "title": "Gerenciamento de usuários Gsuite e Azure",
   "link": "",
   "date": "Projeto Profissional",
+  "icon": "users.svg",
   "details": [
     "Através das APIs e do provisionamento de usuários é sim possível integrar os banco de dados do Google Gsuite e do Microsoft Azure.",
     "Assim podemos fazer muito, inclusive: adicionar e agrupar usuários, atribuir licenças, gerenciar auditoria, enviar e-mails automaticamente, liberar o acesso aos aplicativos, etc."

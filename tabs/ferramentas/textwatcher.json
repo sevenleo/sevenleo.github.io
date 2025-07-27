@@ -2,6 +2,7 @@
     "title": "TextWatcher",
     "link": "https://textwatcher.netlify.app",
     "date": "2025",
+    "icon": "textwatcher.png",
     "details": [
         "Extensão para Google Chrome que permite monitorar alterações em páginas da Web. Ao encontrar um texto específico emite um alerta sonoro e envia uma notificação ao usuário."
     ]

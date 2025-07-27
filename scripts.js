@@ -52,7 +52,7 @@ async function createDynamicTabs() {
     } catch (error) {
         console.error('Error creating dynamic tabs:', error);
         // Fallback to known tabs if there's an error
-        return ["bots", "ferramentas", "games", "tutoriais", "sites", "E2"];
+        return ["ferramentas", "games", "tutoriais", "robots", "sites", "E2"];
     }
 }
 
@@ -97,7 +97,7 @@ async function fetchTabFolders() {
         // If we couldn't get the directory listing, fall back to known tabs
         if (tabFolders.length === 0) {
             console.warn('Could not detect tab folders, falling back to default tabs');
-            return ["bots", "ferramentas", "games", "tutoriais", "sites", "E1"];
+            return ["ferramentas", "games", "tutoriais", "robots", "sites", "E1"];
         }
         return tabFolders;
     } catch (error) {
@@ -253,6 +253,9 @@ async function loadProjectItems() {
 
                     // Add each project item
                     itemsArray.forEach(item => {
+                        if (item.status == "desativado" || item.status === "disabled") {
+                            return; // Skip disabled items
+                        }
                         const projectItem = document.createElement('div');
                         projectItem.className = 'project-item';
                         
@@ -279,7 +282,12 @@ async function loadProjectItems() {
                                 </svg>`;
 
                         if (item.icon != "" && item.icon != null && item.icon != undefined) {
-                            itemIcon = item.icon;
+                            if (item.icon.endsWith('.png') || item.icon.endsWith('.jpg') || item.icon.endsWith('.jpeg') || item.icon.endsWith('.gif') || item.icon.endsWith('.svg') || item.icon.endsWith('.webp')) {
+                                itemIcon = `<img style="height:24px; width:24px;" src="tabs/${tab}/${item.icon}" alt="${item.title} icon" class="project-icon">`;
+                            } 
+                            else{
+                                itemIcon = item.icon;
+                            }
                         }
 
                         // Check if the project is disabled
@@ -463,10 +471,6 @@ async function loadExperienceItems() {
                 // Create company heading with icon
                 const companyHeading = document.createElement('h3');
                 companyHeading.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path d="M2 10l-2-2v8h20v-8l-2 2H2zm9-7h2v2H9V3zm-4 0h2v2H5V3zm8 0h2v2h-2V3zm4 0h2v2h-2V3zm-8 14h2v2H9v-2zm-4 0h2v2H5v-2zm8 0h2v2h-2v-2zm4 0h2v2h-2v-2zM7 9h2v2H7V9zm0-4h2v2H7V5zm0 8h2v2H7v-2zm4 4h2v2h-2v-2zm0-4h2v2H7v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 8h2v2h-2v-2zm0-4h2v2h-2v-2zm0-8h2v2H7V5zm0 4h2v2h-2V9zm4 4h2v2h-2v-2zm0-8h2v8h-2V9z" />
-                    </svg>
                     ${item.company}
                 `;
                 
