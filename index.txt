@@ -1,7 +1,7 @@
 \GITHUB\sevenleo.github.io\index.txt 
-\GITHUB\sevenleo.github.io\academics\estacio.json 
-\GITHUB\sevenleo.github.io\academics\sos.json 
 \GITHUB\sevenleo.github.io\academics\ufrj.json 
+\GITHUB\sevenleo.github.io\academics\sos.json 
+\GITHUB\sevenleo.github.io\academics\estacio.json 
 \GITHUB\sevenleo.github.io\experiences\escola-quimica-ufrj.json 
 \GITHUB\sevenleo.github.io\experiences\jovem-note-10.json 
 \GITHUB\sevenleo.github.io\experiences\riachuelo.json 

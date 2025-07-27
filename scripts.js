@@ -342,18 +342,6 @@ async function loadSkills() {
             });
         }
         
-        // Update complementary skills
-        const complementarySkillsList = document.querySelectorAll('.skills-list')[1];
-        if (complementarySkillsList) {
-            complementarySkillsList.innerHTML = '';
-            
-            skillsData.complementary_skills.forEach(skill => {
-                const skillSpan = document.createElement('span');
-                skillSpan.className = 'skill';
-                skillSpan.textContent = skill;
-                complementarySkillsList.appendChild(skillSpan);
-            });
-        }
     } catch (error) {
         console.error('Error loading skills:', error);
     }
@@ -382,6 +370,11 @@ async function loadPersonal() {
         const description = document.querySelector('#description');
         if (description) {
             description.textContent = personalData.description;
+        }
+        
+        const subdescription = document.querySelector('#subdescription');
+        if (subdescription) {
+            subdescription.textContent = personalData.subdescription;
         }
     } catch (error) {
         console.error('Error loading personal infos:', error);
@@ -449,7 +442,9 @@ async function loadExperienceItems() {
             .map(line => normalizeFilePath(line, 'experiences'));
             
         // Get the experience section
-        const experienceSection = document.querySelector('.section:nth-of-type(2)');
+        // const experienceSection = document.querySelector('.section:nth-of-type(2)');
+        const experienceSection = document.getElementById('experience-container');
+        
         if (!experienceSection) {
             throw new Error('Experience section not found');
         }
@@ -457,7 +452,7 @@ async function loadExperienceItems() {
         // Clear existing experience items except the heading
         const heading = experienceSection.querySelector('h2');
         experienceSection.innerHTML = '';
-        experienceSection.appendChild(heading);
+        //experienceSection.appendChild(heading);
         
         // Load all experience JSON files       
         for (const jsonFile of files) {
