@@ -197,7 +197,7 @@ A rota de downloads/importação foi removida da interface. Campos de `downloads
 
 ### Direção visual
 
-O layout segue uma linha escura, minimalista e técnica:
+O layout atual segue uma linha escura, minimalista e técnica. Ele é funcional e compatível com a lógica do site, mas deve ser tratado como uma base de implementação, não como uma direção visual definitiva.
 
 - Fundo escuro com superfícies discretas.
 - Acento verde/azulado usado com moderação.
@@ -264,6 +264,109 @@ Projetos sem revisão mostram apenas:
 - Badge `Sem revisão`.
 - Nome.
 - Link principal, se existir.
+
+## Contrato para redesign visual
+
+A estrutura e a lógica do site estão consolidadas. Um novo layout pode mudar completamente aparência, composição, proporções, espaçamentos, cores, tipografia e hierarquia visual, mas precisa respeitar o contrato funcional abaixo para continuar compatível com o backend estático atual.
+
+### O que o designer pode mudar
+
+- Sistema visual completo: paleta, tipografia, grid, ritmo vertical, iconografia, composição e densidade.
+- Aparência dos cards, filtros, timelines, badges, chips, botões, galerias e estados vazios.
+- Posição da navegação, desde que todas as rotas continuem acessíveis.
+- Layout desktop, tablet e mobile.
+- Tratamento visual de capas, thumbnails e imagens de baixa resolução.
+- Hierarquia visual da home, catálogo e páginas individuais.
+- Estilo de hover, active, focus, disabled, empty, loading e error states.
+
+### O que nao deve mudar sem alterar codigo e dados
+
+- O site continua sendo uma aplicação estática React/Vite.
+- A fonte de verdade continua sendo `public/content` e o manifesto gerado em `public/data/portfolio.manifest.json`.
+- As rotas continuam usando hash router.
+- As páginas públicas continuam sendo Home, Projetos, Projeto individual, Tecnologias, Formação, Experiência, Social e Docs.
+- Downloads/importação não devem voltar para a navegação.
+- A home não deve listar projetos nem estatísticas detalhadas.
+- O catálogo deve continuar sendo o ponto principal para projetos, busca, filtros e estatísticas.
+- Projetos sem `contentReviewedAt` devem continuar visíveis, com tratamento mínimo e badge `Sem revisão`.
+- Projetos revisados devem ter página completa, mas sem exibir a data de revisão do conteúdo.
+- O link principal do projeto deve aparecer apenas uma vez.
+- A galeria só deve aparecer quando existir mídia extra diferente da capa.
+
+### Componentes que precisam existir no design
+
+- Shell global com navegação principal e área de conteúdo.
+- Header mobile com botão de menu.
+- Home com foto, nome, cargo, resumo, CTA para catálogo, CTA de projeto aleatório e social icons.
+- Catálogo com título, resumo estatístico compacto, busca, filtros rápidos, botão de filtros avançados, botão limpar, contagem de resultados, grid de projetos e empty state.
+- Card de projeto revisado com thumbnail pequeno, título, categoria, resumo curto, badges essenciais, status e ações compactas.
+- Card de projeto sem revisão com nome, badge `Sem revisão` e link principal opcional.
+- Página de projeto revisado com capa pequena, badges, título, resumo, CTA principal, descrição, contexto, stack, galeria opcional, links secundários opcionais e histórico opcional.
+- Página de projeto sem revisão com layout mínimo.
+- Página de tecnologias com grupos de linguagens, tecnologias e categorias, cada grupo listando até cinco projetos associados.
+- Timelines para formação e experiência.
+- Página social com links externos.
+- Página docs com instruções de manutenção.
+- Estados de carregamento e erro de manifesto.
+
+### Estados orientados por dados
+
+O design deve prever variação de conteúdo. Os JSONs podem gerar:
+
+- Projeto com ou sem capa.
+- Projeto com capa de baixa resolução ou apenas ícone.
+- Projeto com muitos badges.
+- Projeto com poucas ou muitas tags.
+- Projeto sem links externos.
+- Projeto com apenas link principal.
+- Projeto com links secundarios além do principal.
+- Projeto com ou sem galeria extra.
+- Projeto com ou sem histórico.
+- Projeto sem revisão, exibindo somente informações mínimas.
+- Catálogo com muitos projetos.
+- Busca sem resultados.
+- Filtros avançados abertos e fechados.
+- Listas de tecnologias com nomes curtos ou longos.
+- Conteúdos acadêmicos/profissionais com períodos e descrições de tamanhos diferentes.
+
+### Requisitos responsivos
+
+O design final deve incluir pelo menos estes tamanhos:
+
+- Desktop largo: 1440px.
+- Desktop comum: 1280px.
+- Tablet: 768px.
+- Mobile: 390px.
+- Mobile estreito: 320px.
+
+Nenhum texto pode depender de `vw` para tamanho de fonte. Cards, botões, chips, thumbnails e áreas fixas devem ter dimensões estáveis para evitar que conteúdo dinâmico quebre o layout.
+
+### Acessibilidade e usabilidade
+
+- Contraste adequado entre texto, superfícies e fundos.
+- Estados de hover, focus-visible e active claramente definidos.
+- Botões e links distinguíveis entre si.
+- Ícones com significado previsível.
+- Social icons com labels acessíveis.
+- Navegação utilizável por teclado.
+- Cards clicáveis sem conflitar com links internos.
+- Textos longos devem quebrar linha sem sobrepor elementos.
+- O catálogo deve continuar eficiente para varrer visualmente muitos projetos.
+
+### Entregáveis esperados do designer
+
+O arquivo de design deve fornecer:
+
+- Frames de todas as páginas principais em desktop e mobile.
+- Componentes reutilizáveis com variants.
+- Design tokens: cores, tipografia, espaçamentos, raio, sombras, bordas e estados.
+- Especificação de grid e breakpoints.
+- Estados de cards revisados e sem revisão.
+- Estados de filtros abertos/fechados.
+- Estados de busca vazia e erro/carregamento.
+- Tratamento para imagens de baixa resolução.
+- Protótipo simples de navegação entre Home, Projetos, Projeto individual e Tecnologias.
+- Notas de handoff explicando comportamento esperado onde o visual não for óbvio.
 
 ## Scripts
 
