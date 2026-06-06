@@ -302,7 +302,7 @@ A estrutura e a lógica do site estão consolidadas. Um novo layout pode mudar c
 - Página de projeto revisado com capa pequena, badges, título, resumo, CTA principal, descrição, contexto, stack, galeria opcional, links secundários opcionais e histórico opcional.
 - Página de projeto sem revisão com layout mínimo.
 - Página de tecnologias com grupos de linguagens, tecnologias e categorias estruturados em elementos sanfonados (acordeões) que iniciam fechados e expandem ao serem clicados, cada grupo listando até cinco projetos associados.
-- Timelines para formação e experiência.
+- Timelines para formação e experiência (exibidas de forma limpa, sem a linha cinza vertical de conexão entre os nós).
 - Página social com links externos.
 - Página docs com instruções de manutenção.
 - Estados de carregamento e erro de manifesto.

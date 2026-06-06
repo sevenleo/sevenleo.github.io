@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Rules - Technical Portfolio Docs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#313030",
+                      "text-muted": "#888888",
+                      "secondary": "#ffffff",
+                      "on-primary-fixed": "#002021",
+                      "background": "#131313",
+                      "border-subtle": "#2A2A2A",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "surface-container": "#201f1f",
+                      "primary-container": "#00f5ff",
+                      "outline-variant": "#3a494a",
+                      "primary": "#e9feff",
+                      "on-tertiary": "#313030",
+                      "tertiary-container": "#e0dddc",
+                      "on-secondary-container": "#556d00",
+                      "tertiary-fixed": "#e5e2e1",
+                      "surface": "#131313",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-secondary": "#283500",
+                      "on-surface": "#e5e2e1",
+                      "surface-container-low": "#1c1b1b",
+                      "on-background": "#e5e2e1",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#353534",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#63f7ff",
+                      "on-secondary-fixed-variant": "#3c4d00",
+                      "secondary-container": "#c3f400",
+                      "on-primary-fixed-variant": "#004f53",
+                      "on-primary": "#003739",
+                      "surface-variant": "#353534",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "inverse-primary": "#00696e",
+                      "surface-raised": "#1E1E1E",
+                      "on-secondary-fixed": "#161e00",
+                      "text-primary": "#F5F5F5",
+                      "outline": "#849495",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-bright": "#3a3939",
+                      "status-unreviewed": "#FFB800",
+                      "on-error": "#690005",
+                      "surface-tint": "#00dce5",
+                      "primary-fixed-dim": "#00dce5",
+                      "secondary-fixed-dim": "#abd600",
+                      "surface-container-high": "#2a2a2a",
+                      "on-tertiary-container": "#626161",
+                      "status-archived": "#555555",
+                      "surface-dim": "#131313",
+                      "on-tertiary-fixed-variant": "#474746",
+                      "secondary-fixed": "#c3f400",
+                      "tertiary": "#fdf9f9",
+                      "on-primary-container": "#006c71",
+                      "on-surface-variant": "#b9caca"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "card-padding": "1.25rem",
+                      "section-gap": "4rem",
+                      "sidebar-expanded": "240px",
+                      "rail-width": "64px",
+                      "gutter": "1.5rem",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "display": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Inter"],
+                      "label-caps": ["JetBrains Mono"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-md": ["15px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Base typography reset to enforce theme classes */
+        body {
+            @apply bg-background text-on-surface font-body-md text-body-md antialiased;
+        }
+        /* Custom scrollbar for technical feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            @apply bg-surface-container-lowest border-l border-border-subtle;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-surface-variant rounded-full border-2 border-surface-container-lowest;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            @apply bg-outline-variant;
+        }
+        /* Code block syntax highlighting concepts using theme colors */
+        .token.keyword { @apply text-primary-fixed-dim; }
+        .token.string { @apply text-secondary-fixed-dim; }
+        .token.comment { @apply text-text-muted italic; }
+        .token.function { @apply text-primary-container; }
+        .token.operator { @apply text-outline; }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex text-on-surface">
+<!-- TopAppBar (Mobile Only) -->
+<header class="flex md:hidden justify-between items-center w-full px-gutter h-16 fixed top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border-subtle">
+<div class="font-label-caps text-label-caps font-bold text-primary-fixed-dim uppercase">Leonardo Neves da Silva</div>
+<div class="flex items-center gap-4 text-primary-fixed-dim">
+<button aria-label="settings" class="hover:text-primary transition-colors opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button aria-label="dark_mode" class="hover:text-primary transition-colors opacity-80">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-full z-50 fixed left-0 top-0 h-screen w-rail-width hover:w-sidebar-expanded transition-all duration-300 overflow-hidden border-r border-border-subtle bg-background/80 backdrop-blur-md group">
+<!-- Header / Avatar Area -->
+<div class="p-4 flex items-center border-b border-border-subtle shrink-0 h-16 box-border">
+<div class="w-8 h-8 rounded bg-surface-container-high border border-border-subtle flex items-center justify-center shrink-0 overflow-hidden">
+<img alt="Leonardo Neves da Silva Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtsbYf_nW_UGPtz9H0sqtessxDKIXFgo3hJU5ef--cQQXyrsfYbR0K9LizqKvfnSJMXiuLqVohgkYe2RwSvVbXiBKz1ZmcI1h5VwwxrkLwcvKi42LMHV9tecqe-noyJiOe6vRRpSdPgYVbj9t6elYTNKSz-Es0eDa8OLRWpFcGoNi-p8bJZTCG2Uho74ZZmp27tg7FIXDDM-CL33pHJk8PCAZpyREJA075d3kM-mPUoiYjMV4P6Yp7iQuDyj_6dEhzDtR_-L3sWA"/>
+</div>
+<div class="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap overflow-hidden">
+<h1 class="font-headline-md text-headline-md text-primary-container leading-none">Leonardo N.</h1>
+<p class="font-label-caps text-label-caps text-text-muted mt-1 uppercase">Technical Portfolio</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="flex-1 py-4 flex flex-col gap-1 overflow-y-auto overflow-x-hidden">
+<!-- Home -->
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined shrink-0">home</span>
+<span class="ml-4 font-body-md text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Home</span>
+</a>
+</li>
+<!-- Projects -->
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined shrink-0">folder_special</span>
+<span class="ml-4 font-body-md text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Projects</span>
+</a>
+</li>
+<!-- Technologies -->
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined shrink-0">terminal</span>
+<span class="ml-4 font-body-md text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Technologies</span>
+</a>
+</li>
+<!-- Education -->
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined shrink-0">school</span>
+<span class="ml-4 font-body-md text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Education</span>
+</a>
+</li>
+<!-- Experience -->
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined shrink-0">work</span>
+<span class="ml-4 font-body-md text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Experience</span>
+</a>
+</li>
+<!-- Social -->
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined shrink-0">share</span>
+<span class="ml-4 font-body-md text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Social</span>
+</a>
+</li>
+<!-- Docs (ACTIVE STATE) -->
+<li>
+<a class="flex items-center px-4 py-3 text-primary-fixed-dim border-l-4 border-primary-fixed-dim font-bold bg-surface-container-high scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="ml-4 font-body-md text-body-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Docs</span>
+</a>
+</li>
+</ul>
+<!-- Footer / CTA inside Rail -->
+<div class="p-4 border-t border-border-subtle shrink-0">
+<button class="w-full flex items-center justify-center bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-label-caps py-2 rounded uppercase hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-fixed-dim focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined shrink-0 group-hover:hidden text-[18px]">mail</span>
+<span class="hidden group-hover:inline whitespace-nowrap">Contact Me</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col pt-16 md:pt-0 md:pl-rail-width w-full max-w-full overflow-x-hidden">
+<!-- Ambient Header Background Effect -->
+<div class="absolute top-0 left-0 right-0 h-[400px] bg-gradient-to-b from-surface-container-low to-transparent pointer-events-none -z-10 opacity-50"></div>
+<!-- Content Container -->
+<div class="max-w-container-max mx-auto px-gutter w-full py-section-gap flex-1 flex flex-col">
+<!-- Breadcrumbs & Header -->
+<header class="mb-12">
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-text-muted mb-6 uppercase tracking-widest">
+<a class="hover:text-primary-fixed-dim transition-colors" href="#">Portfolio</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary-fixed-dim transition-colors" href="#">Documentation</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface-variant">Maintenance Rules</span>
+</div>
+<h1 class="font-display text-display text-primary-container mb-4">Architecture &amp; Maintenance Guidelines</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+                    Standard operating procedures for contributing to, updating, and deploying the portfolio infrastructure. Adherence to these protocols ensures continuous integration and structural integrity of the living catalog.
+                </p>
+</header>
+<!-- Layout Grid: Main Content + Sticky TOC -->
+<div class="flex flex-col lg:flex-row gap-section-gap relative items-start">
+<!-- Main Documentation Column -->
+<div class="flex-1 min-w-0 flex flex-col gap-8">
+<!-- Section: Core Tenets (Bento Grid) -->
+<section class="scroll-mt-24" id="core-tenets">
+<div class="flex items-center gap-3 mb-6 border-b border-border-subtle pb-2">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[24px]">gavel</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Core Tenets</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-card-padding">
+<!-- Bento Card 1 -->
+<div class="bg-surface-container-low border border-border-subtle p-card-padding rounded hover:bg-surface-container transition-colors duration-300 flex flex-col h-full group relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-fixed-dim/0 group-hover:bg-primary-fixed-dim/5 transition-colors duration-300 z-0"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-outline mb-4">layers</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Discrete Surfaces</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                        Rely on structural outlines (1px `#2A2A2A`) and tonal shifts for depth. Ambient drop shadows are prohibited within the technical interface layers.
+                                    </p>
+</div>
+</div>
+<!-- Bento Card 2 -->
+<div class="bg-surface-container-low border border-border-subtle p-card-padding rounded hover:bg-surface-container transition-colors duration-300 flex flex-col h-full group relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-fixed-dim/0 group-hover:bg-primary-fixed-dim/5 transition-colors duration-300 z-0"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-outline mb-4">design_services</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Typography Hierarchy</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                        Use <span class="font-label-sm text-label-sm px-1 bg-surface-container-lowest border border-border-subtle rounded text-text-muted">Inter</span> for reading flow and <span class="font-label-sm text-label-sm px-1 bg-surface-container-lowest border border-border-subtle rounded text-primary-fixed-dim">JetBrains Mono</span> strictly for metadata, labels, and code execution.
+                                    </p>
+</div>
+</div>
+<!-- Bento Card 3 -->
+<div class="bg-surface-container-low border border-border-subtle p-card-padding rounded hover:bg-surface-container transition-colors duration-300 flex flex-col h-full md:col-span-2 xl:col-span-1 group relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-fixed-dim/0 group-hover:bg-primary-fixed-dim/5 transition-colors duration-300 z-0"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-status-unreviewed">warning</span>
+<span class="font-label-caps text-label-caps px-2 py-1 border border-status-unreviewed text-status-unreviewed rounded uppercase">Strict</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Conflict Resolution Protocol</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                        Injected JSON styles dictate layout mechanics, while the Design System guarantees global token integrity.
+                                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Code Standards -->
+<section class="scroll-mt-24" id="code-standards">
+<div class="flex items-center gap-3 mb-6 border-b border-border-subtle pb-2">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[24px]">code_blocks</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Component Construction</h2>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle rounded overflow-hidden">
+<!-- Code Block Header -->
+<div class="flex items-center justify-between px-4 py-2 border-b border-border-subtle bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-text-muted">terminal</span>
+<span class="font-label-sm text-label-sm text-text-muted">Button.tsx</span>
+</div>
+<button aria-label="Copy code" class="flex items-center gap-1 px-2 py-1 text-on-surface-variant hover:text-primary-fixed-dim hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span class="font-label-caps text-label-caps uppercase">Copy</span>
+</button>
+</div>
+<!-- Code Content -->
+<div class="p-4 overflow-x-auto">
+<pre class="font-label-sm text-label-sm leading-relaxed"><code class="language-tsx"><span class="token comment">// Strict adherence to the flat, technical design system</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token operator">;</span>
+<span class="token keyword">import</span> <span class="token operator">{</span> clsx <span class="token operator">}</span> <span class="token keyword">from</span> <span class="token string">'clsx'</span><span class="token operator">;</span>
+
+<span class="token keyword">interface</span> ActionProps <span class="token operator">{</span>
+  intent<span class="token operator">:</span> <span class="token string">'primary'</span> <span class="token operator">|</span> <span class="token string">'ghost'</span><span class="token operator">;</span>
+  label<span class="token operator">:</span> string<span class="token operator">;</span>
+  icon<span class="token operator">?:</span> string<span class="token operator">;</span>
+<span class="token operator">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function">SystemAction</span> <span class="token operator">=</span> <span class="token operator">(</span><span class="token operator">{</span> intent<span class="token operator">,</span> label<span class="token operator">,</span> icon <span class="token operator">}</span><span class="token operator">:</span> ActionProps<span class="token operator">)</span> <span class="token operator">=&gt;</span> <span class="token operator">{</span>
+  <span class="token keyword">const</span> baseStyle <span class="token operator">=</span> <span class="token string">'font-label-caps text-label-caps uppercase px-4 py-2 rounded flex items-center gap-2 border transition-all duration-200'</span><span class="token operator">;</span>
+  
+  <span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token function">clsx</span><span class="token operator">(</span>baseStyle<span class="token operator">,</span> <span class="token operator">{</span>
+    <span class="token string">'bg-primary-fixed-dim border-primary-fixed-dim text-on-primary-fixed hover:bg-primary focus:shadow-[0_0_10px_rgba(0,220,229,0.3)]'</span><span class="token operator">:</span> intent <span class="token operator">===</span> <span class="token string">'primary'</span><span class="token operator">,</span>
+    <span class="token string">'bg-transparent border-border-subtle text-on-surface hover:border-primary-fixed-dim hover:text-primary-fixed-dim'</span><span class="token operator">:</span> intent <span class="token operator">===</span> <span class="token string">'ghost'</span><span class="token operator">,</span>
+  <span class="token operator">}</span><span class="token operator">)</span><span class="token operator">;</span>
+
+  <span class="token keyword">return</span> <span class="token operator">(</span>
+    <span class="token operator">&lt;</span>button className<span class="token operator">=</span><span class="token operator">{</span>styles<span class="token operator">}</span><span class="token operator">&gt;</span>
+      <span class="token operator">{</span>icon <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>span className<span class="token operator">=</span><span class="token string">"material-symbols-outlined text-[16px]"</span><span class="token operator">&gt;</span><span class="token operator">{</span>icon<span class="token operator">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span><span class="token operator">}</span>
+      <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token operator">{</span>label<span class="token operator">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+  <span class="token operator">)</span><span class="token operator">;</span>
+<span class="token operator">}</span><span class="token operator">;</span></code></pre>
+</div>
+</div>
+<p class="mt-4 font-body-md text-body-md text-on-surface-variant">
+                            Note the utilization of `<span class="font-label-sm text-label-sm">font-label-caps</span>` for button typography and the explicit outer bloom shadow applied via tailwind arbitrary values on focus to simulate an active glow without structural expansion.
+                        </p>
+</section>
+<!-- Section: Deployment Flow -->
+<section class="scroll-mt-24 mb-12" id="deployment">
+<div class="flex items-center gap-3 mb-6 border-b border-border-subtle pb-2">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[24px]">rocket_launch</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Deployment Pipeline</h2>
+</div>
+<div class="bg-surface-container-low border border-border-subtle p-card-padding rounded">
+<ol class="space-y-4 list-decimal list-inside font-body-md text-body-md text-on-surface-variant marker:text-primary-fixed-dim marker:font-label-caps">
+<li><strong>Pre-flight Checks:</strong> Ensure all JSON structural components align with the `style_` mandates.</li>
+<li><strong>Asset Compilation:</strong> Tailwind CSS CLI runs in strict mode purging unused classes.</li>
+<li><strong>Staging Deployment:</strong> Vercel trigger deploys to `staging.portfolio.dev`.</li>
+<li><strong>Manual Review:</strong> Verify typography scale on mobile (`-mobile` variants).</li>
+</ol>
+</div>
+</section>
+</div>
+<!-- Right Sidebar: Table of Contents (Sticky) -->
+<aside class="hidden lg:block w-64 shrink-0 sticky top-24 self-start">
+<div class="p-card-padding border-l border-border-subtle">
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest mb-4">On this page</h4>
+<nav class="flex flex-col gap-3 font-body-md text-body-md">
+<a class="text-primary-fixed-dim border-l-2 border-primary-fixed-dim -ml-[1.25rem] pl-4 transition-colors" href="#core-tenets">Core Tenets</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#code-standards">Component Construction</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#deployment">Deployment Pipeline</a>
+</nav>
+</div>
+</aside>
+</div>
+<!-- Footer (from JSON) -->
+<footer class="flex flex-col md:flex-row justify-between items-center px-gutter py-card-padding mt-section-gap w-full bg-surface-container-lowest border-t border-border-subtle shrink-0">
+<div class="font-label-caps text-label-caps text-text-muted uppercase tracking-widest mb-4 md:mb-0">
+                    © 2024 Leonardo Neves da Silva
+                </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">GitHub</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Twitter</a>
+<a class="font-label-sm text-label-sm text-text-muted hover:text-on-surface transition-colors" href="#">Email</a>
+</div>
+</footer>
+</div>
+</main>
+<!-- Micro-interaction JS for active TOC state (Simulated) -->
+<script>
+        // Simple script to demonstrate interactive polish
+        document.querySelectorAll('aside nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Remove active classes from all
+                document.querySelectorAll('aside nav a').forEach(el => {
+                    el.classList.remove('text-primary-fixed-dim', 'border-l-2', 'border-primary-fixed-dim', '-ml-[1.25rem]', 'pl-4');
+                    el.classList.add('text-on-surface-variant');
+                });
+                // Add active to clicked
+                this.classList.remove('text-on-surface-variant');
+                this.classList.add('text-primary-fixed-dim', 'border-l-2', 'border-primary-fixed-dim', '-ml-[1.25rem]', 'pl-4');
+            });
+        });
+    </script>
+</body></html>

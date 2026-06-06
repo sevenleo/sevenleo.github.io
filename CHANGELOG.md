@@ -2,6 +2,28 @@
 
 Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 
+## [2.3.0] - 2026-06-06
+
+### Alterado
+- Tradução completa da interface para o português nas páginas de Formação (Academic History), Experiência (Professional Experience), Social (Connect & Collaborate) e Docs (Architecture & Maintenance Guidelines).
+- Remoção da linha vertical cinza que conectava os nós da linha do tempo (timeline) nas páginas de Formação e Experiência.
+- Remoção da linha divisória inferior horizontal no cabeçalho da página de Formação.
+- Ajuste na página de Tecnologias: redução do tamanho de fonte das tags de projetos associados para `10px` e padding interno para `2px 6px` para evitar que os textos toquem as bordas dos cards e melhorar a hierarquia tipográfica com os títulos (`16px`, bold).
+- Exibição de imagem de capa real (com opacidade reduzida a `0.5`) no espaço de ícones para projetos não revisados em modo não-compacto, caindo de volta para o ícone de pasta padrão se nenhuma imagem existir.
+
+## [2.2.0] - 2026-06-06
+
+### Adicionado
+- Integração completa do conceito visual "Minimalist-Technical" de alta fidelidade em todas as telas (Home, Projetos, Tecnologias, Formação, Experiência, Redes Sociais e Docs).
+- Layout de documentação dividido (`.docs-page-layout`) com barra de navegação rápida (Table of Contents) flutuante e interativa à direita, com rastreamento ativo de scroll.
+- Bloco de código JSON com destaque de sintaxe, cabeçalho de terminal e funcionalidade interativa de copiar texto (`COPY`) no Docs.
+- Grid assimétrico estilo Bento para os links de redes sociais e container de aviso PGP.
+- Conjunto de classes de utilidade utilitárias no CSS (`src/styles.css`) emulando propriedades essenciais do Tailwind (flexbox, grid responsivo, margens, paddings, posições absolutas e relativas, timelines de histórico com bolinhas de progresso e ícones).
+- Congelamento da interface exclusivamente no tema escuro, removendo alternâncias desnecessárias e garantindo alto contraste técnico.
+
+### Alterado
+- Grade de 6 colunas ajustada para reduzir de forma totalmente responsiva (6 colunas no desktop largo, 3 colunas em telas médias e 1 coluna em telas de smartphones).
+
 ## [2.1.0] - 2026-06-06
 
 ### Adicionado

@@ -248,7 +248,7 @@ The design must handle:
 - Summary text.
 - Lists of highlights or responsibilities.
 
-The design should avoid overly heavy cards if the page becomes visually repetitive.
+The design should avoid overly heavy cards if the page becomes visually repetitive. Timelines must be rendered without a continuous vertical connecting line between the timeline marker nodes to maintain a clean layout.
 
 ### Social Page
 
