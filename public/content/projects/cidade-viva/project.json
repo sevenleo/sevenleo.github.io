@@ -1,0 +1,14 @@
+{
+  "slug": "cidade-viva",
+  "title": "Cidade Viva",
+  "visibility": "public",
+  "status": "draft",
+  "links": [
+    {
+      "label": "Abrir projeto",
+      "url": "https://cidade-viva.lovable.app",
+      "type": "demo",
+      "primary": true
+    }
+  ]
+}

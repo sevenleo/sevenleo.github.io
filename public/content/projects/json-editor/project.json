@@ -1,0 +1,14 @@
+{
+  "slug": "json-editor",
+  "title": "Json Editor",
+  "visibility": "public",
+  "status": "draft",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/sevenleo/Json-editor",
+      "type": "repository",
+      "primary": true
+    }
+  ]
+}

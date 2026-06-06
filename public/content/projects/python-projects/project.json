@@ -1,0 +1,34 @@
+{
+  "slug": "python-projects",
+  "title": "Projetos em Python",
+  "shortSummary": "Repositório online de projetos simples e testes de desenvolvimento em Python.",
+  "description": "Área de experimentação com projetos simples e testes de desenvolvimento em Python, mantida como referência histórica do portfólio.",
+  "category": "Experimentos",
+  "type": "collection",
+  "status": "discontinued",
+  "visibility": "public",
+  "maturity": "legacy",
+  "platforms": ["web"],
+  "languages": ["Python"],
+  "technologies": ["Python", "Heroku"],
+  "tags": ["python", "experimentos", "legado"],
+  "audience": "Visitantes interessados em projetos e testes antigos em Python.",
+  "problem": "Experimentos pequenos ficam dispersos sem um ponto de consulta.",
+  "goal": "Preservar referência histórica de estudos e testes em Python.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Abrir repositório online",
+      "url": "https://projetosleo.herokuapp.com/",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [],
+  "createdAt": "2019-01-01",
+  "updatedAt": "2019-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "php-projects",
+  "title": "Projetos em PHP",
+  "shortSummary": "Repositório online de projetos simples e testes de desenvolvimento em PHP.",
+  "description": "Área de experimentação com projetos simples e testes de desenvolvimento em PHP, mantida como referência histórica do portfólio.",
+  "category": "Experimentos",
+  "type": "collection",
+  "status": "discontinued",
+  "visibility": "public",
+  "maturity": "legacy",
+  "platforms": ["web"],
+  "languages": ["PHP", "HTML", "CSS"],
+  "technologies": ["PHP"],
+  "tags": ["php", "experimentos", "legado"],
+  "audience": "Visitantes interessados em projetos e testes antigos em PHP.",
+  "problem": "Experimentos pequenos ficam dispersos sem um ponto de consulta.",
+  "goal": "Preservar referência histórica de estudos e testes em PHP.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Abrir repositório online",
+      "url": "http://sevenleo.infinityfreeapp.com",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [],
+  "createdAt": "2019-01-01",
+  "updatedAt": "2019-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

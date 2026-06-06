@@ -1,0 +1,44 @@
+{
+  "slug": "intelligent-text",
+  "title": "Intelligent Text",
+  "shortSummary": "Extensão que usa IA para corrigir e formatar textos diretamente em campos de edição.",
+  "description": "Extensão de navegador que utiliza APIs de IA para corrigir, reescrever e formatar textos diretamente dentro de caixas de texto, priorizando praticidade e privacidade no fluxo de escrita.",
+  "category": "Extensões",
+  "type": "extension",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": ["browser", "web"],
+  "languages": ["JavaScript", "HTML", "CSS"],
+  "technologies": ["Chrome Extension", "AI APIs", "DOM"],
+  "tags": ["chrome", "ia", "texto", "produtividade"],
+  "audience": "Usuários que escrevem com frequência no navegador e querem melhorar texto sem trocar de ferramenta.",
+  "problem": "Corrigir e formatar textos exige copiar conteúdo para outras aplicações.",
+  "goal": "Trazer assistência de texto diretamente para o campo onde o usuário já está escrevendo.",
+  "cover": "it.png",
+  "gallery": [
+    {
+      "src": "it.png",
+      "alt": "Ícone do Intelligent Text"
+    }
+  ],
+  "links": [
+    {
+      "label": "Chrome Web Store",
+      "url": "https://chromewebstore.google.com/detail/intelligent-text/igphgkgehkocjbapjmepnepmpmbbnpnb",
+      "type": "store",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2025-01-01",
+      "title": "Publicação da extensão"
+    }
+  ],
+  "createdAt": "2025-01-01",
+  "updatedAt": "2025-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

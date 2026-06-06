@@ -1,0 +1,44 @@
+{
+  "slug": "figurinhas-para-redes-sociais",
+  "title": "Figurinhas para redes sociais",
+  "shortSummary": "Webapp para divulgar pacotes de figurinhas e organizar o acesso ao trabalho de uma designer.",
+  "description": "Aplicação web criada para facilitar a apresentação e divulgação de figurinhas para redes sociais, ajudando a centralizar o material e tornar o compartilhamento mais simples.",
+  "category": "Ferramentas",
+  "type": "webapp",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "mvp",
+  "platforms": ["web"],
+  "languages": ["JavaScript", "HTML", "CSS"],
+  "technologies": ["Netlify", "Frontend"],
+  "tags": ["divulgacao", "webapp", "social"],
+  "audience": "Criadores e profissionais que precisam divulgar materiais visuais de forma simples.",
+  "problem": "Links e materiais visuais espalhados dificultam divulgação e acesso rápido.",
+  "goal": "Centralizar a apresentação das figurinhas em uma página leve e direta.",
+  "cover": "figurinhas.png",
+  "gallery": [
+    {
+      "src": "figurinhas.png",
+      "alt": "Imagem do projeto Figurinhas para redes sociais"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir projeto",
+      "url": "https://tamaradesigner.netlify.app/",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2024-01-01",
+      "title": "Publicação do webapp"
+    }
+  ],
+  "createdAt": "2024-01-01",
+  "updatedAt": "2024-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

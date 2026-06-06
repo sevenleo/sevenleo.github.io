@@ -1,0 +1,14 @@
+{
+  "slug": "livebot",
+  "title": "LiveBot",
+  "visibility": "public",
+  "status": "draft",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/sevenleo/LiveBot",
+      "type": "repository",
+      "primary": true
+    }
+  ]
+}

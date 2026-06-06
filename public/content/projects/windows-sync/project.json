@@ -1,0 +1,14 @@
+{
+  "slug": "windows-sync",
+  "title": "Windows Sync",
+  "visibility": "public",
+  "status": "draft",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/sevenleo/Windows-Sync",
+      "type": "repository",
+      "primary": true
+    }
+  ]
+}

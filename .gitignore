@@ -1,3 +1,14 @@
 /.vscode
 test.txt
 ideia.txt
+node_modules
+dist
+.cache
+.playwright-mcp
+public/data/portfolio.manifest.json
+public/content/projects/dotrun/play/webgl/Release/webgl.js
+public/content/projects/dotrun/play/webgl/Release/webgl.data
+public/content/projects/dotrun/play/webgl/Release/webgl.mem
+public/content/projects/asteroids-3d/play/release1.5/Release/release1.5.js
+public/content/projects/asteroids-3d/play/release1.5/Release/release1.5.data
+public/content/projects/asteroids-3d/play/release1.5/Release/release1.5.mem

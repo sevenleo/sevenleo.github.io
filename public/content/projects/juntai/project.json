@@ -1,0 +1,14 @@
+{
+  "slug": "juntai",
+  "title": "Juntai",
+  "visibility": "public",
+  "status": "draft",
+  "links": [
+    {
+      "label": "Abrir projeto",
+      "url": "https://juntai.lovable.app",
+      "type": "demo",
+      "primary": true
+    }
+  ]
+}

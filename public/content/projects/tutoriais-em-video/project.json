@@ -1,0 +1,39 @@
+{
+  "slug": "tutoriais-em-video",
+  "title": "Tutoriais em Vídeo",
+  "shortSummary": "Playlist com explicações e auxílios computacionais.",
+  "description": "Coleção contínua de vídeos com explicações, tutoriais e auxílios computacionais publicados no YouTube.",
+  "category": "Tutoriais",
+  "type": "media",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "continuous",
+  "platforms": ["web"],
+  "languages": ["JavaScript", "Python", "PHP"],
+  "technologies": ["YouTube", "Educação"],
+  "tags": ["tutorial", "video", "youtube", "ensino"],
+  "audience": "Pessoas buscando apoio computacional e explicações práticas.",
+  "problem": "Conhecimentos úteis se perdem quando não são registrados em formato acessível.",
+  "goal": "Organizar tutoriais em vídeo como apoio público e referência futura.",
+  "cover": "youtube.svg",
+  "gallery": [
+    {
+      "src": "youtube.svg",
+      "alt": "Ícone do YouTube"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir playlist",
+      "url": "https://www.youtube.com/playlist?list=PLYjQvKE6yiHyQUiIApG1e2KxkAFo95i99",
+      "type": "video",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [],
+  "createdAt": "2020-01-01",
+  "updatedAt": "2026-06-06",
+  "contentReviewedAt": "2026-06-06"
+}

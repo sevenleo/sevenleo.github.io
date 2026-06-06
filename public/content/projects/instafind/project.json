@@ -1,0 +1,44 @@
+{
+  "slug": "instafind",
+  "title": "InstaFind",
+  "shortSummary": "Extensão para busca, destaque e monitoramento de termos em páginas web.",
+  "description": "Extensão para Chrome que auxilia busca e monitoramento de conteúdo em páginas web. Permite destacar palavras baseadas no cursor, seleção ou elementos definidos, incluindo variações do termo alvo e monitoramento automático com alertas.",
+  "category": "Extensões",
+  "type": "extension",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "mvp",
+  "platforms": ["browser", "web"],
+  "languages": ["JavaScript", "HTML", "CSS"],
+  "technologies": ["Chrome Extension", "DOM", "Notifications"],
+  "tags": ["chrome", "busca", "monitoramento", "alertas"],
+  "audience": "Usuários que precisam localizar ou acompanhar termos em páginas com frequência.",
+  "problem": "Buscar termos repetidamente em páginas extensas ou mutáveis consome tempo.",
+  "goal": "Destacar e monitorar termos de forma rápida dentro do navegador.",
+  "cover": "instafind.png",
+  "gallery": [
+    {
+      "src": "instafind.png",
+      "alt": "Ícone do InstaFind"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir landing page",
+      "url": "https://instafind.netlify.app",
+      "type": "landing",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2025-01-01",
+      "title": "Publicação da landing page"
+    }
+  ],
+  "createdAt": "2025-01-01",
+  "updatedAt": "2025-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

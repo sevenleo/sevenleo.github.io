@@ -1,0 +1,34 @@
+{
+  "slug": "horario-bbb",
+  "title": "Horário-BBB",
+  "shortSummary": "Bot social que notificava horários do programa Big Brother Brasil.",
+  "description": "Bot social integrado a Twitter e Telegram para notificar diariamente sobre os horários do programa Big Brother Brasil.",
+  "category": "Bots",
+  "type": "bot",
+  "status": "archived",
+  "visibility": "public",
+  "maturity": "legacy",
+  "platforms": ["web", "social"],
+  "languages": ["Python", "JavaScript"],
+  "technologies": ["Twitter", "Telegram", "Automation"],
+  "tags": ["bot", "twitter", "telegram", "automacao"],
+  "audience": "Público que acompanhava a programação diária do BBB.",
+  "problem": "Horários de programas ao vivo mudam e são fáceis de perder.",
+  "goal": "Automatizar notificações diárias em canais sociais.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Perfil no Twitter",
+      "url": "https://www.twitter.com/horariobbb",
+      "type": "social",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [],
+  "createdAt": "2020-01-01",
+  "updatedAt": "2020-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

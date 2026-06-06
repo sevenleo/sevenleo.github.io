@@ -1,0 +1,15 @@
+{
+  "title": "S.O.S. Computadores",
+  "type": "Curso",
+  "institution": "S.O.S. Computadores",
+  "status": "completed",
+  "period": "2005",
+  "order": 3,
+  "highlights": [
+    "Pacote Office",
+    "Design gráfico",
+    "Web design",
+    "Windows",
+    "Linux"
+  ]
+}

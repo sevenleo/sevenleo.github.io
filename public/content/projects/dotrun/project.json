@@ -1,0 +1,67 @@
+{
+  "slug": "dotrun",
+  "title": "Dotrun",
+  "shortSummary": "Jogo desenvolvido em Unity com build WebGL e releases para Android/Linux.",
+  "description": "Projeto pessoal de jogo desenvolvido em Unity, com versão jogável em WebGL e releases para Android e Linux. O projeto preserva screenshots, build web e links de download.",
+  "category": "Games",
+  "type": "game",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": ["web", "android", "linux"],
+  "languages": ["C#"],
+  "technologies": ["Unity3D", "WebGL"],
+  "tags": ["unity", "jogo", "webgl", "android", "linux"],
+  "audience": "Visitantes interessados em jogos independentes e experimentos em Unity.",
+  "problem": "Criar um jogo autoral publicável em múltiplas plataformas.",
+  "goal": "Demonstrar implementação de jogo, build WebGL e empacotamento para plataformas diferentes.",
+  "cover": "images/dotrun_1.jpg",
+  "gallery": [
+    { "src": "images/dotrun_1.jpg", "alt": "Dotrun screenshot 1" },
+    { "src": "images/dotrun_2.jpg", "alt": "Dotrun screenshot 2" },
+    { "src": "images/dotrun_3.jpg", "alt": "Dotrun screenshot 3" },
+    { "src": "images/dotrun_4.jpg", "alt": "Dotrun screenshot 4" },
+    { "src": "images/dotrun_5.jpg", "alt": "Dotrun screenshot 5" },
+    { "src": "images/dotrun_6.jpg", "alt": "Dotrun screenshot 6" }
+  ],
+  "links": [
+    {
+      "label": "Jogar online",
+      "url": "/content/projects/dotrun/play/webgl/index.html",
+      "type": "demo",
+      "primary": true
+    },
+    {
+      "label": "Download Android/Linux",
+      "url": "https://github.com/sevenleo/dotrun/releases/tag/2018",
+      "type": "download"
+    },
+    {
+      "label": "Vídeo",
+      "url": "https://www.youtube.com/watch?v=2sGik2qKqF0",
+      "type": "video"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Release 2018",
+      "url": "https://github.com/sevenleo/dotrun/releases/tag/2018"
+    }
+  ],
+  "versions": [
+    {
+      "version": "2018",
+      "date": "2018-01-01",
+      "summary": "Release pública com builds Android e Linux."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2018-01-01",
+      "title": "Release pública"
+    }
+  ],
+  "createdAt": "2018-01-01",
+  "updatedAt": "2018-01-01",
+  "contentReviewedAt": "2026-06-06"
+}
