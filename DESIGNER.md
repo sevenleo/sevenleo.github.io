@@ -136,13 +136,14 @@ The project catalog is the most important page.
 It must include:
 
 - Page title.
-- Compact catalog statistics.
+- Compact search and filters controls (36px height).
+- Density toggle (Compact switch) and layout selector (buttons for Full Gallery, Empty Gallery, and List).
 - Global search field.
 - Quick filters.
 - Advanced filter trigger.
 - Advanced filter panel/dropdown when active.
 - Result count.
-- Responsive grid of project cards.
+- Responsive grid or list of project cards.
 - Empty state for no search/filter results.
 
 Search and filters are already implemented in React. The design only needs to provide a clear visual structure for these controls.
@@ -481,7 +482,7 @@ Design a complete visual redesign for Sevenleo Portfolio, a static React/Vite/Ty
 
 This site is a personal hub and living project catalog for Leonardo Neves da Silva. It should help visitors quickly understand who he is, browse projects, distinguish reviewed content from unreviewed draft entries, explore technologies, view education and experience, and access social links. It is not a generic SaaS landing page and should not become a long marketing homepage.
 
-The design must support these routes: Home, Projects catalog, Project detail, Technologies, Education, Experience, Social, and Docs. Do not include Downloads or Import pages. The Home must remain minimal: photo, name, role, short summary, CTA to project catalog, CTA to random reviewed public project, and discreet icon-only social links. The Projects page is the main content area and must include compact stats, search, quick filters, advanced filters, result count, dense project grid, reviewed project cards, unreviewed project cards, and empty result state.
+The design must support these routes: Home, Projects catalog, Project detail, Technologies, Education, Experience, Social, and Docs. Do not include Downloads or Import pages. The Home must remain minimal: photo, name, role, short summary, CTA to project catalog, CTA to random reviewed public project, and discreet icon-only social links. The Projects page is the main content area and must include search, quick filters, advanced filters, density (Compact) and layout (Full Gallery, Empty Gallery, List) controls, result count, dense project grid or list, reviewed project cards, unreviewed project cards, and empty result state.
 
 Reviewed project cards need a small thumbnail/icon, title, category, short summary, essential badges, status, Details action, and optional external open action. Unreviewed project cards must be minimal, showing only title, "Sem revisão" badge, and optional primary link. Project detail pages must use a small cover/icon, title, badges, summary, one primary CTA, description, context, stack, optional gallery only when extra media exists, optional secondary links, and optional history. Do not show downloads, related projects, duplicated CTAs, or empty sections.
 

@@ -237,12 +237,10 @@ No mobile, ela vira drawer:
 
 O catálogo foi desenhado para densidade e manutenção visual:
 
-- Cards menores para exibir mais projetos por linha.
-- Thumbnails pequenos para evitar destacar ícones ou imagens de baixa resolução.
-- Busca global instantânea.
+- Busca global instantânea e mais compacta.
 - Filtros rápidos por categoria.
+- Controles de visualização: seletor de densidade (Modo Compacto, que exibe apenas títulos e ações primárias) e modos de layout (Galeria Cheia, Galeria Vazia e Lista vertical).
 - Painel avançado recolhível com linguagem, categoria, status, visibilidade, maturidade e plataforma.
-- Estatísticas aparecem somente nesta página.
 - Projetos sem revisão têm card mínimo.
 
 ### Página individual de projeto
@@ -298,7 +296,7 @@ A estrutura e a lógica do site estão consolidadas. Um novo layout pode mudar c
 - Shell global com navegação principal e área de conteúdo.
 - Header mobile com botão de menu.
 - Home com foto, nome, cargo, resumo, CTA para catálogo, CTA de projeto aleatório e social icons.
-- Catálogo com título, resumo estatístico compacto, busca, filtros rápidos, botão de filtros avançados, botão limpar, contagem de resultados, grid de projetos e empty state.
+- Catálogo com título, busca e botões de filtro compactados, controles de densidade (Compacto) e tipo de visualização (Galeria Cheia, Galeria Vazia e Lista), filtros rápidos, botão de filtros avançados, botão limpar, contagem de resultados, grid/lista de projetos e empty state.
 - Card de projeto revisado com thumbnail pequeno, título, categoria, resumo curto, badges essenciais, status e ações compactas.
 - Card de projeto sem revisão com nome, badge `Sem revisão` e link principal opcional.
 - Página de projeto revisado com capa pequena, badges, título, resumo, CTA principal, descrição, contexto, stack, galeria opcional, links secundários opcionais e histórico opcional.

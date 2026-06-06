@@ -705,28 +705,26 @@ h1 {
 }
 
 .catalog-controls {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
 }
 
-.catalog-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.catalog-controls .search-box {
+  flex: 1;
+  min-width: 240px;
 }
 
-.catalog-stats span {
-  min-height: 28px;
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 8px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--muted);
-  background: var(--surface);
-  font-size: 0.8rem;
+.catalog-controls .search-box input {
+  min-height: 36px;
+  font-size: 0.9rem;
+}
+
+.catalog-controls .button {
+  min-height: 36px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
 }
 
 .search-box,
@@ -1131,7 +1129,22 @@ h1 {
   }
 
   .catalog-controls {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .catalog-controls .search-box {
+    width: 100%;
+  }
+
+  .catalog-customizer {
+    margin-left: 0;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+    margin-top: 6px;
   }
 }
 
@@ -1238,4 +1251,211 @@ h1 {
   padding: 20px;
   border-top: 1px solid var(--line);
   margin-top: 0;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-slider {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  background-color: var(--surface-3);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 2px;
+  top: 2px;
+  background-color: var(--muted);
+  border-radius: 50%;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: rgba(94, 234, 212, 0.16);
+  border-color: var(--accent);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(16px);
+  background-color: var(--accent);
+}
+
+.toggle-switch:hover .toggle-slider::before {
+  filter: brightness(1.2);
+}
+
+/* View Mode Selector */
+.catalog-customizer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.view-mode-selector {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  overflow: hidden;
+  padding: 2px;
+}
+
+.icon-button-small {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.icon-button-small:hover {
+  color: var(--text);
+  background: var(--surface-3);
+}
+
+.icon-button-small.active {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+
+/* Project List Layout */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Compact and List card adjustments */
+.project-card-list {
+  min-height: auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 14px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.project-card-list:hover {
+  border-color: rgba(94, 234, 212, 0.3);
+}
+
+.project-card-list .project-card-click {
+  grid-column: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+}
+
+.project-card-list .project-card-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+}
+
+.project-card-list .project-card-body {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  flex: 1;
+  margin-left: 20px;
+}
+
+.project-card-list .project-card-body p {
+  -webkit-line-clamp: 1;
+  margin: 0;
+  flex: 1;
+}
+
+.project-card-list .card-actions {
+  grid-column: 2;
+  margin-top: 0;
+  padding: 0;
+  border-top: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.project-card-list .project-cover {
+  width: 44px;
+  height: 44px;
+}
+
+/* Compact state styles */
+.project-card-compact {
+  min-height: auto !important;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.compact-title-row {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compact-title-row h3 {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.compact-title-row h3:hover {
+  color: var(--accent);
+}
+
+.project-card-compact .card-actions {
+  margin-top: auto;
+  padding: 0;
+  border-top: 0;
+  display: flex;
+  gap: 8px;
+}
+
+/* For List + Compact combined */
+.project-card-compact.project-card-list {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 20px !important;
+}
+
+.project-card-compact.project-card-list .compact-title-row {
+  flex: 1;
 }

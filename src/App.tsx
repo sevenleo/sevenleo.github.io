@@ -11,10 +11,13 @@ import {
   Filter,
   Github,
   GraduationCap,
+  Grid,
   Home,
   Inbox,
   Layers3,
+  LayoutGrid,
   Link as LinkIcon,
+  List,
   Mail,
   Menu,
   PackageOpen,
@@ -188,10 +191,44 @@ function SocialIcon({ type, size = 18 }: { type: string; size?: number }) {
   return <ExternalLink size={size} />;
 }
 
-function ProjectCard({ project }: { project: Project }) {
-  if (!project.contentReviewed) {
+function ProjectCard({
+  project,
+  isCompact,
+  hideCover,
+  isList,
+}: {
+  project: Project;
+  isCompact: boolean;
+  hideCover: boolean;
+  isList: boolean;
+}) {
+  const isReviewed = project.contentReviewed;
+
+  if (isCompact) {
     return (
-      <article className="project-card project-card-basic">
+      <article className={`project-card project-card-compact ${isList ? 'project-card-list' : ''}`}>
+        <div className="compact-title-row" onClick={() => navigate(`/projects/${project.slug}`)}>
+          <h3>{project.title}</h3>
+          {!isReviewed && <span className="badge badge-warning">Sem revisão</span>}
+        </div>
+        <div className="card-actions">
+          <button className="button button-ghost" type="button" onClick={() => navigate(`/projects/${project.slug}`)}>
+            <Inbox size={16} />
+            <span>Detalhes</span>
+          </button>
+          {project.primaryLink ? (
+            <LinkButton href={project.primaryLink.url} icon={<ExternalLink size={16} />} variant="secondary">
+              Abrir
+            </LinkButton>
+          ) : null}
+        </div>
+      </article>
+    );
+  }
+
+  if (!isReviewed) {
+    return (
+      <article className={`project-card project-card-basic ${isList ? 'project-card-list' : ''}`}>
         <button className="basic-row basic-button" type="button" onClick={() => navigate(`/projects/${project.slug}`)}>
           <h3>{project.title}</h3>
           <span className="badge badge-warning">Sem revisão</span>
@@ -206,10 +243,10 @@ function ProjectCard({ project }: { project: Project }) {
   }
 
   return (
-    <article className="project-card">
+    <article className={`project-card ${isList ? 'project-card-list' : ''}`}>
       <button className="project-card-click" type="button" onClick={() => navigate(`/projects/${project.slug}`)}>
         <div className="project-card-top">
-          <ProjectCover project={project} />
+          {!hideCover && <ProjectCover project={project} />}
           <div className="card-title-row">
             <h3>{project.title}</h3>
             <span>{project.category}</span>
@@ -294,6 +331,8 @@ function HomePage({ manifest }: { manifest: PortfolioManifest }) {
 function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
   const [query, setQuery] = useState('');
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
+  const [viewMode, setViewMode] = useState<'full-gallery' | 'empty-gallery' | 'list'>('full-gallery');
   const [filters, setFilters] = useState({
     language: '',
     category: '',
@@ -313,12 +352,6 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
   }), [manifest.projects]);
 
   const quickCategories = options.category.filter((category) => category !== 'Sem revisão').slice(0, 6);
-  const catalogStats = [
-    `${manifest.stats.totalProjects} projetos`,
-    `${manifest.stats.reviewedProjects} revisados`,
-    `${manifest.stats.languages} linguagens`,
-    `${manifest.stats.unreviewedProjects} sem revisão`,
-  ];
 
   const filtered = useMemo(() => {
     const normalizedQuery = normalize(query.trim());
@@ -350,14 +383,7 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
       <SectionHeader
         eyebrow="Catálogo"
         title="Projetos"
-        text="Busca rápida e filtros discretos para navegar por stacks, categorias e status."
       />
-
-      <section className="catalog-stats" aria-label="Resumo do catálogo">
-        {catalogStats.map((item) => (
-          <span key={item}>{item}</span>
-        ))}
-      </section>
 
       <section className="catalog-controls">
         <label className="search-box">
@@ -376,6 +402,45 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
           <X size={16} />
           <span>Limpar</span>
         </button>
+
+        <div className="catalog-customizer">
+          <label className="toggle-switch" title="Ocultar capas, resumos e tags">
+            <input
+              type="checkbox"
+              checked={isCompact}
+              onChange={(e) => setIsCompact(e.target.checked)}
+            />
+            <span className="toggle-slider"></span>
+            <span className="toggle-label">Compacto</span>
+          </label>
+
+          <div className="view-mode-selector">
+            <button
+              className={`icon-button-small ${viewMode === 'full-gallery' ? 'active' : ''}`}
+              type="button"
+              title="Galeria Cheia"
+              onClick={() => setViewMode('full-gallery')}
+            >
+              <LayoutGrid size={16} />
+            </button>
+            <button
+              className={`icon-button-small ${viewMode === 'empty-gallery' ? 'active' : ''}`}
+              type="button"
+              title="Galeria Vazia"
+              onClick={() => setViewMode('empty-gallery')}
+            >
+              <Grid size={16} />
+            </button>
+            <button
+              className={`icon-button-small ${viewMode === 'list' ? 'active' : ''}`}
+              type="button"
+              title="Lista"
+              onClick={() => setViewMode('list')}
+            >
+              <List size={16} />
+            </button>
+          </div>
+        </div>
       </section>
 
       <section className="quick-filter-row" aria-label="Filtros rápidos por categoria">
@@ -434,9 +499,15 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
       </div>
 
       {filtered.length ? (
-        <section className="project-grid">
+        <section className={viewMode === 'list' ? 'project-list' : 'project-grid'}>
           {filtered.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              isCompact={isCompact}
+              hideCover={viewMode === 'empty-gallery'}
+              isList={viewMode === 'list'}
+            />
           ))}
         </section>
       ) : (
