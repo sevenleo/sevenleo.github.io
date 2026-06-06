@@ -1,0 +1,10 @@
+windows-sync https://github.com/sevenleo/Windows-Sync
+juntai https://juntai.lovable.app
+tente reservar (eq-epqb) https://tentereservar.lovable.app
+cidade viva https://cidade-viva.lovable.app
+livebot https://github.com/sevenleo/LiveBot
+https://github.com/sevenleo/Answer2Me
+https://github.com/sevenleo/Listen2Me
+https://github.com/sevenleo/ShareAudio
+https://github.com/sevenleo/Json-editor
+https://github.com/sevenleo/ScreenPin
