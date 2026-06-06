@@ -232,7 +232,7 @@ The technology page must show grouped indexes for:
 - Technologies
 - Categories
 
-Each group item includes a name, project count, and up to five linked project chips/buttons. The linked project chips should be compact, with smaller font size than normal body text, because many can appear inside one card.
+Each group (Languages, Technologies, Categories) must be structured inside an accordion element (collapsible panel) that starts closed and only expands when clicked by the user. Inside each section, each item includes a name, project count, and up to five linked project chips/buttons. The linked project chips should be compact, with smaller font size than normal body text, because many can appear inside one card.
 
 ### Education and Experience
 
@@ -287,6 +287,8 @@ Design for these cases:
 - Search with no results.
 - Filters closed.
 - Filters open.
+- Technology index accordion sections closed.
+- Technology index accordion sections open.
 - Mobile navigation closed.
 - Mobile navigation open.
 - Manifest loading state.
@@ -419,7 +421,7 @@ Please provide at least:
 8. Reviewed project detail - desktop.
 9. Reviewed project detail - mobile.
 10. Unreviewed project detail.
-11. Technology index.
+11. Technology index (with closed/open accordion sections).
 12. Education timeline.
 13. Experience timeline.
 14. Social page.

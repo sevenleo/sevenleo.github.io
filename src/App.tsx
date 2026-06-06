@@ -3,6 +3,8 @@ import {
   BookOpen,
   Boxes,
   BriefcaseBusiness,
+  ChevronDown,
+  ChevronUp,
   Code2,
   ExternalLink,
   FileJson,
@@ -122,7 +124,7 @@ function LinkButton({
   variant?: 'primary' | 'secondary' | 'ghost';
 }) {
   return (
-    <a className={`button button-${variant}`} href={href} target={externalTarget(href)} rel="noreferrer">
+    <a className={`button button-${variant}`} href={href} target="_blank" rel="noopener noreferrer">
       {icon}
       <span>{children}</span>
     </a>
@@ -163,6 +165,26 @@ function ProjectCover({ project }: { project: Project }) {
 function SocialIcon({ type, size = 18 }: { type: string; size?: number }) {
   if (type === 'github') return <Github size={size} />;
   if (type === 'email') return <Mail size={size} />;
+  if (type === 'linkedin') {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="lucide lucide-linkedin"
+      >
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    );
+  }
   return <ExternalLink size={size} />;
 }
 
@@ -426,6 +448,11 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
 
 function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; slug: string }) {
   const project = manifest.projects.find((item) => item.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   if (!project) {
     return <EmptyState title="Projeto não encontrado" text="A rota não corresponde a nenhum projeto cadastrado." />;
   }
@@ -595,27 +622,45 @@ function IndexSection({
   manifest: PortfolioManifest;
   icon: ReactNode;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <section>
-      <h3 className="subheading">{icon}{title}</h3>
-      <div className="index-grid">
-        {indexes.map((index) => (
-          <article className="index-card" key={index.name}>
-            <h3>{index.name}</h3>
-            <span>{index.projectSlugs.length} projeto(s)</span>
-            <div>
-              {index.projectSlugs.slice(0, 5).map((slug) => {
-                const project = manifest.projects.find((item) => item.slug === slug);
-                return project ? (
-                  <button key={slug} type="button" onClick={() => navigate(`/projects/${slug}`)}>
-                    {project.title}
-                  </button>
-                ) : null;
-              })}
-            </div>
-          </article>
-        ))}
-      </div>
+    <section className={`tech-index-section ${isOpen ? 'is-open' : 'is-closed'}`}>
+      <button
+        className="tech-index-trigger"
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+      >
+        <span className="tech-index-title">
+          {icon}
+          {title}
+        </span>
+        <span className="tech-index-arrow">
+          <ChevronDown size={18} />
+        </span>
+      </button>
+      
+      {isOpen && (
+        <div className="index-grid">
+          {indexes.map((index) => (
+            <article className="index-card" key={index.name}>
+              <h3>{index.name}</h3>
+              <span>{index.projectSlugs.length} projeto(s)</span>
+              <div>
+                {index.projectSlugs.slice(0, 5).map((slug) => {
+                  const project = manifest.projects.find((item) => item.slug === slug);
+                  return project ? (
+                    <button key={slug} type="button" onClick={() => navigate(`/projects/${slug}`)}>
+                      {project.title}
+                    </button>
+                  ) : null;
+                })}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

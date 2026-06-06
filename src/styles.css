@@ -1181,3 +1181,61 @@ h1 {
     padding: 18px;
   }
 }
+
+/* Accordion style for Technologies page sections */
+.tech-index-section {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.tech-index-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  font: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.tech-index-trigger:hover {
+  background-color: var(--surface-2);
+}
+
+.tech-index-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.tech-index-title svg {
+  color: var(--accent);
+}
+
+.tech-index-arrow {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.tech-index-section.is-open .tech-index-arrow {
+  transform: rotate(180deg);
+}
+
+.tech-index-section .index-grid {
+  padding: 20px;
+  border-top: 1px solid var(--line);
+  margin-top: 0;
+}
