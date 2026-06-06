@@ -10,6 +10,7 @@ Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 - Hook `useEffect` na página `ProjectDetailPage` (`src/App.tsx`) para rolar a janela do navegador automaticamente para o topo (`window.scrollTo(0, 0)`) sempre que um projeto individual for aberto ou alterado.
 - Caso específico para o ícone do LinkedIn (`type === 'linkedin'`) no componente `SocialIcon` (`src/App.tsx`) para renderizar o logo oficial do LinkedIn em formato SVG monocromático branco com suporte a cor dinâmica (`stroke="currentColor"`).
 - Script utilitário [update.bat](file:///d:/GITHUB/sevenleo.github.io/update.bat) para automatizar a atualização do manifesto de conteúdo no Windows.
+- Script utilitário [run.bat](file:///d:/GITHUB/sevenleo.github.io/run.bat) para iniciar o servidor de desenvolvimento local no Windows.
 - Controles de visualização de projetos (Densidade: modo compacto vs. normal; Layout: opções de 3, 4 ou 6 colunas por linha ou visualização em Lista) usando switch e seletores de ícones de colunas na página de projetos.
 - Estilos e classes específicas para visualizações alternativas de projetos no arquivo [src/styles.css](file:///d:/GITHUB/sevenleo.github.io/src/styles.css) (`.toggle-switch`, `.view-mode-selector`, `.project-list`, `.project-card-list` e `.project-card-compact`).
 
