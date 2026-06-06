@@ -213,14 +213,8 @@ function ProjectCard({
         </div>
         <div className="card-actions">
           <button className="button button-ghost" type="button" onClick={() => navigate(`/projects/${project.slug}`)}>
-            <Inbox size={16} />
             <span>Detalhes</span>
           </button>
-          {project.primaryLink ? (
-            <LinkButton href={project.primaryLink.url} icon={<ExternalLink size={16} />} variant="secondary">
-              Abrir
-            </LinkButton>
-          ) : null}
         </div>
       </article>
     );
@@ -253,7 +247,7 @@ function ProjectCard({
           </div>
         </div>
         <div className="project-card-body">
-          <p>{project.shortSummary}</p>
+          {!isList && <p>{project.shortSummary}</p>}
           <div className="badge-row">
             {project.badges.slice(0, 4).map((badge, index) => (
               <BadgePill key={`${project.slug}-${badge.label}-${index}`} badge={badge} />
@@ -264,7 +258,6 @@ function ProjectCard({
       </button>
       <div className="card-actions">
         <button className="button button-ghost" type="button" onClick={() => navigate(`/projects/${project.slug}`)}>
-          <Inbox size={16} />
           <span>Detalhes</span>
         </button>
         {project.primaryLink ? (
@@ -332,7 +325,7 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
   const [query, setQuery] = useState('');
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [isCompact, setIsCompact] = useState(false);
-  const [viewMode, setViewMode] = useState<'full-gallery' | 'empty-gallery' | 'list'>('full-gallery');
+  const [viewMode, setViewMode] = useState<'3-cols' | '4-cols' | '6-cols' | 'list'>('4-cols');
   const [filters, setFilters] = useState({
     language: '',
     category: '',
@@ -416,20 +409,44 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
 
           <div className="view-mode-selector">
             <button
-              className={`icon-button-small ${viewMode === 'full-gallery' ? 'active' : ''}`}
+              className={`icon-button-small ${viewMode === '3-cols' ? 'active' : ''}`}
               type="button"
-              title="Galeria Cheia"
-              onClick={() => setViewMode('full-gallery')}
+              title="3 Colunas"
+              onClick={() => setViewMode('3-cols')}
             >
-              <LayoutGrid size={16} />
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
+                <rect x="2" y="3" width="5" height="18" rx="1" />
+                <rect x="9" y="3" width="5" height="18" rx="1" />
+                <rect x="16" y="3" width="5" height="18" rx="1" />
+              </svg>
             </button>
             <button
-              className={`icon-button-small ${viewMode === 'empty-gallery' ? 'active' : ''}`}
+              className={`icon-button-small ${viewMode === '4-cols' ? 'active' : ''}`}
               type="button"
-              title="Galeria Vazia"
-              onClick={() => setViewMode('empty-gallery')}
+              title="4 Colunas"
+              onClick={() => setViewMode('4-cols')}
             >
-              <Grid size={16} />
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
+                <rect x="2" y="3" width="4" height="18" rx="1" />
+                <rect x="7.5" y="3" width="4" height="18" rx="1" />
+                <rect x="13" y="3" width="4" height="18" rx="1" />
+                <rect x="18.5" y="3" width="4" height="18" rx="1" />
+              </svg>
+            </button>
+            <button
+              className={`icon-button-small ${viewMode === '6-cols' ? 'active' : ''}`}
+              type="button"
+              title="6 Colunas"
+              onClick={() => setViewMode('6-cols')}
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
+                <rect x="2" y="3" width="2.5" height="18" rx="0.5" />
+                <rect x="5.5" y="3" width="2.5" height="18" rx="0.5" />
+                <rect x="9" y="3" width="2.5" height="18" rx="0.5" />
+                <rect x="12.5" y="3" width="2.5" height="18" rx="0.5" />
+                <rect x="16" y="3" width="2.5" height="18" rx="0.5" />
+                <rect x="19.5" y="3" width="2.5" height="18" rx="0.5" />
+              </svg>
             </button>
             <button
               className={`icon-button-small ${viewMode === 'list' ? 'active' : ''}`}
@@ -437,7 +454,11 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
               title="Lista"
               onClick={() => setViewMode('list')}
             >
-              <List size={16} />
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
             </button>
           </div>
         </div>
@@ -499,13 +520,13 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
       </div>
 
       {filtered.length ? (
-        <section className={viewMode === 'list' ? 'project-list' : 'project-grid'}>
+        <section className={viewMode === 'list' ? 'project-list' : `project-grid grid-${viewMode}`}>
           {filtered.map((project) => (
             <ProjectCard
               key={project.slug}
               project={project}
               isCompact={isCompact}
-              hideCover={viewMode === 'empty-gallery'}
+              hideCover={isCompact}
               isList={viewMode === 'list'}
             />
           ))}

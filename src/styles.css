@@ -443,8 +443,19 @@ h1 {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: 12px;
+}
+
+.project-grid.grid-3-cols {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.project-grid.grid-4-cols {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.project-grid.grid-6-cols {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .project-card {
@@ -1035,6 +1046,14 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .project-grid.grid-6-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .project-grid.grid-4-cols,
+  .project-grid.grid-3-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .profile-panel {
     grid-template-columns: 170px minmax(0, 1fr);
     align-items: center;
@@ -1154,7 +1173,10 @@ h1 {
     grid-template-columns: 1fr 1fr;
   }
 
-  .project-grid {
+  .project-grid,
+  .project-grid.grid-3-cols,
+  .project-grid.grid-4-cols,
+  .project-grid.grid-6-cols {
     grid-template-columns: 1fr;
   }
 

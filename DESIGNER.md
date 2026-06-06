@@ -137,7 +137,7 @@ It must include:
 
 - Page title.
 - Compact search and filters controls (36px height).
-- Density toggle (Compact switch) and layout selector (buttons for Full Gallery, Empty Gallery, and List).
+- Density toggle (Compact switch, which hides covers, summaries, badges/tags and status) and layout selector (buttons for 3, 4, 6 columns or List view, which hides summaries).
 - Global search field.
 - Quick filters.
 - Advanced filter trigger.
@@ -288,6 +288,9 @@ Design for these cases:
 - Search with no results.
 - Filters closed.
 - Filters open.
+- Project catalog grid with 3, 4, or 6 columns.
+- Project catalog in List view.
+- Project catalog in Compact mode.
 - Technology index accordion sections closed.
 - Technology index accordion sections open.
 - Mobile navigation closed.
@@ -482,9 +485,9 @@ Design a complete visual redesign for Sevenleo Portfolio, a static React/Vite/Ty
 
 This site is a personal hub and living project catalog for Leonardo Neves da Silva. It should help visitors quickly understand who he is, browse projects, distinguish reviewed content from unreviewed draft entries, explore technologies, view education and experience, and access social links. It is not a generic SaaS landing page and should not become a long marketing homepage.
 
-The design must support these routes: Home, Projects catalog, Project detail, Technologies, Education, Experience, Social, and Docs. Do not include Downloads or Import pages. The Home must remain minimal: photo, name, role, short summary, CTA to project catalog, CTA to random reviewed public project, and discreet icon-only social links. The Projects page is the main content area and must include search, quick filters, advanced filters, density (Compact) and layout (Full Gallery, Empty Gallery, List) controls, result count, dense project grid or list, reviewed project cards, unreviewed project cards, and empty result state.
+The design must support these routes: Home, Projects catalog, Project detail, Technologies, Education, Experience, Social, and Docs. Do not include Downloads or Import pages. The Home must remain minimal: photo, name, role, short summary, CTA to project catalog, CTA to random reviewed public project, and discreet icon-only social links. The Projects page is the main content area and must include search, quick filters, advanced filters, density (Compact, which hides covers, summaries, badges and status) and layout (3, 4, 6 columns or List, which hides summaries) controls, result count, dense project grid or list, reviewed project cards, unreviewed project cards, and empty result state.
 
-Reviewed project cards need a small thumbnail/icon, title, category, short summary, essential badges, status, Details action, and optional external open action. Unreviewed project cards must be minimal, showing only title, "Sem revisão" badge, and optional primary link. Project detail pages must use a small cover/icon, title, badges, summary, one primary CTA, description, context, stack, optional gallery only when extra media exists, optional secondary links, and optional history. Do not show downloads, related projects, duplicated CTAs, or empty sections.
+Reviewed project cards need a small thumbnail/icon, title, category, short summary (hidden in List view), essential badges, status, Details action (text only, no icon), and optional external open action (hidden in Compact mode). Unreviewed project cards must be minimal, showing only title, "Sem revisão" badge, and optional primary link. Project detail pages must use a small cover/icon, title, badges, summary, one primary CTA, description, context, stack, optional gallery only when extra media exists, optional secondary links, and optional history. Do not show downloads, related projects, duplicated CTAs, or empty sections.
 
 The design must be responsive for 1440px, 1280px, 768px, 390px, and 320px. It must handle dynamic JSON content: long titles, missing covers, low-resolution icons, many badges, many tags, no links, no gallery, no timeline, reviewed and unreviewed projects, private status, archived/discontinued statuses, filters open/closed, loading, error, and empty search results.
 
