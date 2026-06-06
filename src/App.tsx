@@ -1,14 +1,9 @@
 import {
-  Activity,
-  Archive,
   ArrowLeft,
   BookOpen,
   Boxes,
   BriefcaseBusiness,
-  CheckCircle2,
   Code2,
-  Database,
-  Download,
   ExternalLink,
   FileJson,
   Filter,
@@ -19,18 +14,16 @@ import {
   Layers3,
   Link as LinkIcon,
   Mail,
-  MapPin,
   Menu,
   PackageOpen,
   Search,
-  Shield,
   Shuffle,
   Sparkles,
   Tags,
   UserRound,
   X,
 } from 'lucide-react';
-import { ChangeEvent, ReactNode, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import type { Badge, PortfolioIndex, PortfolioManifest, Project } from './types';
 
 type Route =
@@ -40,7 +33,6 @@ type Route =
   | { page: 'education' }
   | { page: 'experience' }
   | { page: 'social' }
-  | { page: 'downloads' }
   | { page: 'docs' };
 
 const navItems = [
@@ -50,7 +42,6 @@ const navItems = [
   { path: '/education', label: 'Formação', icon: GraduationCap },
   { path: '/experience', label: 'Experiência', icon: BriefcaseBusiness },
   { path: '/social', label: 'Social', icon: UserRound },
-  { path: '/downloads', label: 'Downloads', icon: Download },
   { path: '/docs', label: 'Docs', icon: BookOpen },
 ];
 
@@ -84,7 +75,6 @@ function parseHash(): Route {
   if (parts[0] === 'education') return { page: 'education' };
   if (parts[0] === 'experience') return { page: 'experience' };
   if (parts[0] === 'social') return { page: 'social' };
-  if (parts[0] === 'downloads') return { page: 'downloads' };
   if (parts[0] === 'docs') return { page: 'docs' };
   return { page: 'home' };
 }
@@ -170,6 +160,12 @@ function ProjectCover({ project }: { project: Project }) {
   return <img className="project-cover" src={project.cover} alt={project.title} loading="lazy" />;
 }
 
+function SocialIcon({ type, size = 18 }: { type: string; size?: number }) {
+  if (type === 'github') return <Github size={size} />;
+  if (type === 'email') return <Mail size={size} />;
+  return <ExternalLink size={size} />;
+}
+
 function ProjectCard({ project }: { project: Project }) {
   if (!project.contentReviewed) {
     return (
@@ -233,54 +229,11 @@ function HomePage({ manifest }: { manifest: PortfolioManifest }) {
     navigate(`/projects/${selected.slug}`);
   };
 
-  const hubCards = [
-    {
-      title: 'Projetos',
-      text: 'Catálogo pesquisável por stack, categoria e tipo de solução.',
-      path: '/projects',
-      icon: Boxes,
-    },
-    {
-      title: 'Formação',
-      text: 'Linha do tempo acadêmica e cursos principais.',
-      path: '/education',
-      icon: GraduationCap,
-    },
-    {
-      title: 'Experiência',
-      text: 'Trajetória profissional e responsabilidades técnicas.',
-      path: '/experience',
-      icon: BriefcaseBusiness,
-    },
-    {
-      title: 'Tecnologias',
-      text: 'Índice de linguagens, stacks e áreas de atuação.',
-      path: '/technologies',
-      icon: Code2,
-    },
-  ];
-
-  const compactStats = [
-    { label: 'Projetos', value: manifest.stats.totalProjects, icon: Boxes },
-    { label: 'Revisados', value: manifest.stats.reviewedProjects, icon: Shield },
-    { label: 'Linguagens', value: manifest.stats.languages, icon: Code2 },
-    { label: 'Sem revisão', value: manifest.stats.unreviewedProjects, icon: FileJson },
-  ];
-
   return (
     <div className="page-stack home-page">
-      <section className="home-hub">
-        <div className="home-portrait">
-          <img src={manifest.profile.photo} alt={manifest.profile.name} />
-          <div className="social-strip">
-            {manifest.profile.socials.map((social) => (
-              <a key={social.url} href={social.url} target={externalTarget(social.url)} rel="noreferrer">
-                {social.label}
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className="home-copy">
+      <section className="home-minimal">
+        <img className="home-avatar" src={manifest.profile.photo} alt={manifest.profile.name} />
+        <div className="home-intro">
           <span className="eyebrow">Hub pessoal</span>
           <h1>{manifest.profile.name}</h1>
           <p className="hero-role">{manifest.profile.role}</p>
@@ -295,42 +248,23 @@ function HomePage({ manifest }: { manifest: PortfolioManifest }) {
               <span>Conhecer projeto aleatório</span>
             </button>
           </div>
-          <div className="compact-stats">
-            {compactStats.map((item) => {
-              const Icon = item.icon;
-              return (
-                <span key={item.label}>
-                  <Icon size={15} />
-                  <em>{item.value}</em>
-                  {item.label}
-                </span>
-              );
-            })}
-          </div>
         </div>
       </section>
 
-      <section className="hub-grid" aria-label="Áreas principais do portfólio">
-        {hubCards.map((item) => {
-          const Icon = item.icon;
-          return (
-            <button key={item.path} type="button" onClick={() => navigate(item.path)}>
-              <Icon size={22} />
-              <span>{item.title}</span>
-              <p>{item.text}</p>
-            </button>
-          );
-        })}
-      </section>
-
-      <section className="home-focus">
-        {manifest.profile.focus.map((item) => (
-          <span key={item}>
-            <CheckCircle2 size={15} />
-            {item}
-          </span>
+      <footer className="home-social-footer" aria-label="Contatos e redes sociais">
+        {manifest.profile.socials.map((social) => (
+          <a
+            key={social.url}
+            href={social.url}
+            target={externalTarget(social.url)}
+            rel="noreferrer"
+            title={social.label}
+            aria-label={social.label}
+          >
+            <SocialIcon type={social.type} size={18} />
+          </a>
         ))}
-      </section>
+      </footer>
     </div>
   );
 }
@@ -357,6 +291,12 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
   }), [manifest.projects]);
 
   const quickCategories = options.category.filter((category) => category !== 'Sem revisão').slice(0, 6);
+  const catalogStats = [
+    `${manifest.stats.totalProjects} projetos`,
+    `${manifest.stats.reviewedProjects} revisados`,
+    `${manifest.stats.languages} linguagens`,
+    `${manifest.stats.unreviewedProjects} sem revisão`,
+  ];
 
   const filtered = useMemo(() => {
     const normalizedQuery = normalize(query.trim());
@@ -390,6 +330,12 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
         title="Projetos"
         text="Busca rápida e filtros discretos para navegar por stacks, categorias e status."
       />
+
+      <section className="catalog-stats" aria-label="Resumo do catálogo">
+        {catalogStats.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </section>
 
       <section className="catalog-controls">
         <label className="search-box">
@@ -504,6 +450,21 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
     );
   }
 
+  const primaryUrl = project.primaryLink?.url;
+  const secondaryLinks = [...new Map(
+    project.links
+      .filter((link) => !primaryUrl || link.url !== primaryUrl)
+      .map((link) => [link.url, link]),
+  ).values()];
+  const extraGallery = project.gallery.filter((image) => image.src !== project.cover);
+  const historyItems = [
+    ...project.versions.map((version) => ({
+      date: version.date || '',
+      title: `${version.version}${version.summary ? `: ${version.summary}` : ''}`,
+    })),
+    ...project.timeline,
+  ];
+
   return (
     <div className="page-stack">
       <button className="button button-ghost button-fit" type="button" onClick={() => navigate('/projects')}>
@@ -525,11 +486,6 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
             {project.primaryLink ? (
               <LinkButton href={project.primaryLink.url} icon={<ExternalLink size={16} />}>
                 {project.primaryLink.label}
-              </LinkButton>
-            ) : null}
-            {project.downloads[0] ? (
-              <LinkButton href={project.downloads[0].url} icon={<Download size={16} />} variant="secondary">
-                Download
               </LinkButton>
             ) : null}
           </div>
@@ -569,44 +525,46 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
         </div>
       </section>
 
-      {project.gallery.length ? (
+      {extraGallery.length ? (
         <section className="detail-panel">
           <SectionHeader eyebrow="Mídia" title="Galeria" />
           <div className="gallery-grid">
-            {project.gallery.map((image) => (
+            {extraGallery.map((image) => (
               <img key={image.src} src={image.src} alt={image.alt} loading="lazy" />
             ))}
           </div>
         </section>
       ) : null}
 
-      <section className="project-detail-grid">
-        <article className="detail-panel">
-          <SectionHeader eyebrow="Acesso" title="Links externos" />
-          <div className="link-list">
-            {project.links.length ? project.links.map((link) => (
-              <LinkButton key={`${link.label}-${link.url}`} href={link.url} icon={<LinkIcon size={16} />} variant="secondary">
-                {link.label}
-              </LinkButton>
-            )) : <p className="muted">Sem links públicos cadastrados.</p>}
-          </div>
-        </article>
-        <article className="detail-panel">
-          <SectionHeader eyebrow="Histórico" title="Versões e marcos" />
-          <div className="timeline-list">
-            {[...project.versions.map((version) => ({
-              date: version.date || '',
-              title: `${version.version}${version.summary ? `: ${version.summary}` : ''}`,
-            })), ...project.timeline].map((item, index) => (
-              <div className="timeline-item static" key={`${item.title}-${index}`}>
-                <span>{formatDate(item.date)}</span>
-                <h3>{item.title}</h3>
+      {secondaryLinks.length || historyItems.length ? (
+        <section className="project-detail-grid">
+          {secondaryLinks.length ? (
+            <article className="detail-panel">
+              <SectionHeader eyebrow="Acesso" title="Links externos" />
+              <div className="link-list">
+                {secondaryLinks.map((link) => (
+                  <LinkButton key={`${link.label}-${link.url}`} href={link.url} icon={<LinkIcon size={16} />} variant="secondary">
+                    {link.label}
+                  </LinkButton>
+                ))}
               </div>
-            ))}
-            {!project.versions.length && !project.timeline.length ? <p className="muted">Sem histórico cadastrado.</p> : null}
-          </div>
-        </article>
-      </section>
+            </article>
+          ) : null}
+          {historyItems.length ? (
+            <article className="detail-panel">
+              <SectionHeader eyebrow="Histórico" title="Versões e marcos" />
+              <div className="timeline-list">
+                {historyItems.map((item, index) => (
+                  <div className="timeline-item static" key={`${item.title}-${index}`}>
+                    <span>{formatDate(item.date)}</span>
+                    <h3>{item.title}</h3>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ) : null}
+        </section>
+      ) : null}
     </div>
   );
 }
@@ -704,78 +662,16 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
 }
 
 function SocialPage({ manifest }: { manifest: PortfolioManifest }) {
-  const iconForType = (type: string) => {
-    if (type === 'github') return <Github size={18} />;
-    if (type === 'email') return <Mail size={18} />;
-    return <ExternalLink size={18} />;
-  };
-
   return (
     <div className="page-stack">
       <SectionHeader eyebrow="Contato" title="Links sociais" text="Canais externos organizados para acesso rápido." />
       <div className="social-grid">
         {manifest.profile.socials.map((social) => (
-          <LinkButton key={social.url} href={social.url} icon={iconForType(social.type)}>
+          <LinkButton key={social.url} href={social.url} icon={<SocialIcon type={social.type} />}>
             {social.label}
           </LinkButton>
         ))}
       </div>
-    </div>
-  );
-}
-
-function DownloadsPage({ manifest }: { manifest: PortfolioManifest }) {
-  const [importInfo, setImportInfo] = useState<string>('');
-
-  const handleImport = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    try {
-      const parsed = JSON.parse(await file.text()) as Partial<PortfolioManifest>;
-      const projects = parsed.projects?.length ?? 0;
-      const reviewed = parsed.projects?.filter((project) => project.contentReviewed).length ?? 0;
-      const unreviewed = projects - reviewed;
-      setImportInfo(`Manifesto válido para leitura: ${projects} projeto(s), ${reviewed} revisado(s), ${unreviewed} sem revisão.`);
-    } catch {
-      setImportInfo('Arquivo inválido. Envie um JSON de manifesto exportado pelo portfólio.');
-    }
-  };
-
-  return (
-    <div className="page-stack">
-      <SectionHeader eyebrow="Manutenção" title="Downloads e importação" />
-      <section className="content-columns">
-        <article className="maintenance-panel">
-          <Database size={26} />
-          <h3>Manifesto do portfólio</h3>
-          <p>Exportação completa gerada a partir dos JSONs em `public/content`.</p>
-          <LinkButton href="/data/portfolio.manifest.json" icon={<Download size={16} />}>
-            Baixar manifesto
-          </LinkButton>
-        </article>
-        <article className="maintenance-panel">
-          <FileJson size={26} />
-          <h3>Pré-visualizar importação</h3>
-          <p>Carregue um manifesto local para conferir contagem e revisão sem alterar o site.</p>
-          <label className="file-input">
-            <input type="file" accept="application/json,.json" onChange={handleImport} />
-            <span>Selecionar JSON</span>
-          </label>
-          {importInfo ? <p className="import-info">{importInfo}</p> : null}
-        </article>
-      </section>
-      <section>
-        <SectionHeader eyebrow="Downloads por projeto" title="Artefatos cadastrados" />
-        <div className="link-list">
-          {manifest.projects.flatMap((project) =>
-            project.downloads.map((download) => (
-              <LinkButton key={`${project.slug}-${download.url}`} href={download.url} icon={<Download size={16} />} variant="secondary">
-                {project.title}: {download.label}
-              </LinkButton>
-            )),
-          )}
-        </div>
-      </section>
     </div>
   );
 }
@@ -819,14 +715,7 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
   return (
     <div className="app-shell">
       <aside className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
-        <div className="brand">
-          <Sparkles size={20} />
-          <div>
-            <strong>Sevenleo</strong>
-            <span>Portfolio OS</span>
-          </div>
-        </div>
-        <nav>
+        <nav aria-label="Navegação principal">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -847,10 +736,6 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
             );
           })}
         </nav>
-        <div className="sidebar-footer">
-          <Activity size={16} />
-          <span>{manifest.stats.reviewedProjects} JSONs revisados</span>
-        </div>
       </aside>
 
       <main>
@@ -867,7 +752,6 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
         {route.page === 'education' ? <EducationPage manifest={manifest} /> : null}
         {route.page === 'experience' ? <ExperiencePage manifest={manifest} /> : null}
         {route.page === 'social' ? <SocialPage manifest={manifest} /> : null}
-        {route.page === 'downloads' ? <DownloadsPage manifest={manifest} /> : null}
         {route.page === 'docs' ? <DocsPage /> : null}
       </main>
     </div>
