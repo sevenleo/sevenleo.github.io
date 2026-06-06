@@ -5,7 +5,6 @@ import {
   BookOpen,
   Boxes,
   BriefcaseBusiness,
-  CalendarClock,
   CheckCircle2,
   Code2,
   Database,
@@ -25,6 +24,7 @@ import {
   PackageOpen,
   Search,
   Shield,
+  Shuffle,
   Sparkles,
   Tags,
   UserRound,
@@ -190,22 +190,21 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="project-card">
       <button className="project-card-click" type="button" onClick={() => navigate(`/projects/${project.slug}`)}>
-        <ProjectCover project={project} />
-        <div className="project-card-body">
+        <div className="project-card-top">
+          <ProjectCover project={project} />
           <div className="card-title-row">
             <h3>{project.title}</h3>
             <span>{project.category}</span>
           </div>
+        </div>
+        <div className="project-card-body">
           <p>{project.shortSummary}</p>
           <div className="badge-row">
-            {project.badges.slice(0, 5).map((badge, index) => (
+            {project.badges.slice(0, 4).map((badge, index) => (
               <BadgePill key={`${project.slug}-${badge.label}-${index}`} badge={badge} />
             ))}
           </div>
-          <div className="card-meta">
-            <span>{statusLabel[project.status] || project.status}</span>
-            {project.updatedAt ? <span>Atualizado em {formatDate(project.updatedAt)}</span> : null}
-          </div>
+          <span className="project-status">{statusLabel[project.status] || project.status}</span>
         </div>
       </button>
       <div className="card-actions">
@@ -224,99 +223,113 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 function HomePage({ manifest }: { manifest: PortfolioManifest }) {
-  const featured = manifest.projects
-    .filter((project) => project.contentReviewed && ['active', 'stable'].includes(project.status))
-    .slice(0, 4);
-  const recent = manifest.projects
-    .filter((project) => project.contentReviewed && project.updatedAt)
-    .slice(0, 5);
+  const randomCandidates = manifest.projects.filter(
+    (project) => project.contentReviewed && project.visibility !== 'private',
+  );
 
-  const statCards = [
+  const openRandomProject = () => {
+    if (!randomCandidates.length) return;
+    const selected = randomCandidates[Math.floor(Math.random() * randomCandidates.length)];
+    navigate(`/projects/${selected.slug}`);
+  };
+
+  const hubCards = [
+    {
+      title: 'Projetos',
+      text: 'Catálogo pesquisável por stack, categoria e tipo de solução.',
+      path: '/projects',
+      icon: Boxes,
+    },
+    {
+      title: 'Formação',
+      text: 'Linha do tempo acadêmica e cursos principais.',
+      path: '/education',
+      icon: GraduationCap,
+    },
+    {
+      title: 'Experiência',
+      text: 'Trajetória profissional e responsabilidades técnicas.',
+      path: '/experience',
+      icon: BriefcaseBusiness,
+    },
+    {
+      title: 'Tecnologias',
+      text: 'Índice de linguagens, stacks e áreas de atuação.',
+      path: '/technologies',
+      icon: Code2,
+    },
+  ];
+
+  const compactStats = [
     { label: 'Projetos', value: manifest.stats.totalProjects, icon: Boxes },
-    { label: 'Públicos', value: manifest.stats.publicProjects, icon: Shield },
-    { label: 'Privados', value: manifest.stats.privateProjects, icon: Archive },
+    { label: 'Revisados', value: manifest.stats.reviewedProjects, icon: Shield },
     { label: 'Linguagens', value: manifest.stats.languages, icon: Code2 },
-    { label: 'Categorias', value: manifest.stats.categories, icon: Tags },
     { label: 'Sem revisão', value: manifest.stats.unreviewedProjects, icon: FileJson },
   ];
 
   return (
-    <div className="page-stack">
-      <section className="hero-band">
-        <div className="hero-copy">
-          <span className="eyebrow">Portfólio técnico</span>
+    <div className="page-stack home-page">
+      <section className="home-hub">
+        <div className="home-portrait">
+          <img src={manifest.profile.photo} alt={manifest.profile.name} />
+          <div className="social-strip">
+            {manifest.profile.socials.map((social) => (
+              <a key={social.url} href={social.url} target={externalTarget(social.url)} rel="noreferrer">
+                {social.label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="home-copy">
+          <span className="eyebrow">Hub pessoal</span>
           <h1>{manifest.profile.name}</h1>
           <p className="hero-role">{manifest.profile.role}</p>
           <p>{manifest.profile.summary}</p>
           <div className="hero-actions">
             <button className="button button-primary" type="button" onClick={() => navigate('/projects')}>
               <Boxes size={18} />
-              <span>Explorar projetos</span>
+              <span>Ver catálogo</span>
             </button>
-            <button className="button button-secondary" type="button" onClick={() => navigate('/technologies')}>
-              <Code2 size={18} />
-              <span>Ver tecnologias</span>
+            <button className="button button-secondary" type="button" onClick={openRandomProject}>
+              <Shuffle size={18} />
+              <span>Conhecer projeto aleatório</span>
             </button>
           </div>
-        </div>
-        <div className="profile-panel">
-          <img src={manifest.profile.photo} alt={manifest.profile.name} />
-          <div>
-            <strong>{manifest.profile.headline}</strong>
-            <span>
-              <MapPin size={14} />
-              {manifest.profile.location}
-            </span>
+          <div className="compact-stats">
+            {compactStats.map((item) => {
+              const Icon = item.icon;
+              return (
+                <span key={item.label}>
+                  <Icon size={15} />
+                  <em>{item.value}</em>
+                  {item.label}
+                </span>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="stats-grid">
-        {statCards.map((item) => {
+      <section className="hub-grid" aria-label="Áreas principais do portfólio">
+        {hubCards.map((item) => {
           const Icon = item.icon;
           return (
-            <article className="stat-card" key={item.label}>
+            <button key={item.path} type="button" onClick={() => navigate(item.path)}>
               <Icon size={22} />
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </article>
+              <span>{item.title}</span>
+              <p>{item.text}</p>
+            </button>
           );
         })}
       </section>
 
-      <section>
-        <SectionHeader eyebrow="Destaques" title="Projetos ativos e estáveis" />
-        <div className="project-grid">
-          {featured.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
-      </section>
-
-      <section className="split-layout">
-        <div>
-          <SectionHeader eyebrow="Atualizações" title="Movimento recente" />
-          <div className="timeline-list">
-            {recent.map((project) => (
-              <button key={project.slug} className="timeline-item" type="button" onClick={() => navigate(`/projects/${project.slug}`)}>
-                <span>{formatDate(project.updatedAt)}</span>
-                <strong>{project.title}</strong>
-                <em>{project.category}</em>
-              </button>
-            ))}
-          </div>
-        </div>
-        <div>
-          <SectionHeader eyebrow="Foco" title="Áreas de atuação" />
-          <div className="focus-list">
-            {manifest.profile.focus.map((item) => (
-              <span key={item}>
-                <CheckCircle2 size={16} />
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
+      <section className="home-focus">
+        {manifest.profile.focus.map((item) => (
+          <span key={item}>
+            <CheckCircle2 size={15} />
+            {item}
+          </span>
+        ))}
       </section>
     </div>
   );
@@ -324,6 +337,7 @@ function HomePage({ manifest }: { manifest: PortfolioManifest }) {
 
 function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
   const [query, setQuery] = useState('');
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [filters, setFilters] = useState({
     language: '',
     category: '',
@@ -341,6 +355,8 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
     maturity: unique(manifest.projects.map((project) => project.maturity)),
     platform: unique(manifest.projects.flatMap((project) => project.platforms)),
   }), [manifest.projects]);
+
+  const quickCategories = options.category.filter((category) => category !== 'Sem revisão').slice(0, 6);
 
   const filtered = useMemo(() => {
     const normalizedQuery = normalize(query.trim());
@@ -362,58 +378,87 @@ function ProjectsPage({ manifest }: { manifest: PortfolioManifest }) {
     setFilters((current) => ({ ...current, [key]: value }));
   };
 
+  const clearFilters = () => {
+    setQuery('');
+    setFilters({ language: '', category: '', status: '', visibility: '', maturity: '', platform: '' });
+  };
+
   return (
     <div className="page-stack">
       <SectionHeader
         eyebrow="Catálogo"
         title="Projetos"
-        text="Busca instantânea por nome, descrição, tecnologia, categoria, tag, links e metadados."
+        text="Busca rápida e filtros discretos para navegar por stacks, categorias e status."
       />
 
-      <section className="toolbar">
+      <section className="catalog-controls">
         <label className="search-box">
           <Search size={18} />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Buscar em todo o catálogo"
+            placeholder="Buscar projeto, tecnologia, categoria ou tag"
           />
         </label>
-        <button
-          className="button button-ghost"
-          type="button"
-          onClick={() => {
-            setQuery('');
-            setFilters({ language: '', category: '', status: '', visibility: '', maturity: '', platform: '' });
-          }}
-        >
+        <button className="button button-secondary" type="button" onClick={() => setFiltersOpen((value) => !value)}>
+          <Filter size={16} />
+          <span>Filtros</span>
+        </button>
+        <button className="button button-ghost" type="button" onClick={clearFilters}>
           <X size={16} />
           <span>Limpar</span>
         </button>
       </section>
 
-      <section className="filters-grid" aria-label="Filtros de projetos">
-        {([
-          ['language', 'Linguagem', options.language],
-          ['category', 'Categoria', options.category],
-          ['status', 'Status', options.status],
-          ['visibility', 'Visibilidade', options.visibility],
-          ['maturity', 'Maturidade', options.maturity],
-          ['platform', 'Plataforma', options.platform],
-        ] as const).map(([key, label, values]) => (
-          <label key={key}>
-            <span>{label}</span>
-            <select value={filters[key]} onChange={(event) => updateFilter(key, event.target.value)}>
-              <option value="">Todos</option>
-              {values.map((value) => (
-                <option key={value} value={value}>
-                  {statusLabel[value] || maturityLabel[value] || value}
-                </option>
-              ))}
-            </select>
-          </label>
+      <section className="quick-filter-row" aria-label="Filtros rápidos por categoria">
+        <button className={!filters.category ? 'active' : ''} type="button" onClick={() => updateFilter('category', '')}>
+          Todos
+        </button>
+        {quickCategories.map((category) => (
+          <button
+            key={category}
+            className={filters.category === category ? 'active' : ''}
+            type="button"
+            onClick={() => updateFilter('category', category)}
+          >
+            {category}
+          </button>
         ))}
+        <button
+          className={filters.category === 'Sem revisão' ? 'active warning' : 'warning'}
+          type="button"
+          onClick={() => updateFilter('category', filters.category === 'Sem revisão' ? '' : 'Sem revisão')}
+        >
+          Sem revisão
+        </button>
       </section>
+
+      {filtersOpen ? (
+        <section className="filters-panel" aria-label="Filtros avançados de projetos">
+          <div className="filters-grid">
+            {([
+              ['language', 'Linguagem', options.language],
+              ['category', 'Categoria', options.category],
+              ['status', 'Status', options.status],
+              ['visibility', 'Visibilidade', options.visibility],
+              ['maturity', 'Maturidade', options.maturity],
+              ['platform', 'Plataforma', options.platform],
+            ] as const).map(([key, label, values]) => (
+              <label key={key}>
+                <span>{label}</span>
+                <select value={filters[key]} onChange={(event) => updateFilter(key, event.target.value)}>
+                  <option value="">Todos</option>
+                  {values.map((value) => (
+                    <option key={value} value={value}>
+                      {statusLabel[value] || maturityLabel[value] || value}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <div className="result-count">
         <Filter size={16} />
@@ -438,10 +483,6 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
   if (!project) {
     return <EmptyState title="Projeto não encontrado" text="A rota não corresponde a nenhum projeto cadastrado." />;
   }
-
-  const related = project.relatedProjectSlugs
-    .map((relatedSlug) => manifest.projects.find((item) => item.slug === relatedSlug))
-    .filter(Boolean) as Project[];
 
   if (!project.contentReviewed) {
     return (
@@ -495,22 +536,31 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
         </div>
       </section>
 
-      <section className="content-columns">
-        <article>
+      <section className="project-detail-grid">
+        <article className="detail-panel detail-panel-wide">
           <SectionHeader eyebrow="Resumo" title="Apresentação" />
           <p className="prose">{project.description}</p>
         </article>
-        <article>
+        <article className="detail-panel">
           <SectionHeader eyebrow="Valor" title="Contexto do projeto" />
-          <div className="info-list">
-            <p><strong>Público-alvo:</strong> {project.audience}</p>
-            <p><strong>Problema:</strong> {project.problem}</p>
-            <p><strong>Objetivo:</strong> {project.goal}</p>
+          <div className="fact-list">
+            <div>
+              <span>Público-alvo</span>
+              <p>{project.audience}</p>
+            </div>
+            <div>
+              <span>Problema</span>
+              <p>{project.problem}</p>
+            </div>
+            <div>
+              <span>Objetivo</span>
+              <p>{project.goal}</p>
+            </div>
           </div>
         </article>
       </section>
 
-      <section>
+      <section className="detail-panel">
         <SectionHeader eyebrow="Stack" title="Tecnologias utilizadas" />
         <div className="chip-row">
           {[...project.languages, ...project.technologies, ...project.tags].map((item) => (
@@ -520,7 +570,7 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
       </section>
 
       {project.gallery.length ? (
-        <section>
+        <section className="detail-panel">
           <SectionHeader eyebrow="Mídia" title="Galeria" />
           <div className="gallery-grid">
             {project.gallery.map((image) => (
@@ -530,8 +580,8 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
         </section>
       ) : null}
 
-      <section className="content-columns">
-        <article>
+      <section className="project-detail-grid">
+        <article className="detail-panel">
           <SectionHeader eyebrow="Acesso" title="Links externos" />
           <div className="link-list">
             {project.links.length ? project.links.map((link) => (
@@ -541,7 +591,7 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
             )) : <p className="muted">Sem links públicos cadastrados.</p>}
           </div>
         </article>
-        <article>
+        <article className="detail-panel">
           <SectionHeader eyebrow="Histórico" title="Versões e marcos" />
           <div className="timeline-list">
             {[...project.versions.map((version) => ({
@@ -550,24 +600,13 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
             })), ...project.timeline].map((item, index) => (
               <div className="timeline-item static" key={`${item.title}-${index}`}>
                 <span>{formatDate(item.date)}</span>
-                <strong>{item.title}</strong>
+                <h3>{item.title}</h3>
               </div>
             ))}
             {!project.versions.length && !project.timeline.length ? <p className="muted">Sem histórico cadastrado.</p> : null}
           </div>
         </article>
       </section>
-
-      {related.length ? (
-        <section>
-          <SectionHeader eyebrow="Exploração" title="Projetos relacionados" />
-          <div className="project-grid">
-            {related.map((item) => (
-              <ProjectCard key={item.slug} project={item} />
-            ))}
-          </div>
-        </section>
-      ) : null}
     </div>
   );
 }
@@ -604,7 +643,7 @@ function IndexSection({
       <div className="index-grid">
         {indexes.map((index) => (
           <article className="index-card" key={index.name}>
-            <strong>{index.name}</strong>
+            <h3>{index.name}</h3>
             <span>{index.projectSlugs.length} projeto(s)</span>
             <div>
               {index.projectSlugs.slice(0, 5).map((slug) => {
@@ -631,7 +670,7 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
         {manifest.education.map((item) => (
           <article className="timeline-item static" key={item.title}>
             <span>{item.period}</span>
-            <strong>{item.title}</strong>
+            <h3>{item.title}</h3>
             <em>{item.institution} · {item.type}</em>
             <ul>
               {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
@@ -651,7 +690,7 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
         {manifest.experience.map((item) => (
           <article className="timeline-item static" key={item.company}>
             <span>{item.period}</span>
-            <strong>{item.position}</strong>
+            <h3>{item.position}</h3>
             <em>{item.company}</em>
             <p>{item.summary}</p>
             <ul>
@@ -795,13 +834,15 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
                 key={item.path}
                 className={activePath === item.path ? 'active' : ''}
                 type="button"
+                title={item.label}
+                aria-label={item.label}
                 onClick={() => {
                   navigate(item.path);
                   setMenuOpen(false);
                 }}
               >
                 <Icon size={18} />
-                <span>{item.label}</span>
+                <span className="nav-label">{item.label}</span>
               </button>
             );
           })}
