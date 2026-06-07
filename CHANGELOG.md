@@ -2,6 +2,19 @@
 
 Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 
+## [2.4.0] - 2026-06-06
+
+### Alterado
+- Corrigida a lógica de status na página de Formação Acadêmica: o curso mais recente agora segue fielmente o status cadastrado no JSON (por exemplo, "CONCLUÍDO"), em vez de ser forçado incorretamente como "EM PROGRESSO".
+- Removido o filtro preto e branco (escala de cinza) da foto de perfil na página inicial.
+- Modificada a visualização de projetos em modo compacto: os elementos do cabeçalho (ícone de pasta, categoria e título) passam a empilhar verticalmente em linhas independentes, prevenindo estouro de layout horizontal.
+- Atualizada a página de Redes Sociais para renderizar os ícones originais e monocromáticos em SVG do GitHub e LinkedIn.
+- Ajustada a centralização de todos os ícones da barra lateral no modo colapsado (incluindo balanceamento com borda indicadora transparente à direita), alinhando-se automaticamente à esquerda quando a barra é expandida.
+- Refatorado o botão "Contato" na barra lateral: adicionado estilo específico com classes de contraste corretas (cor de texto escura em fundo ciano) e largura flexível com `overflow: hidden` para evitar quebra de layout quando colapsado.
+
+### Removido
+- Removida por completo a página de documentação ("Docs") e suas rotas de navegação associadas.
+
 ## [2.3.0] - 2026-06-06
 
 ### Alterado

@@ -12,7 +12,7 @@ O site funciona como um hub pessoal minimalista e um catálogo técnico pesquis�
 - O catálogo de projetos é a área central, com busca, filtros, cards compactos e indicação visual de conteúdos ainda não revisados.
 - As páginas individuais dão foco ao projeto atual, sem projetos relacionados, sem botões repetidos e sem seções vazias.
 - A página de tecnologias organiza linguagens, stacks e categorias como índice navegável.
-- Formação, experiência, social e documentação ficam em páginas próprias.
+- Formação, experiência e social ficam em páginas próprias.
 
 O projeto prioriza clareza e manutenção: a aparência é controlada por CSS local, os dados por JSON, e a navegação por hash router para funcionar bem em GitHub Pages.
 
@@ -188,7 +188,6 @@ A aplicação usa hash router para compatibilidade com GitHub Pages.
 #/education         Formação
 #/experience        Experiência
 #/social            Links sociais
-#/docs              Documentação pública de manutenção
 ```
 
 A rota de downloads/importação foi removida da interface. Campos de `downloads` ainda podem existir no modelo para compatibilidade futura, mas não são exibidos no site.
@@ -220,12 +219,13 @@ Ela não exibe projetos, estatísticas, tags de foco nem atalhos duplicados, por
 
 ### Sidebar
 
-No desktop, a sidebar é compacta:
+No desktop, a barra lateral (sidebar) é compacta e interativa:
 
-- Largura fixa reduzida.
-- Ícones sempre visíveis.
-- Labels aparecem por tooltip/hover.
-- Sem logotipo superior e sem bloco inferior.
+- Largura colapsada reduzida com ícones perfeitamente centralizados.
+- Ao passar o mouse (hover) ou expandir, a largura aumenta e as labels dos menus aparecem com efeito suave de slide-in.
+- Os ícones se alinham automaticamente à esquerda quando a barra é expandida.
+- Possui um botão de "Contato" destacado na parte inferior, que redireciona para a página social, com cores de alto contraste e layout que impede a quebra de texto.
+
 
 No mobile, ela vira drawer:
 
@@ -282,7 +282,7 @@ A estrutura e a lógica do site estão consolidadas. Um novo layout pode mudar c
 - O site continua sendo uma aplicação estática React/Vite.
 - A fonte de verdade continua sendo `public/content` e o manifesto gerado em `public/data/portfolio.manifest.json`.
 - As rotas continuam usando hash router.
-- As páginas públicas continuam sendo Home, Projetos, Projeto individual, Tecnologias, Formação, Experiência, Social e Docs.
+- As páginas públicas continuam sendo Home, Projetos, Projeto individual, Tecnologias, Formação, Experiência e Social.
 - Downloads/importação não devem voltar para a navegação.
 - A home não deve listar projetos nem estatísticas detalhadas.
 - O catálogo deve continuar sendo o ponto principal para projetos, busca, filtros e estatísticas.
@@ -304,7 +304,6 @@ A estrutura e a lógica do site estão consolidadas. Um novo layout pode mudar c
 - Página de tecnologias com grupos de linguagens, tecnologias e categorias estruturados em elementos sanfonados (acordeões) que iniciam fechados e expandem ao serem clicados, cada grupo listando até cinco projetos associados.
 - Timelines para formação e experiência (exibidas de forma limpa, sem a linha cinza vertical de conexão entre os nós).
 - Página social com links externos.
-- Página docs com instruções de manutenção.
 - Estados de carregamento e erro de manifesto.
 
 ### Estados orientados por dados
@@ -471,7 +470,7 @@ Conferir manualmente:
 - Galeria somente quando houver mídia extra.
 - Links externos abrindo corretamente.
 - Tecnologias com chips compactos.
-- Formação, experiência, social e docs.
+- Formação, experiência e social.
 
 ## Observações de design e produto
 

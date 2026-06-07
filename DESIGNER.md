@@ -56,7 +56,6 @@ The final design must support these routes:
 #/education         Education timeline
 #/experience        Experience timeline
 #/social            Social links
-#/docs              Public maintenance documentation
 ```
 
 Do not add a Downloads page. Do not add an Import page. Do not design a public artifact/download dashboard.
@@ -109,7 +108,6 @@ The design must include navigation for:
 - Education
 - Experience
 - Social
-- Docs
 
 Desktop navigation can be a sidebar, top navigation, rail, dock, or another system, but it must not occupy unnecessary content space. Mobile navigation must have a clear menu/drawer or equivalent interaction.
 
@@ -256,9 +254,7 @@ The social page should show external contact links. It can be simple, but it sho
 
 Home social links should remain icon-only and discreet. The Social page can include labels.
 
-### Docs Page
 
-The Docs page explains public maintenance rules. It can remain simple, but the design should provide a readable documentation layout with cards or sections and a code sample block.
 
 ## Data-Driven States To Design For
 
@@ -429,10 +425,9 @@ Please provide at least:
 12. Education timeline.
 13. Experience timeline.
 14. Social page.
-15. Docs page.
-16. Loading state.
-17. Error state.
-18. Empty search result state.
+15. Loading state.
+16. Error state.
+17. Empty search result state.
 
 ## Implementation Compatibility Notes
 
@@ -485,7 +480,7 @@ Design a complete visual redesign for Sevenleo Portfolio, a static React/Vite/Ty
 
 This site is a personal hub and living project catalog for Leonardo Neves da Silva. It should help visitors quickly understand who he is, browse projects, distinguish reviewed content from unreviewed draft entries, explore technologies, view education and experience, and access social links. It is not a generic SaaS landing page and should not become a long marketing homepage.
 
-The design must support these routes: Home, Projects catalog, Project detail, Technologies, Education, Experience, Social, and Docs. Do not include Downloads or Import pages. The Home must remain minimal: photo, name, role, short summary, CTA to project catalog, CTA to random reviewed public project, and discreet icon-only social links. The Projects page is the main content area and must include search, quick filters, advanced filters, density (Compact, which hides covers, summaries, badges and status) and layout (3, 4, 6 columns or List, which hides summaries) controls, result count, dense project grid or list, reviewed project cards, unreviewed project cards, and empty result state.
+The design must support these routes: Home, Projects catalog, Project detail, Technologies, Education, Experience, and Social. Do not include Downloads or Import pages. The Home must remain minimal: photo, name, role, short summary, CTA to project catalog, CTA to random reviewed public project, and discreet icon-only social links. The Projects page is the main content area and must include search, quick filters, advanced filters, density (Compact, which hides covers, summaries, badges and status) and layout (3, 4, 6 columns or List, which hides summaries) controls, result count, dense project grid or list, reviewed project cards, unreviewed project cards, and empty result state.
 
 Reviewed project cards need a small thumbnail/icon, title, category, short summary (hidden in List view), essential badges, status, Details action (text only, no icon), and optional external open action (hidden in Compact mode). Unreviewed project cards must be minimal, showing only title, "Sem revisão" badge, and optional primary link. Project detail pages must use a small cover/icon, title, badges, summary, one primary CTA, description, context, stack, optional gallery only when extra media exists, optional secondary links, and optional history. Do not show downloads, related projects, duplicated CTAs, or empty sections.
 

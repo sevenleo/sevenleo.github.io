@@ -37,8 +37,7 @@ type Route =
   | { page: 'technologies' }
   | { page: 'education' }
   | { page: 'experience' }
-  | { page: 'social' }
-  | { page: 'docs' };
+  | { page: 'social' };
 
 const navItems = [
   { path: '/', label: 'Início', icon: Home },
@@ -47,7 +46,6 @@ const navItems = [
   { path: '/education', label: 'Formação', icon: GraduationCap },
   { path: '/experience', label: 'Experiência', icon: BriefcaseBusiness },
   { path: '/social', label: 'Social', icon: UserRound },
-  { path: '/docs', label: 'Docs', icon: BookOpen },
 ];
 
 const statusLabel: Record<string, string> = {
@@ -80,7 +78,6 @@ function parseHash(): Route {
   if (parts[0] === 'education') return { page: 'education' };
   if (parts[0] === 'experience') return { page: 'experience' };
   if (parts[0] === 'social') return { page: 'social' };
-  if (parts[0] === 'docs') return { page: 'docs' };
   return { page: 'home' };
 }
 
@@ -227,7 +224,7 @@ function ProjectCard({
   if (isCompact) {
     return (
       <article className={`project-card project-card-compact ${isList ? 'project-card-list' : ''}`} style={{ minHeight: 'auto', padding: '16px' }}>
-        <div className="compact-title-row" onClick={() => navigate(`/projects/${project.slug}`)} style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+        <div className="compact-title-row" onClick={() => navigate(`/projects/${project.slug}`)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px' }}>
           <span className="material-symbols-outlined text-text-muted" style={{ fontSize: '18px' }}>folder</span>
           <span className="font-label-caps text-label-caps text-text-muted">{project.category}</span>
           <h3 className="font-headline-md text-[15px] text-text-primary hover:text-primary-fixed-dim transition-colors" style={{ margin: 0 }}>{project.title}</h3>
@@ -872,7 +869,7 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
       >
         {manifest.education.map((item, index) => {
           const tags = getEducationTags(item.title);
-          const isCurrent = index === 0 || item.status === 'in-progress' || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('progresso') || item.period.toLowerCase().includes('atual');
+          const isCurrent = item.status === 'in-progress' || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('progresso') || item.period.toLowerCase().includes('atual');
 
           return (
             <div className="relative pl-8 md:pl-12" key={item.title}>
@@ -1103,8 +1100,8 @@ function SocialPage({ manifest }: { manifest: PortfolioManifest }) {
                     {social.type === 'email' ? 'mail' : 'arrow_outward'}
                   </span>
                 </div>
-                <div className="w-12 h-12 rounded bg-[#131313] border border-border-subtle flex items-center justify-center mb-6 group-hover:border-primary-fixed-dim transition-colors">
-                  <span className="material-symbols-outlined text-on-surface" style={{ fontSize: '24px' }}>{meta.iconName}</span>
+                <div className="w-12 h-12 rounded bg-[#131313] border border-border-subtle flex items-center justify-center mb-6 group-hover:border-primary-fixed-dim transition-colors text-on-surface">
+                  <SocialIcon type={social.type} size={24} />
                 </div>
                 <div className="flex-grow">
                   <h2 className="font-headline-md text-[20px] text-on-surface mb-1" style={{ margin: 0 }}>{social.label}</h2>
@@ -1141,276 +1138,6 @@ function SocialPage({ manifest }: { manifest: PortfolioManifest }) {
   );
 }
 
-function DocsPage() {
-  const [activeSection, setActiveSection] = useState('core-tenets');
-  const [copySuccess, setCopySuccess] = useState(false);
-
-  const codeString = `{
-  "slug": "meu-projeto",
-  "title": "Meu Projeto",
-  "shortSummary": "Resumo curto",
-  "category": "Ferramentas",
-  "status": "active",
-  "visibility": "public",
-  "links": [
-    {
-      "label": "Abrir",
-      "url": "https://...",
-      "primary": true
-    }
-  ],
-  "contentReviewedAt": "2026-06-06"
-}`;
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codeString);
-    setCopySuccess(true);
-    setTimeout(() => setCopySuccess(false), 2000);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['core-tenets', 'catalog-schema', 'pipeline'];
-      const scrollPos = window.scrollY + 200;
-
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(id);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <div className="page-stack">
-      {/* Breadcrumbs */}
-      <div className="flex items-center gap-2 font-label-caps text-[11px] text-text-muted mb-4 uppercase tracking-widest">
-        <button onClick={() => navigate('/')} className="hover:text-primary-fixed-dim transition-colors" style={{ background: 'transparent', border: 0, padding: 0, cursor: 'pointer' }}>Portfólio</button>
-        <span className="material-symbols-outlined text-[14px]">chevron_right</span>
-        <span className="text-on-surface-variant">Documentação</span>
-      </div>
-
-      <header className="mb-8">
-        <h1 className="font-display text-display text-primary mb-4" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.2rem)' }}>Diretrizes de Arquitetura &amp; Manutenção</h1>
-        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
-          Procedimentos operacionais padrão para contribuição, atualização e publicação da infraestrutura do portfólio. A adesão a estes protocolos garante a integração contínua e a integridade estrutural do catálogo ativo.
-        </p>
-      </header>
-
-      {/* Layout Grid: Main Content + Table of Contents */}
-      <div className="docs-page-layout">
-        {/* Main Documentation Column */}
-        <div className="flex-1 min-w-0 flex flex-col gap-12">
-            
-            {/* Section: Core Tenets (Bento Grid) */}
-            <section className="scroll-mt-24" id="core-tenets">
-              <div className="flex items-center gap-3 mb-6 border-b border-border-subtle pb-2">
-                <span className="material-symbols-outlined text-primary-fixed-dim text-[24px]">gavel</span>
-                <h2 className="font-headline-lg text-[24px] text-on-surface" style={{ margin: 0 }}>Princípios Fundamentais</h2>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                {/* Bento Card 1 */}
-                <div className="bg-surface-container-low border border-border-subtle p-5 rounded hover:bg-surface-container transition-all duration-300 flex flex-col h-full group relative overflow-hidden">
-                  <div className="absolute inset-0 bg-primary-fixed-dim/0 group-hover:bg-primary-fixed-dim/5 transition-colors duration-300 z-0"></div>
-                  <div className="relative z-10">
-                    <span className="material-symbols-outlined text-outline mb-4">layers</span>
-                    <h3 className="font-headline-md text-[18px] text-on-surface mb-2" style={{ margin: 0 }}>Superfícies Discretas</h3>
-                    <p className="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
-                      Baseie-se em contornos estruturais (1px `#2A2A2A`) e variações de tons para profundidade. Sombras projetadas são proibidas nas camadas da interface técnica.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Bento Card 2 */}
-                <div className="bg-surface-container-low border border-border-subtle p-5 rounded hover:bg-surface-container transition-all duration-300 flex flex-col h-full group relative overflow-hidden">
-                  <div className="absolute inset-0 bg-primary-fixed-dim/0 group-hover:bg-primary-fixed-dim/5 transition-colors duration-300 z-0"></div>
-                  <div className="relative z-10">
-                    <span className="material-symbols-outlined text-outline mb-4">design_services</span>
-                    <h3 className="font-headline-md text-[18px] text-on-surface mb-2" style={{ margin: 0 }}>Hierarquia Tipográfica</h3>
-                    <p className="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
-                      Use <span className="font-label-sm text-[11px] px-1 bg-surface-container-lowest border border-border-subtle rounded text-text-muted">Inter</span> para o fluxo de leitura e <span className="font-label-sm text-[11px] px-1 bg-surface-container-lowest border border-border-subtle rounded text-primary-fixed-dim">JetBrains Mono</span> estritamente para metadados, rótulos e execução de código.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Bento Card 3 */}
-                <div className="bg-surface-container-low border border-border-subtle p-5 rounded hover:bg-surface-container transition-all duration-300 flex flex-col h-full md:col-span-2 xl:col-span-1 group relative overflow-hidden">
-                  <div className="absolute inset-0 bg-primary-fixed-dim/0 group-hover:bg-primary-fixed-dim/5 transition-colors duration-300 z-0"></div>
-                  <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-4">
-                      <span className="material-symbols-outlined text-status-unreviewed">warning</span>
-                      <span className="font-label-caps text-[10px] px-2 py-0.5 border border-status-unreviewed text-status-unreviewed rounded uppercase">Estrito</span>
-                    </div>
-                    <h3 className="font-headline-md text-[18px] text-on-surface mb-2" style={{ margin: 0 }}>Resolução de Conflitos</h3>
-                    <p className="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
-                      Estilos JSON injetados ditam a mecânica de layout, enquanto o Design System garante a integridade global dos tokens.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Section: Catalog Schema */}
-            <section className="scroll-mt-24" id="catalog-schema">
-              <div className="flex items-center gap-3 mb-6 border-b border-border-subtle pb-2">
-                <span className="material-symbols-outlined text-primary-fixed-dim text-[24px]">code_blocks</span>
-                <h2 className="font-headline-lg text-[24px] text-on-surface" style={{ margin: 0 }}>Esquema do Catálogo</h2>
-              </div>
-              
-              <p className="font-body-md text-[15px] text-on-surface-variant mb-6">
-                Os projetos são declarados dinamicamente por meio de formatos de metadados estruturados. Abaixo está o modelo rígido de layout necessário para qualquer nova entrada adicionada em <code className="font-label-sm text-[12px] text-primary-fixed-dim">public/content/projects/&lt;projeto&gt;/project.json</code>.
-              </p>
-
-              <div className="bg-surface-container-lowest border border-border-subtle rounded overflow-hidden">
-                {/* Code Block Header */}
-                <div className="flex items-center justify-between px-4 py-2 border-b border-border-subtle bg-surface-container-low">
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[16px] text-text-muted">terminal</span>
-                    <span className="font-label-sm text-label-sm text-text-muted">project.json</span>
-                  </div>
-                  <button 
-                    onClick={handleCopy}
-                    className="flex items-center gap-1 px-2.5 py-1 text-on-surface-variant hover:text-primary-fixed-dim hover:bg-surface-container-highest rounded transition-colors"
-                    style={{ background: 'transparent', border: 0, cursor: 'pointer' }}
-                  >
-                    <span className="material-symbols-outlined text-[14px]">{copySuccess ? 'check' : 'content_copy'}</span>
-                    <span className="font-label-caps text-[10px] uppercase">{copySuccess ? 'Copiado' : 'Copiar'}</span>
-                  </button>
-                </div>
-                
-                {/* Code Content */}
-                <div className="p-4 overflow-x-auto bg-[#0E0E0E]">
-                  <pre className="font-label-sm text-[13px] leading-relaxed text-on-surface-variant" style={{ margin: 0 }}>
-                    <code>
-                      {`{\n`}
-                      {`  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"slug"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"meu-projeto"</span>
-                      {`,\n  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"title"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"Meu Projeto"</span>
-                      {`,\n  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"shortSummary"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"Resumo curto"</span>
-                      {`,\n  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"category"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"Ferramentas"</span>
-                      {`,\n  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"status"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"active"</span>
-                      {`,\n  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"visibility"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"public"</span>
-                      {`,\n  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"links"</span>
-                      {`: [\n    {\n      `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"label"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"Abrir"</span>
-                      {`,\n      `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"url"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"https://..."</span>
-                      {`,\n      `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"primary"</span>
-                      {`: `}
-                      <span className="token operator" style={{ color: 'var(--outline)' }}>true</span>
-                      {`\n    }\n  ],\n  `}
-                      <span className="token keyword" style={{ color: 'var(--primary-fixed-dim)' }}>"contentReviewedAt"</span>
-                      {`: `}
-                      <span className="token string" style={{ color: 'var(--secondary-fixed-dim)' }}>"2026-06-06"</span>
-                      {`\n}`}
-                    </code>
-                  </pre>
-                </div>
-              </div>
-              
-              <p className="mt-4 font-body-md text-[14px] text-on-surface-variant">
-                A data <code className="font-label-sm text-[12px] text-primary-fixed-dim">contentReviewedAt</code> marca um projeto como verificado, permitindo a exibição de resumos completos, linhas do tempo de versão e destaques de tags. Projetos não revisados são marcados como rascunhos e exibem metadados reduzidos.
-              </p>
-            </section>
-
-            {/* Section: Maintenance Pipeline */}
-            <section className="scroll-mt-24 mb-12" id="pipeline">
-              <div className="flex items-center gap-3 mb-6 border-b border-border-subtle pb-2">
-                <span className="material-symbols-outlined text-primary-fixed-dim text-[24px]">rocket_launch</span>
-                <h2 className="font-headline-lg text-[24px] text-on-surface" style={{ margin: 0 }}>Pipeline de Manutenção</h2>
-              </div>
-              
-              <div className="bg-surface-container-low border border-border-subtle p-5 rounded">
-                <ol className="space-y-4 list-decimal list-inside font-body-md text-body-md text-on-surface-variant marker:text-primary-fixed-dim marker:font-label-caps">
-                  <li><strong>Verificações de Pré-voo:</strong> Garanta que o esquema do diretório do projeto contenha <code className="font-label-sm text-[12px] text-on-surface-variant">project.json</code> junto com todas as imagens vinculadas em suas galerias de mídia.</li>
-                  <li><strong>Compilação de Ativos:</strong> Compile o conjunto de dados central via <code className="font-label-sm text-[12px] text-primary-fixed-dim">npm run content:index</code>. Isso constrói o manifesto estático em <code className="font-label-sm text-[12px] text-on-surface-variant">public/data/portfolio.manifest.json</code>.</li>
-                  <li><strong>Ambiente de Testes &amp; Desenvolvimento:</strong> Inicie testes locais usando o espaço de trabalho com recarregamento em tempo real executando o script <code className="font-label-sm text-[12px] text-primary-fixed-dim">run.bat</code>.</li>
-                  <li><strong>Revisão Manual:</strong> Navegue pelas telas e verifique o alinhamento visual dos itens do grid, densidade de conteúdo e escala de fontes.</li>
-                </ol>
-              </div>
-            </section>
-
-          </div>
-
-        {/* Right Sidebar: Table of Contents (Sticky) */}
-        <aside className="hidden lg:block w-64 shrink-0 sticky top-24 self-start">
-          <div className="p-5 border-l border-border-subtle">
-            <h4 className="font-label-caps text-label-caps text-on-surface uppercase tracking-widest mb-4">Nesta página</h4>
-            <nav className="flex flex-col gap-3 font-body-md text-body-md">
-              <a 
-                className={`transition-colors pl-4 -ml-[21px] border-l-2 ${activeSection === 'core-tenets' ? 'text-primary-fixed-dim border-primary-fixed-dim font-medium' : 'text-on-surface-variant hover:text-on-surface border-transparent'}`} 
-                href="#core-tenets"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('core-tenets')?.scrollIntoView({ behavior: 'smooth' });
-                  setActiveSection('core-tenets');
-                }}
-              >
-                Princípios Fundamentais
-              </a>
-              <a 
-                className={`transition-colors pl-4 -ml-[21px] border-l-2 ${activeSection === 'catalog-schema' ? 'text-primary-fixed-dim border-primary-fixed-dim font-medium' : 'text-on-surface-variant hover:text-on-surface border-transparent'}`} 
-                href="#catalog-schema"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('catalog-schema')?.scrollIntoView({ behavior: 'smooth' });
-                  setActiveSection('catalog-schema');
-                }}
-              >
-                Esquema do Catálogo
-              </a>
-              <a 
-                className={`transition-colors pl-4 -ml-[21px] border-l-2 ${activeSection === 'pipeline' ? 'text-primary-fixed-dim border-primary-fixed-dim font-medium' : 'text-on-surface-variant hover:text-on-surface border-transparent'}`} 
-                href="#pipeline"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('pipeline')?.scrollIntoView({ behavior: 'smooth' });
-                  setActiveSection('pipeline');
-                }}
-              >
-                Pipeline de Manutenção
-              </a>
-            </nav>
-          </div>
-        </aside>
-      </div>
-    </div>
-  );
-}
-
 function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Route }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const activePath = route.page === 'home' ? '/' : route.page === 'projects' ? '/projects' : `/${route.page}`;
@@ -1422,7 +1149,6 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
     { path: '/education', label: 'Formação', icon: 'school' },
     { path: '/experience', label: 'Experiência', icon: 'work' },
     { path: '/social', label: 'Social', icon: 'share' },
-    { path: '/docs', label: 'Docs', icon: 'description' },
   ];
 
   return (
@@ -1473,16 +1199,16 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
         </nav>
 
         {/* Contact Me button inside sidebar */}
-        <div className="mt-auto pt-4 border-t border-border-subtle w-full">
+        <div className="mt-auto pt-4 border-t border-border-subtle w-full flex justify-center">
           <button 
-            className="w-full flex items-center justify-center bg-primary-fixed-dim text-on-primary-fixed font-label-caps text-[12px] py-2.5 rounded border border-primary-fixed-dim hover:bg-transparent hover:text-primary-fixed-dim transition-colors"
+            className="sidebar-contact-button"
             onClick={() => {
               navigate('/social');
               setMenuOpen(false);
             }}
           >
-            <span className="material-symbols-outlined text-[18px]">mail</span>
-            <span className="nav-label" style={{ marginLeft: '8px' }}>Contato</span>
+            <span className="material-symbols-outlined flex-shrink-0" style={{ fontSize: '20px' }}>mail</span>
+            <span className="nav-label">Contato</span>
           </button>
         </div>
       </aside>
@@ -1495,7 +1221,6 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
         {route.page === 'education' ? <EducationPage manifest={manifest} /> : null}
         {route.page === 'experience' ? <ExperiencePage manifest={manifest} /> : null}
         {route.page === 'social' ? <SocialPage manifest={manifest} /> : null}
-        {route.page === 'docs' ? <DocsPage /> : null}
       </main>
     </div>
   );
