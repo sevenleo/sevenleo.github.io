@@ -100,6 +100,7 @@ export interface ExperienceItem {
   order: number;
   summary: string;
   responsibilities: string[];
+  tags?: string[];
 }
 
 export interface PortfolioIndex {

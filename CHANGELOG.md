@@ -11,6 +11,9 @@ Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 - Atualizada a página de Redes Sociais para renderizar os ícones originais e monocromáticos em SVG do GitHub e LinkedIn.
 - Ajustada a centralização de todos os ícones da barra lateral no modo colapsado (incluindo balanceamento com borda indicadora transparente à direita), alinhando-se automaticamente à esquerda quando a barra é expandida.
 - Refatorado o botão "Contato" na barra lateral: adicionado estilo específico com classes de contraste corretas (cor de texto escura em fundo ciano) e largura flexível com `overflow: hidden` para evitar quebra de layout quando colapsado.
+- Adicionada a opção de inserir `tags` personalizadas no JSON da Experiência Profissional, exibindo chips dinamicamente na timeline (ocultando-os caso não estejam definidos).
+- Atualizada a página de Histórico Acadêmico para renderizar os itens do array `highlights` diretamente como chips de tags, removendo o parágrafo descritivo anterior em prol de uma interface limpa.
+- Ajustada a centralização do logotipo de cabeçalho "LN" na barra lateral para ficar centralizado no modo colapsado e alinhar à esquerda quando expandido.
 
 ### Removido
 - Removida por completo a página de documentação ("Docs") e suas rotas de navegação associadas.

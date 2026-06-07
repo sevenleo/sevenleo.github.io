@@ -148,8 +148,8 @@ O conteúdo institucional fica separado dos projetos.
 - `public/content/profile.json`: nome, cargo, resumo, foto, localização e redes sociais.
 - `public/content/profile/leo.png`: foto usada na home.
 - `public/content/skills.json`: listas de competências.
-- `public/content/education/*.json`: itens da linha de formação, ordenados por `order`.
-- `public/content/experience/*.json`: experiências profissionais, também ordenadas por `order`.
+- `public/content/education/*.json`: itens da linha de formação, ordenados por `order` (contém `highlights` que são renderizados como chips de tags na timeline).
+- `public/content/experience/*.json`: experiências profissionais, também ordenadas por `order` (suporta um campo opcional `tags` para exibir chips de tecnologias).
 
 Essas coleções são lidas pelo manifesto e renderizadas nas páginas correspondentes.
 

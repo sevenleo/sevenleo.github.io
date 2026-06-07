@@ -841,14 +841,6 @@ function IndexSection({
   );
 }
 
-function getEducationTags(title: string): string[] {
-  const t = title.toLowerCase();
-  if (t.includes('m.sc') || t.includes('mestrado') || t.includes('master')) return ['Distributed Systems', 'Machine Learning', 'Go'];
-  if (t.includes('b.sc') || t.includes('bacharel') || t.includes('computer science') || t.includes('software engineering')) return ['Software Architecture', 'Java', 'Algorithms'];
-  if (t.includes('aws') || t.includes('solutions architect')) return ['Cloud Architecture', 'AWS'];
-  return ['Education', 'Tech Training'];
-}
-
 function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
   return (
     <div className="page-stack">
@@ -868,7 +860,7 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
         }}
       >
         {manifest.education.map((item, index) => {
-          const tags = getEducationTags(item.title);
+          const tags = item.highlights || [];
           const isCurrent = item.status === 'in-progress' || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('progresso') || item.period.toLowerCase().includes('atual');
 
           return (
@@ -904,30 +896,14 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
                   </div>
                 </div>
 
-                {/* Highlights as description & tag list */}
-                {item.highlights && item.highlights.length > 0 && (
-                  <div>
-                    <p className="font-body-md text-[14px] text-on-surface-variant mb-4">
-                      {item.highlights[0]}
-                    </p>
-                    {item.highlights.length > 1 && (
-                      <div className="flex flex-wrap gap-2">
-                        {item.highlights.slice(1).map((h, i) => (
-                          <span className="px-3 py-1 bg-surface-container-highest border border-border-subtle rounded font-label-sm text-label-sm text-on-surface" key={i}>
-                            {h}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    {item.highlights.length <= 1 && tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {tags.map((tag) => (
-                          <span className="px-3 py-1 bg-surface-container-highest border border-border-subtle rounded font-label-sm text-label-sm text-on-surface" key={tag}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                {/* Highlights as tags */}
+                {tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-border-subtle">
+                    {tags.map((tag) => (
+                      <span className="bg-surface-container-highest px-2 py-1 rounded font-label-sm text-label-sm text-text-primary border border-border-subtle" key={tag}>
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 )}
               </div>
@@ -937,13 +913,6 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
       </div>
     </div>
   );
-}
-
-function getExperienceTags(company: string): string[] {
-  const c = company.toLowerCase();
-  if (c.includes('techcorp')) return ['Go', 'Kubernetes', 'Kafka', 'PostgreSQL'];
-  if (c.includes('innovatesys') || c.includes('solutions')) return ['React', 'Node.js', 'TypeScript', 'MongoDB'];
-  return ['Software Engineering', 'System Design'];
 }
 
 function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
@@ -965,7 +934,7 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
         }}
       >
         {manifest.experience.map((item, index) => {
-          const tags = getExperienceTags(item.company);
+          const tags = item.tags || [];
           const isCurrent = index === 0 || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('atual');
 
           return (
@@ -1170,9 +1139,9 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
       {/* Sidebar Rail */}
       <aside className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
         {/* Header / Avatar Area */}
-        <div className="flex items-center p-2 mb-8 shrink-0 h-16 w-full border-b border-border-subtle" style={{ minHeight: '64px' }}>
-          <div className="w-8 h-8 rounded bg-surface-container-high border border-border-subtle flex items-center justify-center shrink-0">
-            <span className="font-label-caps text-[12px] font-bold text-primary-fixed-dim">LN</span>
+        <div className="sidebar-header">
+          <div className="sidebar-logo">
+            <span>LN</span>
           </div>
           <div className="ml-4 nav-label flex flex-col" style={{ textTransform: 'none', letterSpacing: 'normal' }}>
             <span className="font-headline-md text-[14px] font-bold text-primary-container leading-tight">Leonardo N.</span>
