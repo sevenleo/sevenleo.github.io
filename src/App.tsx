@@ -854,7 +854,7 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
 
       {/* Timeline Layout */}
       <div
-        className="timeline-container relative ml-4 md:ml-8 space-y-12 pb-12"
+        className="timeline-container relative space-y-12 pb-12"
         style={{
           borderLeftWidth: '0px',
           position: 'relative'
@@ -865,7 +865,7 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
           const isCurrent = item.status === 'in-progress' || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('progresso') || item.period.toLowerCase().includes('atual');
 
           return (
-            <div className="timeline-item-row relative pl-8 md:pl-12" key={item.title}>
+            <div className="timeline-item-row relative" key={item.title}>
               {/* Timeline dot marker */}
               {isCurrent ? (
                 <div
@@ -928,7 +928,7 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
 
       {/* Timeline Layout */}
       <div
-        className="timeline-container relative ml-4 md:ml-8 space-y-12 pb-12"
+        className="timeline-container relative space-y-12 pb-12"
         style={{
           borderLeftWidth: '0px',
           position: 'relative'
@@ -939,7 +939,7 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
           const isCurrent = index === 0 || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('atual');
 
           return (
-            <div className="timeline-item-row relative pl-8 md:pl-12" key={item.company}>
+            <div className="timeline-item-row relative" key={item.company}>
               {/* Timeline marker */}
               {isCurrent ? (
                 <span
