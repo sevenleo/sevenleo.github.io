@@ -900,7 +900,7 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
                 {tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-border-subtle">
                     {tags.map((tag) => (
-                      <span className="bg-surface-container-highest px-2 py-1 rounded font-label-sm text-label-sm text-text-primary border border-border-subtle" key={tag}>
+                      <span className="bg-surface-container-highest px-2 py-1 rounded font-label-sm text-label-sm text-text-muted border border-border-subtle" key={tag}>
                         {tag}
                       </span>
                     ))}
@@ -984,7 +984,7 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
                   {tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-border-subtle">
                       {tags.map((tag) => (
-                        <span className="bg-surface-container-highest px-2 py-1 rounded font-label-sm text-label-sm text-text-primary border border-border-subtle" key={tag}>
+                        <span className="bg-surface-container-highest px-2 py-1 rounded font-label-sm text-label-sm text-text-muted border border-border-subtle" key={tag}>
                           {tag}
                         </span>
                       ))}

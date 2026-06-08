@@ -116,6 +116,8 @@ On mobile viewports (max-width: 768px):
 - Add a floating menu toggle button (`mobile-menu-toggle`) fixed at the top-right (`top: 16px; right: 16px; z-index: 60`).
 - The mobile navigation drawer/sidebar must be a vertical overlay spanning fixed `100vh` in height, adapting to all screens and supporting vertical scroll inside itself (`overflow-y: auto`) if contents exceed screen height.
 - In the open mobile sidebar state, navigation labels must be immediately fully visible (no width-0 hiding or hover requirement to show the text).
+- The profile signature block in the sidebar ("Leonardo N." and "Portfólio Técnico") must be stacked cleanly in separate lines and adapted proportionally to the screen size (using nowrap styling) to avoid any character wrapping.
+
 
 
 ### Home
@@ -133,6 +135,9 @@ It must include:
 - Social/contact icons in a discreet footer or low-emphasis area.
 
 The home should feel like an elegant entry point, not the main content page.
+
+On mobile screens, the home page must not have scrolling and should dynamically scale its elements (avatar image size, text spacing, buttons, footer margins) to fit entirely within the viewport height.
+
 
 ### Project Catalog
 
@@ -258,6 +263,9 @@ The design should avoid overly heavy cards if the page becomes visually repetiti
 On mobile viewports:
 - Timeline cards must stretch to 100% of the available width.
 - Remove left margins/paddings and hide the timeline dot/marker nodes entirely on mobile so cards span the full horizontal space, matching the Social page layout.
+
+Highlight and technology tags inside timeline cards must render with a discreet, muted gray text color (`text-text-muted`) to blend gracefully with the page design.
+
 
 
 ### Social Page
