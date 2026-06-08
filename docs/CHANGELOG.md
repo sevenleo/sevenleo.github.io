@@ -2,6 +2,17 @@
 
 Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 
+## [2.5.0] - 2026-06-07
+
+### Adicionado
+- Adicionado botão de menu flutuante (`mobile-menu-toggle`) posicionado de forma fixa no canto superior direito no mobile para abrir/fechar a barra lateral.
+
+### Alterado
+- Removido o cabeçalho superior mobile (`mobile-header`) e todos os botões não funcionais (dark mode e configurações).
+- Modificada a barra lateral no mobile para exibir todos os textos e labels imediatamente ao abrir, sem depender de interações de hover/toque do usuário.
+- Configurada a barra lateral com altura fixa em `100vh` e suporte a rolagem vertical (`overflow-y: auto`), com barra de rolagem oculta para prevenir que itens do menu ou o botão de contato inferior sejam cortados em telas pequenas ou teclados virtuais.
+- Otimizadas as linhas do tempo em Formação Acadêmica e Experiência Profissional no mobile: as margens, preenchimentos e marcadores de nós (dots) foram removidos nesta versão para que os cards ocupem toda a largura horizontal útil do dispositivo móvel.
+
 ## [2.4.0] - 2026-06-06
 
 ### Alterado

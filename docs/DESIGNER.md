@@ -109,7 +109,14 @@ The design must include navigation for:
 - Experience
 - Social
 
-Desktop navigation can be a sidebar, top navigation, rail, dock, or another system, but it must not occupy unnecessary content space. Mobile navigation must have a clear menu/drawer or equivalent interaction.
+Desktop navigation can be a sidebar, top navigation, rail, dock, or another system, but it must not occupy unnecessary content space. 
+
+On mobile viewports (max-width: 768px):
+- Do not design or include a top navigation header bar; the mobile viewport has no top header panel, settings button, or theme selector.
+- Add a floating menu toggle button (`mobile-menu-toggle`) fixed at the top-right (`top: 16px; right: 16px; z-index: 60`).
+- The mobile navigation drawer/sidebar must be a vertical overlay spanning fixed `100vh` in height, adapting to all screens and supporting vertical scroll inside itself (`overflow-y: auto`) if contents exceed screen height.
+- In the open mobile sidebar state, navigation labels must be immediately fully visible (no width-0 hiding or hover requirement to show the text).
+
 
 ### Home
 
@@ -247,6 +254,11 @@ The design must handle:
 - Lists of highlights or responsibilities.
 
 The design should avoid overly heavy cards if the page becomes visually repetitive. Timelines must be rendered without a continuous vertical connecting line between the timeline marker nodes to maintain a clean layout.
+
+On mobile viewports:
+- Timeline cards must stretch to 100% of the available width.
+- Remove left margins/paddings and hide the timeline dot/marker nodes entirely on mobile so cards span the full horizontal space, matching the Social page layout.
+
 
 ### Social Page
 

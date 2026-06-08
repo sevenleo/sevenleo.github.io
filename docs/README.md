@@ -229,8 +229,9 @@ No desktop, a barra lateral (sidebar) é compacta e interativa:
 
 No mobile, ela vira drawer:
 
-- Botão de menu no cabeçalho móvel.
-- Itens com ícone e texto.
+- Botão de menu flutuante posicionado no canto superior direito.
+- Itens com ícone e texto imediatamente visíveis e legíveis ao abrir.
+- Altura adaptável fixada em `100vh` com suporte a scroll vertical interno.
 - Fecha ao navegar.
 
 ### Catálogo de projetos

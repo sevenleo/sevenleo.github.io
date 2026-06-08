@@ -1769,10 +1769,36 @@ h1 {
 }
 .glow-btn:hover {
   box-shadow: 0 0 25px rgba(0, 245, 255, 0.4);
+}/* Mobile menu toggle button (hidden on desktop) */
+.mobile-menu-toggle {
+  display: none;
 }
 
 /* Mobile responsive app shell & sidebar overrides */
 @media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--rounded-default);
+    background: rgba(19, 19, 19, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-subtle);
+    color: var(--on-surface);
+    z-index: 60;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+  }
+  .mobile-menu-toggle:hover {
+    color: var(--primary-fixed-dim);
+    border-color: var(--primary-fixed-dim);
+  }
   .app-shell {
     flex-direction: column;
   }
@@ -1783,14 +1809,39 @@ h1 {
     width: var(--sidebar-expanded);
     height: 100vh;
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+  }
+  .sidebar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
   .sidebar.sidebar-open {
     left: 0;
     width: var(--sidebar-expanded);
   }
   .sidebar .nav-label {
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 1 !important;
+    width: auto !important;
+    margin-left: 12px !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+    display: inline-block !important;
+  }
+  .sidebar .sidebar-header {
+    justify-content: flex-start !important;
+    padding: 8px 14px !important;
+  }
+  .sidebar .sidebar-logo {
+    flex-shrink: 0 !important;
+  }
+  .sidebar nav button {
+    justify-content: flex-start !important;
+    padding: 10px 14px !important;
+    gap: 16px !important;
+  }
+  .sidebar .sidebar-contact-button {
+    justify-content: flex-start !important;
+    padding: 10px 14px !important;
   }
   main {
     margin-left: 0;
@@ -1798,20 +1849,15 @@ h1 {
     padding-left: 16px;
     padding-right: 16px;
   }
-  .mobile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 64px;
-    background: rgba(19, 19, 19, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 0 16px;
-    z-index: 40;
+  /* Remove timeline padding, margins and markers on mobile to stretch cards */
+  .timeline-container {
+    margin-left: 0 !important;
+  }
+  .timeline-item {
+    padding-left: 0 !important;
+  }
+  .timeline-marker {
+    display: none !important;
   }
 }
 

@@ -853,7 +853,7 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
 
       {/* Timeline Layout */}
       <div 
-        className="relative ml-4 md:ml-8 space-y-12 pb-12"
+        className="timeline-container relative ml-4 md:ml-8 space-y-12 pb-12"
         style={{
           borderLeftWidth: '0px',
           position: 'relative'
@@ -864,16 +864,16 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
           const isCurrent = item.status === 'in-progress' || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('progresso') || item.period.toLowerCase().includes('atual');
 
           return (
-            <div className="relative pl-8 md:pl-12" key={item.title}>
+            <div className="timeline-item relative pl-8 md:pl-12" key={item.title}>
               {/* Timeline dot marker */}
               {isCurrent ? (
                 <div 
-                  className="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-primary-fixed-dim border-4 border-[#131313] shadow-[0_0_8px_rgba(0,220,229,0.4)]"
+                  className="timeline-marker absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-primary-fixed-dim border-4 border-[#131313] shadow-[0_0_8px_rgba(0,220,229,0.4)]"
                   style={{ zIndex: 10 }}
                 ></div>
               ) : (
                 <div 
-                  className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-border-subtle"
+                  className="timeline-marker absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-border-subtle"
                   style={{ zIndex: 10 }}
                 ></div>
               )}
@@ -927,7 +927,7 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
 
       {/* Timeline Layout */}
       <div 
-        className="relative ml-4 md:ml-8 space-y-12 pb-12"
+        className="timeline-container relative ml-4 md:ml-8 space-y-12 pb-12"
         style={{
           borderLeftWidth: '0px',
           position: 'relative'
@@ -938,16 +938,16 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
           const isCurrent = index === 0 || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('atual');
 
           return (
-            <div className="relative pl-8 md:pl-12" key={item.company}>
+            <div className="timeline-item relative pl-8 md:pl-12" key={item.company}>
               {/* Timeline marker */}
               {isCurrent ? (
                 <span 
-                  className="absolute -left-[22px] top-1.5 w-4 h-4 bg-[#131313] border-2 border-primary-fixed-dim rounded-full shadow-[0_0_8px_rgba(0,220,229,0.5)]"
+                  className="timeline-marker absolute -left-[22px] top-1.5 w-4 h-4 bg-[#131313] border-2 border-primary-fixed-dim rounded-full shadow-[0_0_8px_rgba(0,220,229,0.5)]"
                   style={{ zIndex: 10 }}
                 ></span>
               ) : (
                 <span 
-                  className="absolute -left-[20px] top-1.5 w-3 h-3 bg-[#131313] border-2 border-border-subtle rounded-full"
+                  className="timeline-marker absolute -left-[20px] top-1.5 w-3 h-3 bg-[#131313] border-2 border-border-subtle rounded-full"
                   style={{ zIndex: 10 }}
                 ></span>
               )}
@@ -1122,19 +1122,15 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
 
   return (
     <div className="app-shell">
-      {/* Mobile TopAppBar */}
-      <header className="mobile-header">
-        <button className="icon-button" style={{ border: 0, background: 'transparent', color: 'inherit', cursor: 'pointer' }} type="button" onClick={() => setMenuOpen((value) => !value)}>
-          <span className="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
-        </button>
-        <span className="font-label-caps text-[12px] font-bold text-primary-fixed-dim tracking-widest uppercase">
-          {manifest.profile.name}
-        </span>
-        <div className="flex items-center gap-4 text-primary-fixed-dim">
-          <span className="material-symbols-outlined text-[20px] opacity-80 cursor-pointer">settings</span>
-          <span className="material-symbols-outlined text-[20px] opacity-80 cursor-pointer">dark_mode</span>
-        </div>
-      </header>
+      {/* Floating Mobile Menu Button */}
+      <button 
+        className="mobile-menu-toggle"
+        type="button" 
+        onClick={() => setMenuOpen((value) => !value)}
+        aria-label="Toggle menu"
+      >
+        <span className="material-symbols-outlined">{menuOpen ? 'close' : 'menu'}</span>
+      </button>
 
       {/* Sidebar Rail */}
       <aside className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
