@@ -761,12 +761,13 @@ function ProjectDetailPage({ manifest, slug }: { manifest: PortfolioManifest; sl
 
 function TechnologiesPage({ manifest }: { manifest: PortfolioManifest }) {
   return (
-    <div className="page-stack">
-      <SectionHeader
-        eyebrow="Índice técnico"
-        title="Linguagens, stacks e categorias"
-        text="Cada item funciona como um mapa rápido para os projetos vinculados."
-      />
+    <div className="page-stack page-stack-full">
+      <header className="mb-12">
+        <h1 className="font-display text-display text-primary mb-2">Índice Técnico</h1>
+        <p className="font-body-lg text-body-lg text-text-muted">
+          Linguagens, stacks e categorias. Cada item funciona como um mapa rápido para os projetos vinculados.
+        </p>
+      </header>
       <IndexSection title="Linguagens" indexes={manifest.indexes.languages} manifest={manifest} iconName="code" />
       <IndexSection title="Tecnologias & Frameworks" indexes={manifest.indexes.technologies} manifest={manifest} iconName="memory" />
       <IndexSection title="Categorias & Domínios" indexes={manifest.indexes.categories} manifest={manifest} iconName="category" />
