@@ -301,6 +301,11 @@ main {
   gap: 24px;
 }
 
+.page-stack-full {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .hero-band,
 .project-hero,
 .content-columns,
@@ -1891,7 +1896,7 @@ h1 {
   .timeline-container {
     margin-left: 0 !important;
   }
-  .timeline-item {
+  .timeline-item-row {
     padding-left: 0 !important;
   }
   .timeline-marker {

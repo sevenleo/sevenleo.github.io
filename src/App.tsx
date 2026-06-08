@@ -213,11 +213,11 @@ function ProjectCard({
 }) {
   const isReviewed = project.contentReviewed;
   const iconName = getCategoryIcon(project.category, project.title);
-  
-  const isLime = project.category.toLowerCase().includes('ui') || 
-                 project.category.toLowerCase().includes('component') || 
-                 project.category.toLowerCase().includes('frontend') || 
-                 project.title.toLowerCase().includes('core');
+
+  const isLime = project.category.toLowerCase().includes('ui') ||
+    project.category.toLowerCase().includes('component') ||
+    project.category.toLowerCase().includes('frontend') ||
+    project.title.toLowerCase().includes('core');
 
   const accentColorClass = isLime ? 'text-secondary-fixed' : 'text-primary-fixed-dim';
 
@@ -304,7 +304,7 @@ function ProjectCard({
             </div>
           </div>
         </button>
-        
+
         <div className="border-t border-border-subtle pt-4 mt-4 flex items-center justify-end w-full" style={{ marginTop: 'auto' }}>
           {project.status === 'archived' ? (
             <button className="font-label-caps text-label-caps text-text-muted flex items-center gap-1 hover:text-text-primary transition-colors" type="button" onClick={() => navigate(`/projects/${project.slug}`)} style={{ background: 'transparent', border: 0, padding: 0, cursor: 'pointer' }}>
@@ -355,7 +355,7 @@ function HomePage({ manifest }: { manifest: PortfolioManifest }) {
             <span className="material-symbols-outlined text-[14px]">code_blocks</span>
             <span>{manifest.profile.role}</span>
           </div>
-          
+
           <p className="home-bio">{manifest.profile.summary}</p>
         </div>
 
@@ -804,7 +804,7 @@ function IndexSection({
           expand_more
         </span>
       </button>
-      
+
       {isOpen && (
         <div className="p-6 border-t border-border-subtle bg-surface-container-lowest">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -843,16 +843,17 @@ function IndexSection({
 
 function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
   return (
-    <div className="page-stack">
+    <div className="page-stack page-stack-full">
       <header className="mb-12">
         <h1 className="font-display text-display text-primary mb-2">Histórico Acadêmico</h1>
-        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+
+        <p className="font-body-lg text-body-lg text-text-muted">
           Uma visão cronológica da formação acadêmica, aprendizado contínuo e certificações técnicas.
         </p>
       </header>
 
       {/* Timeline Layout */}
-      <div 
+      <div
         className="timeline-container relative ml-4 md:ml-8 space-y-12 pb-12"
         style={{
           borderLeftWidth: '0px',
@@ -864,15 +865,15 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
           const isCurrent = item.status === 'in-progress' || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('progresso') || item.period.toLowerCase().includes('atual');
 
           return (
-            <div className="timeline-item relative pl-8 md:pl-12" key={item.title}>
+            <div className="timeline-item-row relative pl-8 md:pl-12" key={item.title}>
               {/* Timeline dot marker */}
               {isCurrent ? (
-                <div 
+                <div
                   className="timeline-marker absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-primary-fixed-dim border-4 border-[#131313] shadow-[0_0_8px_rgba(0,220,229,0.4)]"
                   style={{ zIndex: 10 }}
                 ></div>
               ) : (
-                <div 
+                <div
                   className="timeline-marker absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-border-subtle"
                   style={{ zIndex: 10 }}
                 ></div>
@@ -917,16 +918,16 @@ function EducationPage({ manifest }: { manifest: PortfolioManifest }) {
 
 function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
   return (
-    <div className="page-stack">
+    <div className="page-stack page-stack-full">
       <header className="mb-12">
         <h1 className="font-display text-display text-text-primary mb-4">Experiência Profissional</h1>
-        <p className="font-body-lg text-body-lg text-text-muted max-w-2xl">
-          Uma linha do tempo detalhando contribuições de arquitetura, liderança de equipe e engenharia de sistemas.
+        <p className="font-body-lg text-body-lg text-text-muted">
+          Uma linha do tempo detalhada sobre contribuições e experiências profissionais.
         </p>
       </header>
 
       {/* Timeline Layout */}
-      <div 
+      <div
         className="timeline-container relative ml-4 md:ml-8 space-y-12 pb-12"
         style={{
           borderLeftWidth: '0px',
@@ -938,15 +939,15 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
           const isCurrent = index === 0 || item.period.toLowerCase().includes('present') || item.period.toLowerCase().includes('atual');
 
           return (
-            <div className="timeline-item relative pl-8 md:pl-12" key={item.company}>
+            <div className="timeline-item-row relative pl-8 md:pl-12" key={item.company}>
               {/* Timeline marker */}
               {isCurrent ? (
-                <span 
+                <span
                   className="timeline-marker absolute -left-[22px] top-1.5 w-4 h-4 bg-[#131313] border-2 border-primary-fixed-dim rounded-full shadow-[0_0_8px_rgba(0,220,229,0.5)]"
                   style={{ zIndex: 10 }}
                 ></span>
               ) : (
-                <span 
+                <span
                   className="timeline-marker absolute -left-[20px] top-1.5 w-3 h-3 bg-[#131313] border-2 border-border-subtle rounded-full"
                   style={{ zIndex: 10 }}
                 ></span>
@@ -967,7 +968,7 @@ function ExperiencePage({ manifest }: { manifest: PortfolioManifest }) {
 
                 <div className="space-y-4 font-body-md text-body-md text-on-surface-variant">
                   <p>{item.summary}</p>
-                  
+
                   {/* Responsibilities list with custom check circle icons */}
                   {item.responsibilities && item.responsibilities.length > 0 && (
                     <ul className="list-none space-y-2" style={{ padding: 0, margin: '16px 0 0' }}>
@@ -1042,12 +1043,12 @@ function SocialPage({ manifest }: { manifest: PortfolioManifest }) {
     <div className="page-stack" style={{ position: 'relative' }}>
       {/* Ambient Background Pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-5 z-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #00dce5 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
-      
+
       <div className="flex-1 w-full max-w-4xl mx-auto py-4 z-10 relative">
         <header className="mb-12 border-b border-border-subtle pb-6">
           <h1 className="font-display text-display text-on-surface mb-2">Conectar &amp; Colaborar</h1>
           <p className="font-body-lg text-body-lg text-text-muted max-w-2xl">
-            Rede profissional e contribuições de código aberto. Selecione uma plataforma para iniciar contato.
+            Selecione uma plataforma para iniciar contato.
           </p>
         </header>
 
@@ -1056,9 +1057,9 @@ function SocialPage({ manifest }: { manifest: PortfolioManifest }) {
           {manifest.profile.socials.map((social) => {
             const meta = getSocialMetadata(social.type, social.url);
             return (
-              <a 
-                key={social.url} 
-                href={social.url} 
+              <a
+                key={social.url}
+                href={social.url}
                 target={externalTarget(social.url)}
                 rel="noreferrer"
                 className="group relative block bg-surface-container-low border border-border-subtle rounded-lg p-5 hover-glow transition-all duration-300 hover:bg-surface-container flex flex-col h-full text-decoration-none"
@@ -1091,17 +1092,6 @@ function SocialPage({ manifest }: { manifest: PortfolioManifest }) {
             );
           })}
         </div>
-
-        {/* Secure Comm Note */}
-        <div className="mt-12 p-6 border border-border-subtle bg-[#131313] rounded-lg flex items-start gap-4">
-          <span className="material-symbols-outlined text-text-muted mt-1" style={{ fontSize: '24px' }}>lock</span>
-          <div>
-            <h3 className="font-headline-sm text-[16px] font-bold text-on-surface mb-1" style={{ margin: 0 }}>Comunicações Seguras</h3>
-            <p className="font-body-md text-body-md text-text-muted" style={{ margin: '8px 0 0 0' }}>
-              Para assuntos confidenciais, por favor solicite minha chave pública PGP por e-mail antes de transmitir credenciais ou documentos sensíveis.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -1123,9 +1113,9 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
   return (
     <div className="app-shell">
       {/* Floating Mobile Menu Button */}
-      <button 
+      <button
         className="mobile-menu-toggle"
-        type="button" 
+        type="button"
         onClick={() => setMenuOpen((value) => !value)}
         aria-label="Toggle menu"
       >
@@ -1165,7 +1155,7 @@ function AppShell({ manifest, route }: { manifest: PortfolioManifest; route: Rou
 
         {/* Contact Me button inside sidebar */}
         <div className="mt-auto pt-4 border-t border-border-subtle w-full flex justify-center">
-          <button 
+          <button
             className="sidebar-contact-button"
             onClick={() => {
               navigate('/social');

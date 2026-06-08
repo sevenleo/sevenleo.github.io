@@ -8,6 +8,8 @@ Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 - Corrigida a rolagem na página inicial (Home) no mobile: redimensionados proporcionalmente o avatar, textos e margens do rodapé para garantir que todo o conteúdo caiba inteiramente na tela sem gerar barras de rolagem.
 - Corrigido o empilhamento da assinatura do perfil na barra lateral ("Leonardo N." e "Portfólio Técnico") no mobile para usar flexbox em coluna e evitar quebras de linhas estranhas, adaptando a tipografia e definindo `white-space: nowrap`.
 - Suavizados os textos das tags de Formação Acadêmica e Experiência Profissional (tanto em desktop como no mobile) de `text-text-primary` para `text-text-muted`, tornando a visualização mais discreta em cinza suave.
+- Removido o card de aviso de "Comunicações Seguras" (chave pública PGP) da página Social.
+
 
 ## [2.5.0] - 2026-06-07
 
