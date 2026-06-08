@@ -915,12 +915,17 @@ h1 {
 .timeline-item.static:hover {
   border-color: var(--line);
 }
-
-.timeline-item span,
+.timeline-item span:not(.text-text-muted),
 .fact-list span {
   color: var(--accent);
   font-size: 0.85rem;
 }
+
+.timeline-item span.text-text-muted {
+  color: var(--on-surface-variant);
+  font-size: 11px;
+}
+
 
 .timeline-item h3,
 .index-card h3 {
