@@ -6,5 +6,9 @@
   "summary": "Atuação educacional em apoio a estudantes.",
   "responsibilities": [
     "Monitoria das disciplinas de matemática e física."
+  ],
+  "tags": [
+    "math",
+    "physics"
   ]
 }
