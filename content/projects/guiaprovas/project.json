@@ -1,0 +1,34 @@
+{
+  "slug": "guiaprovas",
+  "title": "GuiaProvas",
+  "shortSummary": "Repositório gratuito de provas e trabalhos universitários.",
+  "description": "Projeto pessoal para armazenar, organizar e compartilhar documentos universitários como provas e trabalhos, incentivando contribuição e consulta gratuita.",
+  "category": "Sistemas",
+  "type": "webapp",
+  "status": "discontinued",
+  "visibility": "public",
+  "maturity": "legacy",
+  "platforms": ["web"],
+  "languages": ["Python", "JavaScript"],
+  "technologies": ["Heroku"],
+  "tags": ["educacao", "documentos", "universidade", "legado"],
+  "audience": "Estudantes universitários que buscam materiais de estudo.",
+  "problem": "Materiais acadêmicos úteis ficam dispersos e difíceis de consultar.",
+  "goal": "Criar um repositório colaborativo de provas e trabalhos.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Abrir projeto",
+      "url": "https://guiaprovas.herokuapp.com",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [],
+  "createdAt": "2019-01-01",
+  "updatedAt": "2019-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

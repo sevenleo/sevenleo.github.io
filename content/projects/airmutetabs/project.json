@@ -1,0 +1,76 @@
+{
+  "slug": "airmutetabs",
+  "title": "AirMuteTabs",
+  "shortSummary": "Controle o áudio e a reprodução de mídia de abas do Chrome usando atalhos globais, menu da bandeja ou um painel web local.",
+  "description": "O AirMuteTabs é uma solução completa para controle de áudio e mídia de abas do Google Chrome. Composto por uma extensão Chrome Manifest V3 e um host nativo em Python, ele permite silenciar/ativar o som (mute/unmute) e gerenciar a reprodução de mídias (reproduzir, pausar, avançar, retroceder) de abas individuais, de targets específicos ou de todas as abas simultaneamente. O controle pode ser feito através de atalhos de teclado globais do Windows (restritos à ação 'toggle'), de um menu na bandeja do sistema (System Tray) ou de um painel web responsivo acessível na rede local (LAN), ideal para controle remoto a partir de celulares ou tablets.",
+  "category": "Extensões",
+  "type": "extension",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": ["browser", "desktop", "web"],
+  "languages": ["JavaScript", "Python", "HTML", "CSS"],
+  "technologies": ["Chrome Extension", "Native Messaging", "Python", "Flask", "REST APIs"],
+  "tags": ["controle-de-audio", "extensao-chrome", "atalhos-globais", "controle-de-midia", "bandeja-do-sistema", "dashboard-web", "remoto"],
+  "audience": "Usuários do Google Chrome que desejam controlar a reprodução de áudio e mídia (como YouTube, YouTube Music, Spotify) globalmente por atalhos de teclado ou remotamente usando outros dispositivos.",
+  "problem": "Controlar a reprodução ou silenciar abas de mídia específicas no Chrome exige alternar o foco para o navegador e encontrar a aba correspondente, o que interrompe o fluxo de trabalho.",
+  "goal": "Oferecer uma interface unificada e atalhos de teclado globais para gerenciar o áudio e a reprodução de mídia de abas do Chrome de forma rápida e focada em produtividade.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Repositório GitHub",
+      "url": "https://github.com/sevenleo/AirMuteTabs",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-06-17",
+      "summary": "Primeiro lançamento público com extensão Chrome, host Python, atalhos globais, bandeja do sistema e painel web LAN básico."
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-06-19",
+      "summary": "Suporte a controles de mídia por aba e de sistema, navegação por abas SPA, botões colapsáveis e suporte a tema claro/escuro."
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-06-19",
+      "summary": "Agrupamento de abas por janela do navegador, filtro padrão para exibir apenas abas de mídia ativas e otimização responsiva para dispositivos móveis."
+    },
+    {
+      "version": "1.2.1",
+      "date": "2026-06-19",
+      "summary": "Refinamento de usabilidade exibindo o botão Play/Pause por padrão ao lado do botão de Toggle."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-06-17",
+      "title": "Lançamento do MVP",
+      "description": "Primeira versão funcional com controle básico de silenciamento e atalhos de teclado globais."
+    },
+    {
+      "date": "2026-06-19",
+      "title": "Controles de mídia e layout SPA",
+      "description": "Suporte a injeção de script de mídia e nova interface unificada baseada em navegação SPA com tema dinâmico."
+    },
+    {
+      "date": "2026-06-19",
+      "title": "Melhorias de agrupamento e responsividade",
+      "description": "Visualização mobile otimizada, agrupamento visual por janelas do navegador e filtros de visibilidade inteligentes."
+    },
+    {
+      "date": "2026-06-19",
+      "title": "Lançamento da versão estável 1.2.1",
+      "description": "Ajuste na visibilidade dos botões essenciais e finalização do pacote estável."
+    }
+  ],
+  "createdAt": "2026-06-17",
+  "updatedAt": "2026-06-19",
+  "contentReviewedAt": "2026-06-19"
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "livebot",
+  "title": "LiveBot",
+  "shortSummary": "Orquestrador central que integra captura de áudio, transcrição via IA local e envio de respostas para chat em tempo real.",
+  "description": "O LiveBot é um orquestrador de processos projetado para centralizar e coordenar um ecossistema de acessibilidade e inteligência artificial de três camadas. Ele gerencia o ciclo de vida dos módulos de captura de áudio em tempo real (Listen2Me), processamento de linguagem natural via IA (Answer2Me) e integração de chat (Chat2Me). O sistema apresenta uma interface visual TUI (Rich) e um painel web dinâmico (Flask) para controle de canais, cooldowns, pausas e desligamento remoto, garantindo resiliência com reinicializações automáticas, gerenciamento seguro de buffers com travas de arquivo e encerramento recursivo de processos.",
+  "category": "Automação",
+  "type": "internal-system",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": [
+    "web",
+    "desktop",
+    "server"
+  ],
+  "languages": [
+    "Python",
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "technologies": [
+    "Flask",
+    "Rich",
+    "Whisper",
+    "Gemini API"
+  ],
+  "tags": [
+    "orquestrador",
+    "automacao",
+    "dashboard",
+    "tui",
+    "flask",
+    "process-manager"
+  ],
+  "audience": "Desenvolvedores, streamers e criadores de conteúdo que buscam automação de inteligência artificial em transmissões ou acessibilidade de áudio.",
+  "problem": "A complexidade de gerenciar múltiplos subprocessos independentes (captura de som, transcrição local de IA e integração de chat) sem conflitos de concorrência ou processos órfãos consumindo recursos de hardware.",
+  "goal": "Centralizar a inicialização, a injeção de configurações CLI, o monitoramento de integridade e o encerramento seguro de todo o pipeline de áudio-para-texto-para-IA.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver Repositório",
+      "url": "https://github.com/sevenleo/LiveBot",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-02-11",
+  "updatedAt": "2026-06-19",
+  "contentReviewedAt": "2026-06-19"
+}

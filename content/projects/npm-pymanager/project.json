@@ -1,0 +1,47 @@
+{
+  "slug": "npm-pymanager",
+  "title": "NPM Package Manager TUI",
+  "shortSummary": "Utilitário de terminal em Python para inspecionar e atualizar pacotes npm locais e globais a partir de uma única tela.",
+  "description": "O NPM Package Manager TUI é uma ferramenta de linha de comando (TUI) desenvolvida em Python que permite inspecionar e atualizar pacotes npm locais e globais em uma única tabela consolidada. O utilitário coleta dados de pacotes (como versões instaladas, últimas versões disponíveis e tamanho em disco) de forma paralela para otimização de performance. Ele apresenta uma interface de terminal responsiva que se adapta dinamicamente a diferentes resoluções, oferece feedback visual em tempo real com barra de progresso durante as atualizações, e conta com atalhos de teclado rápidos que dispensam o pressionamento da tecla Enter para a maioria das operações comuns.",
+  "category": "Ferramentas",
+  "type": "cli",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": [
+    "desktop"
+  ],
+  "languages": [
+    "Python"
+  ],
+  "technologies": [
+    "npm",
+    "CLI"
+  ],
+  "tags": [
+    "npm",
+    "tui",
+    "cli",
+    "terminal",
+    "python",
+    "package-manager",
+    "developer-tools"
+  ],
+  "audience": "Desenvolvedores que utilizam Node.js e npm no dia a dia e buscam uma maneira mais rápida e centralizada de atualizar e inspecionar pacotes locais e globais.",
+  "problem": "A necessidade de rodar múltiplos comandos demorados do npm (como list e outdated) e calcular tamanhos de diretórios manualmente para obter um panorama de pacotes instalados e atualizações pendentes.",
+  "goal": "Centralizar a inspeção e atualização de pacotes npm locais e globais em uma interface de terminal rápida, responsiva e de fácil controle.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver repositório no GitHub",
+      "url": "https://github.com/sevenleo/npm-pymanager",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-03-16",
+  "updatedAt": "2026-06-15",
+  "contentReviewedAt": "2026-06-19"
+}

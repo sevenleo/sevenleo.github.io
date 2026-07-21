@@ -1,0 +1,37 @@
+{
+  "slug": "gsuite-azure-user-management",
+  "title": "Gerenciamento de usuários Gsuite e Azure",
+  "shortSummary": "Integração profissional para provisionar e administrar usuários entre Google Gsuite e Microsoft Azure.",
+  "description": "Projeto profissional de integração entre bases de usuários do Google Gsuite e Microsoft Azure, usando APIs e fluxos de provisionamento para administrar contas, grupos, licenças, auditoria, aplicativos e comunicações automáticas.",
+  "category": "Automação",
+  "type": "internal-system",
+  "status": "active",
+  "visibility": "private",
+  "maturity": "production",
+  "platforms": ["cloud", "web"],
+  "languages": ["JavaScript", "Shell"],
+  "technologies": ["Google Workspace APIs", "Microsoft Azure", "Provisionamento", "REST APIs"],
+  "tags": ["gsuite", "azure", "usuarios", "automacao", "integracao"],
+  "audience": "Equipes de TI responsáveis por identidade, contas e serviços corporativos.",
+  "problem": "Ambientes com múltiplas plataformas exigem cadastro e manutenção duplicada de usuários.",
+  "goal": "Unificar rotinas administrativas e reduzir trabalho manual no ciclo de vida de contas.",
+  "cover": "users.svg",
+  "gallery": [
+    {
+      "src": "users.svg",
+      "alt": "Ícone de gerenciamento de usuários"
+    }
+  ],
+  "links": [],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2026-01-01",
+      "title": "Projeto profissional contínuo"
+    }
+  ],
+  "createdAt": "2026-01-01",
+  "updatedAt": "2026-06-06",
+  "contentReviewedAt": "2026-06-06"
+}

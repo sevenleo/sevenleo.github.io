@@ -1,0 +1,55 @@
+{
+  "slug": "shareaudio",
+  "title": "ShareAudio",
+  "shortSummary": "Transmissão de áudio em tempo real via rede local para computadores Windows e dispositivos móveis via PWA.",
+  "description": "O ShareAudio é uma solução para transmissão e recepção de áudio em tempo real em redes locais. Ele captura o áudio do desktop de um computador Windows (usando a API WASAPI e PyAudioWPatch) e o transmite via UDP com baixíssima latência (20-50ms) para receptores nativos ou para qualquer dispositivo na rede local com um navegador web moderno (via WebSocket e PWA). O projeto conta com proteção robusta contra múltiplas instâncias, modo silencioso em segundo plano, menu na bandeja do sistema com status em tempo real, gerador automático de certificados HTTPS para conexões seguras e uma interface gráfica completa para configuração avançada.",
+  "category": "Sistemas",
+  "type": "webapp",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": [
+    "web",
+    "desktop",
+    "browser"
+  ],
+  "languages": [
+    "Python",
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "technologies": [
+    "WASAPI",
+    "WebSockets",
+    "PWA",
+    "Web Audio API",
+    "Tkinter",
+    "cx_Freeze"
+  ],
+  "tags": [
+    "audio",
+    "streaming",
+    "network",
+    "websocket",
+    "pwa",
+    "windows"
+  ],
+  "audience": "Usuários que precisam transmitir o som de seus computadores Windows para outros dispositivos na mesma rede local, como smartphones, tablets ou outros computadores.",
+  "problem": "A dificuldade de compartilhar o áudio do sistema Windows em tempo real com outros dispositivos da rede local sem latência perceptível e sem depender de cabos físicos ou configurações complexas.",
+  "goal": "Prover uma solução simples, de baixíssima latência e multiplataforma para transmissão de áudio em rede local, permitindo o consumo do áudio tanto em receptores nativos Windows quanto em qualquer navegador via PWA.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver repositório no GitHub",
+      "url": "https://github.com/sevenleo/ShareAudio",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2025-09-02",
+  "updatedAt": "2025-10-03",
+  "contentReviewedAt": "2026-06-19"
+}

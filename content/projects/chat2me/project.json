@@ -1,0 +1,51 @@
+{
+  "slug": "chat2me",
+  "title": "Chat2Me",
+  "shortSummary": "Bot ultraleve em Python para enviar mensagens ao chat da Twitch via linha de comando, com suporte a argumentos dinâmicos e validação de erros.",
+  "description": "Chat2Me é um bot CLI em Python projetado para enviar mensagens diretamente para canais do chat da Twitch através do protocolo IRC. Focado em simplicidade e automação, o bot permite configuração flexível tanto por arquivo `.env` quanto por argumentos de linha de comando, onde as flags da CLI possuem prioridade total sobre as variáveis de ambiente. A ferramenta conta com validação em tempo real de tokens de autenticação (OAuth) e existência do canal de destino, fornecendo saídas formatadas e amigáveis para integração direta com outros scripts, sistemas ou agentes de automação.",
+  "category": "Bots",
+  "type": "bot",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": [
+    "desktop",
+    "linux",
+    "windows",
+    "macos"
+  ],
+  "languages": [
+    "Python"
+  ],
+  "technologies": [
+    "Twitch IRC",
+    "python-dotenv",
+    "argparse",
+    "socket"
+  ],
+  "tags": [
+    "twitch",
+    "bot",
+    "cli",
+    "python",
+    "irc",
+    "automacao"
+  ],
+  "audience": "Desenvolvedores, criadores de conteúdo e integradores que precisam de uma forma rápida e programática para enviar mensagens ao chat da Twitch.",
+  "problem": "Enviar mensagens de forma programática para o chat da Twitch normalmente exige bibliotecas pesadas de terceiros ou frameworks complexos, o que dificulta a automação simples via scripts CLI.",
+  "goal": "Fornecer uma ferramenta de linha de comando extremamente leve e robusta em Python para envio imediato de mensagens ao chat da Twitch com tratamento de erros integrado.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Repositório no GitHub",
+      "url": "https://github.com/sevenleo/Chat2Me",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-02-10",
+  "updatedAt": "2026-02-10",
+  "contentReviewedAt": "2026-06-19"
+}

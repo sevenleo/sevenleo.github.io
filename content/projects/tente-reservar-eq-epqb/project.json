@@ -1,0 +1,14 @@
+{
+  "slug": "tente-reservar-eq-epqb",
+  "title": "Tente Reservar (EQ/EPQB)",
+  "visibility": "public",
+  "status": "draft",
+  "links": [
+    {
+      "label": "Abrir projeto",
+      "url": "https://tentereservar.lovable.app",
+      "type": "demo",
+      "primary": true
+    }
+  ]
+}

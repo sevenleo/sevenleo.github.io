@@ -1,0 +1,17 @@
+{
+  "title": "Montagem e Manutenção de Computadores",
+  "type": "Curso",
+  "institution": "Faculdade Estácio de Sá",
+  "status": "completed",
+  "period": "2007",
+  "order": 2,
+  "description": [
+    "Base prática em montagem, manutenção e diagnóstico de computadores."
+  ],
+  "highlights": [
+    "Montagem",
+    "Manutenção",
+    "Hardware",
+    "Diagnóstico"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "eq-ufrj-br",
+  "title": "EQ.UFRJ.BR",
+  "shortSummary": "Manutenção e desenvolvimento do website institucional da Escola de Química da UFRJ.",
+  "description": "Projeto profissional contínuo de manutenção e desenvolvimento do website da Escola de Química da UFRJ.",
+  "category": "Sites",
+  "type": "website",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "production",
+  "platforms": ["web"],
+  "languages": ["PHP", "JavaScript", "HTML", "CSS", "SQL"],
+  "technologies": ["Frontend", "Backend", "Site institucional"],
+  "tags": ["site", "ufrj", "institucional", "php"],
+  "audience": "Comunidade acadêmica, administrativa e visitantes da Escola de Química.",
+  "problem": "Informações institucionais precisam estar acessíveis e atualizadas.",
+  "goal": "Manter e evoluir a presença web institucional da unidade.",
+  "cover": "eq.png",
+  "gallery": [
+    {
+      "src": "eq.png",
+      "alt": "Logo da Escola de Química"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir site",
+      "url": "http://www.eq.ufrj.br/",
+      "type": "website",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2026-06-06",
+      "title": "Projeto profissional contínuo"
+    }
+  ],
+  "createdAt": "2010-01-01",
+  "updatedAt": "2026-06-06",
+  "contentReviewedAt": "2026-06-06"
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "videos-de-jogos",
+  "title": "Vídeos de Jogos",
+  "shortSummary": "Playlist com vídeos de jogos desenvolvidos.",
+  "description": "Coleção de vídeos publicados no YouTube com registros de jogos e experimentos desenvolvidos.",
+  "category": "Games",
+  "type": "media",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "continuous",
+  "platforms": ["web"],
+  "languages": ["C#", "JavaScript"],
+  "technologies": ["YouTube", "Unity3D"],
+  "tags": ["jogos", "video", "youtube", "portfolio"],
+  "audience": "Visitantes que querem ver demonstrações em vídeo de jogos.",
+  "problem": "Projetos de jogos precisam de demonstrações visuais além de descrição textual.",
+  "goal": "Organizar registros em vídeo para facilitar exploração do portfólio de games.",
+  "cover": "youtube.svg",
+  "gallery": [
+    {
+      "src": "youtube.svg",
+      "alt": "Ícone do YouTube"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir playlist",
+      "url": "https://www.youtube.com/playlist?list=PLYjQvKE6yiHy4KXxJiy8u2E9x6k5v56cZ",
+      "type": "video",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [],
+  "createdAt": "2020-01-01",
+  "updatedAt": "2026-06-06",
+  "contentReviewedAt": "2026-06-06"
+}

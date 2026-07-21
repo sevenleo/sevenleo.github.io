@@ -1,0 +1,56 @@
+{
+  "slug": "juntai",
+  "title": "Juntaí",
+  "shortSummary": "Organize qualquer coisa juntos em tempo real - listas colaborativas de compras, metas, tarefas, eventos e muito mais.",
+  "description": "O Juntaí é uma aplicação web progressiva (PWA) de listas colaborativas em tempo real, projetada para permitir que múltiplas pessoas trabalhem juntas na mesma lista de qualquer lugar. Sem a necessidade de cadastro ou login, o app permite o acesso instantâneo por meio de uma URL única e compartilhável. Os usuários podem atribuir responsáveis aos itens (cada um com uma cor única), realizar filtragens e ordenações flexíveis (incluindo arrastar e soltar), além de contar com um sistema de detecção inteligente de itens similares para evitar duplicidade. A aplicação utiliza o Supabase Realtime via WebSocket com fallback inteligente de polling, gerando uma redução de até 99% nas consultas de leitura e mantendo a experiência fluida mesmo offline.",
+  "category": "Sistemas",
+  "type": "webapp",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "production",
+  "platforms": [
+    "web",
+    "android",
+    "ios"
+  ],
+  "languages": [
+    "TypeScript",
+    "HTML",
+    "CSS",
+    "SQL"
+  ],
+  "technologies": [
+    "React",
+    "Vite",
+    "TypeScript",
+    "TailwindCSS",
+    "Supabase",
+    "PostgreSQL",
+    "Radix UI",
+    "React Query"
+  ],
+  "tags": [
+    "realtime",
+    "pwa",
+    "colaborativo",
+    "listas",
+    "supabase"
+  ],
+  "audience": "Famílias, amigos, repúblicas ou equipes de trabalho que desejam dividir e acompanhar tarefas, compras ou metas compartilhadas sem a burocracia de cadastros.",
+  "problem": "Coordenar listas de compras ou tarefas em grupo por mensagens ou planilhas costuma gerar desorganização, itens duplicados e falta de visibilidade em tempo real sobre quem está fazendo o quê.",
+  "goal": "Simplificar a colaboração rápida em listas por meio de links instantâneos, sincronização de alta velocidade via WebSocket, interface mobile-first amigável e recursos inteligentes contra duplicidade.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Abrir demonstração",
+      "url": "https://juntai.lovable.app",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2024-12-25",
+  "updatedAt": "2026-01-22",
+  "contentReviewedAt": "2026-06-19"
+}

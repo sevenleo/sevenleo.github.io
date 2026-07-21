@@ -1,0 +1,45 @@
+{
+  "slug": "json-editor",
+  "title": "Editor de JSON",
+  "shortSummary": "Editor visual de arquivos JSON com validação por esquema, edição em grade e suporte a busca, histórico e exportação.",
+  "description": "O Editor de JSON é uma aplicação em Python com Tkinter criada para facilitar a edição visual de arquivos JSON estruturados. O projeto funciona como uma espécie de planilha para dados em JSON, permitindo validar registros contra um modelo definido por `__meta__`, editar valores com widgets adequados para cada tipo, adicionar e remover entradas com segurança, pesquisar informações e exportar os dados finalizados. A proposta é oferecer uma forma mais intuitiva e confiável de trabalhar com arquivos JSON, reduzindo erros de estrutura e mantendo a integridade dos dados durante a edição.",
+  "category": "Ferramentas",
+  "type": "desktop",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": [
+    "desktop",
+    "linux",
+    "cloud"
+  ],
+  "languages": [
+    "Python",
+    "JSON"
+  ],
+  "technologies": [
+    "Tkinter",
+    "ttk.Treeview",
+    "Python standard library"
+  ],
+  "tags": [
+    "json",
+    "editor",
+    "validação",
+    "desktop",
+    "tkinter",
+    "dados"
+  ],
+  "audience": "Desenvolvedores e usuários técnicos que precisam criar, validar e editar arquivos JSON estruturados com mais segurança e menos esforço manual.",
+  "problem": "Editar arquivos JSON diretamente em texto pode gerar erros de estrutura, campos inválidos e perda de consistência, especialmente quando há regras de modelo e tipos diferentes de dados.",
+  "goal": "Oferecer uma interface gráfica simples e confiável para editar JSON com validação em tempo real, navegação visual, busca e suporte a operações comuns de manutenção de dados.",
+  "links": [
+    {
+      "label": "Ver repositório",
+      "url": "https://github.com/sevenleo/Json-editor",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": []
+}

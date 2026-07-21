@@ -1,0 +1,44 @@
+{
+  "slug": "floating-actions",
+  "title": "Floating Actions",
+  "shortSummary": "Extensão para Chrome que transforma elementos de páginas em atalhos flutuantes.",
+  "description": "Extensão de navegador que permite clonar elementos de uma página e organizá-los como atalhos em uma janela flutuante, criando uma camada prática de ações recorrentes dentro do fluxo de navegação.",
+  "category": "Extensões",
+  "type": "extension",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "mvp",
+  "platforms": ["browser", "web"],
+  "languages": ["JavaScript", "HTML", "CSS"],
+  "technologies": ["Chrome Extension", "DOM"],
+  "tags": ["chrome", "produtividade", "atalhos", "frontend"],
+  "audience": "Usuários que repetem ações em páginas web e precisam de atalhos persistentes.",
+  "problem": "Ações frequentes em páginas exigem navegação e cliques repetitivos.",
+  "goal": "Reduzir fricção ao criar atalhos visuais e reutilizáveis para elementos da página.",
+  "cover": "floatingactions.png",
+  "gallery": [
+    {
+      "src": "floatingactions.png",
+      "alt": "Ícone do Floating Actions"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir landing page",
+      "url": "https://floatingactions.netlify.app",
+      "type": "landing",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2025-01-01",
+      "title": "Publicação da landing page"
+    }
+  ],
+  "createdAt": "2025-01-01",
+  "updatedAt": "2025-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

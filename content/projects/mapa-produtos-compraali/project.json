@@ -1,0 +1,47 @@
+{
+  "slug": "mapa-produtos-compraali",
+  "title": "CompraAli",
+  "shortSummary": "Projeto para encontrar produtos usados à venda perto do usuário.",
+  "description": "Projeto pessoal voltado a mapear produtos usados disponíveis nas proximidades, facilitando descoberta local de oportunidades.",
+  "category": "Sistemas",
+  "type": "webapp",
+  "status": "discontinued",
+  "visibility": "public",
+  "maturity": "legacy",
+  "platforms": [
+    "web"
+  ],
+  "languages": [
+    "Python",
+    "JavaScript"
+  ],
+  "technologies": [
+    "Heroku",
+    "Maps"
+  ],
+  "tags": [
+    "mapa",
+    "produtos",
+    "webapp",
+    "legado"
+  ],
+  "audience": "Usuários interessados em buscar produtos usados próximos.",
+  "problem": "Produtos usados locais são difíceis de descobrir sem uma visualização geográfica.",
+  "goal": "Aproximar oferta e busca por meio de um mapa de produtos.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Abrir projeto",
+      "url": "https://compraali.herokuapp.com/",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [],
+  "createdAt": "2019-01-01",
+  "updatedAt": "2019-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Leonardo Neves",
+  "role": "Desenvolvedor de Software",
+  "headline": "Portfólio técnico, catálogo de projetos e vitrine viva de soluções.",
+  "photo": "profile/leo.png",
+  "location": "Rio de Janeiro, Brasil",
+  "summary": "Bacharel em Ciência da Computação pela UFRJ, com experiência em desenvolvimento de software, suporte técnico, automação, aplicações web, extensões de navegador, jogos e integrações entre sistemas.",
+  "focus": [
+    "Desenvolvimento de soluções práticas",
+    "Automação e integração de sistemas",
+    "Aplicações web, extensões e ferramentas internas",
+    "Organização de conhecimento técnico em produtos utilizáveis"
+  ],
+  "socials": [
+    {
+      "label": "E-mail",
+      "type": "email",
+      "url": "mailto:leonevesdasilva@gmail.com"
+    },
+    {
+      "label": "GitHub",
+      "type": "github",
+      "url": "https://github.com/sevenleo"
+    },
+    {
+      "label": "LinkedIn",
+      "type": "linkedin",
+      "url": "https://www.linkedin.com/in/sevenleo"
+    }
+  ]
+}

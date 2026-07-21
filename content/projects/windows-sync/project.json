@@ -1,0 +1,43 @@
+{
+  "slug": "windows-sync",
+  "title": "Windows-Sync",
+  "shortSummary": "Utilitário robusto em AutoHotkey v2 para sincronizar estados de janelas (minimização, restauração, maximização) e foco no Windows.",
+  "description": "Windows-Sync é um utilitário desenvolvido em AutoHotkey v2 para sincronizar estados de janelas e o foco do usuário no sistema operacional Windows. Ele é ideal para fluxos de trabalho que exigem manter múltiplas instâncias de aplicativos (como navegadores, terminais ou pastas) em perfeita sincronia, ou alternar de maneira rápida e inteligente entre janelas complementares. A ferramenta suporta a criação de até 5 grupos independentes, controle de janelas 'rivais' (alternando a visibilidade entre elas de forma exclusiva), atalhos customizados de retorno ao painel, proteção contra múltiplas instâncias e carregamento automático de blacklist de processos e títulos por arquivo JSON.",
+  "category": "Ferramentas",
+  "type": "automation",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": [
+    "desktop"
+  ],
+  "languages": [
+    "AutoHotkey"
+  ],
+  "technologies": [
+    "AutoHotkey v2"
+  ],
+  "tags": [
+    "automation",
+    "window-management",
+    "productivity",
+    "windows-utilities"
+  ],
+  "audience": "Desenvolvedores, profissionais de tecnologia e usuários que precisam alternar e organizar múltiplas janelas ou instâncias de programas com eficiência.",
+  "problem": "A necessidade de minimizar, maximizar ou focar manualmente diversas janelas relacionadas de forma repetitiva prejudica a produtividade e o foco.",
+  "goal": "Automatizar a propagação de estados e o gerenciamento de foco de grupos de janelas e rivais no Windows.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver repositório",
+      "url": "https://github.com/sevenleo/Windows-Sync",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-02-08",
+  "updatedAt": "2026-02-13",
+  "contentReviewedAt": "2026-06-19"
+}

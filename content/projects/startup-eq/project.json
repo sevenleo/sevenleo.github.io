@@ -1,0 +1,69 @@
+{
+  "slug": "startup-eq",
+  "title": "Startup Laboratório",
+  "shortSummary": "Script de inicialização automatizada para estações de trabalho em laboratórios de informática da UFRJ.",
+  "description": "Startup Laboratório é um conjunto de scripts desenvolvido pela equipe de suporte da EQ-UFRJ para gerenciar a rotina de inicialização das máquinas dos laboratórios de informática. O sistema baixa os arquivos mais recentes de uma distribuição central via GitHub Pages, detecta automaticamente se o operador deseja o modo automático ou manual com base em uma janela de 3 segundos, e executa as tarefas configuradas — desde registrar timestamps de abertura até abrir aplicações, executar testes ou elevar comandos com privilégios administrativos via PsExec ou UAC. O modo manual exibe uma interface gráfica com botões dinâmicos definidos em um arquivo de configuração externo, permitindo que a equipe de suporte adicione, remova ou modifique comandos sem editar os scripts principal. Todo o diretório temporário é removido ao final da execução, mantendo as máquinas limpas.",
+  "category": "Ferramentas",
+  "type": "automation",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "production",
+  "platforms": ["windows"],
+  "languages": ["Shell", "PowerShell"],
+  "technologies": ["Windows", "PowerShell", "PsExec"],
+  "tags": ["automacao", "laboratorio", "windows", "startup", "batch-script", "ufrj"],
+  "audience": "Equipe de suporte técnico que administra laboratórios de informática com múltiplas estações Windows.",
+  "problem": "A rotina de abertura dos laboratórios exigia que o técnico executasse manualmente uma sequência de tarefas repetitivas em cada máquina — abrir programas, testar equipamentos, registrar horários — sem padronização nem registro centralizado.",
+  "goal": "Automatizar a inicialização das estações com fallback para operação manual quando necessário, centralizar a distribuição dos scripts e manter um registro das execuções para auditoria.",
+  "links": [
+    {
+      "label": "Repositório GitHub",
+      "url": "https://github.com/suporteeq/startup-eq",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [
+    {
+      "version": "v0",
+      "date": "2026-05-31",
+      "summary": "Primeira versão funcional com modo automático e manual."
+    },
+    {
+      "version": "v1",
+      "date": "2026-05-31",
+      "summary": "Interface manual com botões dinâmicos e sistema de logging."
+    },
+    {
+      "version": "docs",
+      "date": "2026-06-02",
+      "summary": "Documentação README completa e suporte a elevação administrativa."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-05-31",
+      "title": "Primeiro commit",
+      "description": "Estrutura inicial com separação dos modos automático e manual."
+    },
+    {
+      "date": "2026-05-31",
+      "title": "Tags v0 e v1",
+      "description": "Funcionalidades básicas concluídas: download, execução, limpeza e interface gráfica manual."
+    },
+    {
+      "date": "2026-06-01",
+      "title": "Elevação de privilégio",
+      "description": "Suporte a execução de comandos como administrador via PsExec e UAC."
+    },
+    {
+      "date": "2026-06-02",
+      "title": "Documentação e portfolio",
+      "description": "README finalizado e preparação da entrada no portfolio."
+    }
+  ],
+  "createdAt": "2026-05-31",
+  "updatedAt": "2026-06-02",
+  "contentReviewedAt": "2026-06-17"
+}

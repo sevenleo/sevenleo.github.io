@@ -1,0 +1,44 @@
+{
+  "slug": "retimer",
+  "title": "ReTimer",
+  "shortSummary": "Timer para ciclos personalizados e organização de ações repetitivas.",
+  "description": "Aplicação de timer que permite contar tempos cíclicos personalizados, útil para organizar tarefas repetitivas, estudos, rotinas e processos com intervalos definidos.",
+  "category": "Ferramentas",
+  "type": "webapp",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "mvp",
+  "platforms": ["web"],
+  "languages": ["JavaScript", "HTML", "CSS"],
+  "technologies": ["Netlify", "PWA"],
+  "tags": ["timer", "rotina", "produtividade", "webapp"],
+  "audience": "Pessoas que precisam controlar ciclos e intervalos repetitivos.",
+  "problem": "Timers comuns não organizam sequências cíclicas com clareza.",
+  "goal": "Permitir controle rápido de tempos personalizados em ciclos.",
+  "cover": "retimer.png",
+  "gallery": [
+    {
+      "src": "retimer.png",
+      "alt": "Ícone do ReTimer"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir projeto",
+      "url": "https://retimer.netlify.app",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2025-01-01",
+      "title": "Publicação do app"
+    }
+  ],
+  "createdAt": "2025-01-01",
+  "updatedAt": "2025-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

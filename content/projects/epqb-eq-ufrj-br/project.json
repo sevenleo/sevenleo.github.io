@@ -1,0 +1,44 @@
+{
+  "slug": "epqb-eq-ufrj-br",
+  "title": "EPQB.EQ.UFRJ.BR",
+  "shortSummary": "Manutenção e desenvolvimento de website institucional com frontend e backend de intranet.",
+  "description": "Projeto profissional contínuo de manutenção e desenvolvimento do website do EPQB, incluindo frontend e backend de intranet.",
+  "category": "Sites",
+  "type": "website",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "production",
+  "platforms": ["web"],
+  "languages": ["PHP", "JavaScript", "HTML", "CSS", "SQL"],
+  "technologies": ["Frontend", "Backend", "Intranet"],
+  "tags": ["site", "ufrj", "institucional", "php"],
+  "audience": "Comunidade acadêmica, administrativa e visitantes do EPQB.",
+  "problem": "Sites institucionais precisam manter informações e sistemas internos acessíveis.",
+  "goal": "Manter e evoluir a presença web institucional com suporte a rotinas internas.",
+  "cover": "epqb.png",
+  "gallery": [
+    {
+      "src": "epqb.png",
+      "alt": "Logo do EPQB"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir site",
+      "url": "http://epqb.eq.ufrj.br/",
+      "type": "website",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2026-06-06",
+      "title": "Projeto profissional contínuo"
+    }
+  ],
+  "createdAt": "2010-01-01",
+  "updatedAt": "2026-06-06",
+  "contentReviewedAt": "2026-06-06"
+}

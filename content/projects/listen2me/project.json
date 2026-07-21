@@ -1,0 +1,32 @@
+{
+  "slug": "listen2me",
+  "title": "Listen2Me",
+  "shortSummary": "Transcrição de áudio do sistema em tempo real usando faster-whisper e WASAPI Loopback no Windows.",
+  "description": "O Listen2Me é uma aplicação em Python voltada para a transcrição de áudio do sistema em tempo real. Utilizando a tecnologia WASAPI Loopback, ele permite capturar áudio de qualquer aplicação no Windows (como reuniões, vídeos e jogos) sem a necessidade de drivers de áudio virtuais adicionais, convertendo-o instantaneamente em texto por meio do faster-whisper. Funciona de maneira offline, garantindo a privacidade das informações transcritas, e permite copiar o texto automaticamente para a área de transferência ou salvá-lo em arquivos locais formatados.",
+  "category": "Ferramentas",
+  "type": "cli",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": ["desktop"],
+  "languages": ["Python"],
+  "technologies": ["faster-whisper", "WASAPI Loopback", "FFmpeg"],
+  "tags": ["transcricao", "audio", "real-time", "whisper", "speech-to-text", "wasapi", "offline"],
+  "audience": "Desenvolvedores, estudantes e profissionais que buscam uma solução local, rápida e privada para transcrição de áudio reproduzido no Windows.",
+  "problem": "A dependência de serviços em nuvem para transcrição de reuniões, aulas ou áudios diversos, que costumam ser lentos, caros ou que colocam em risco a privacidade dos dados do usuário.",
+  "goal": "Prover uma ferramenta de linha de comando leve, offline e eficiente para capturar e transcrever instantaneamente qualquer som do sistema operacional Windows.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver Repositório",
+      "url": "https://github.com/sevenleo/Listen2Me",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-02-06",
+  "updatedAt": "2026-02-07",
+  "contentReviewedAt": "2026-06-19"
+}

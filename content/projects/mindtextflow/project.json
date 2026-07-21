@@ -1,0 +1,52 @@
+{
+    "slug": "mindtextflow",
+    "title": "MindTextFlow",
+    "shortSummary": "Aplicativo Android que captura áudio continuamente, transcreve em tempo real e organiza memórias do dia com apoio opcional do Google Gemini.",
+    "description": "O MindTextFlow é um aplicativo Android de registro contínuo de voz e texto pensado para transformar conversas, pensamentos e momentos do dia em memórias organizadas. Ele captura áudio de forma local e silenciosa, salva transcrições em tempo real no dispositivo e oferece uma linha do tempo para revisar, buscar, copiar, editar, favoritar e compartilhar registros. O projeto também inclui integração com o Google Gemini para resumir, revisar e analisar trechos escolhidos, sempre com foco em privacidade e controle do usuário, já que o uso de IA depende da chave informada pelo próprio usuário.",
+    "category": "Mobile",
+    "type": "mobile-app",
+    "status": "active",
+    "visibility": "private",
+    "maturity": "production",
+    "cover": "cover.png",
+    "platforms": [
+        "android"
+    ],
+    "languages": [
+        "Kotlin"
+    ],
+    "technologies": [
+        "Jetpack Compose",
+        "Material Design 3",
+        "Foreground Service",
+        "SpeechRecognizer",
+        "Room",
+        "StateFlow",
+        "Google Gemini API"
+    ],
+    "tags": [
+        "android",
+        "transcricao",
+        "voz",
+        "privacidade",
+        "ia",
+        "gemini",
+        "memorias",
+        "offline-first"
+    ],
+    "audience": "Pessoas que querem registrar pensamentos, reuniões e acontecimentos do dia em um app Android com transcrição contínua e organização local.",
+    "problem": "Anotações de voz e registros diários costumam ficar dispersos, difíceis de buscar e pouco práticos para revisar depois do momento em que acontecem.",
+    "goal": "Centralizar captura, transcrição e organização de memórias em um aplicativo Android com foco em privacidade, acesso rápido e apoio de IA sob controle do usuário.",
+    "links": [
+        {
+            "label": "Ver repositório",
+            "url": "https://github.com/sevenleo/MindTextFlow",
+            "type": "repository",
+            "primary": true
+        }
+    ],
+    "downloads": [],
+    "createdAt": "2026-05-27",
+    "updatedAt": "2026-05-28",
+    "contentReviewedAt": "2026-06-21"
+}

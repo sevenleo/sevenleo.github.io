@@ -1,0 +1,69 @@
+{
+  "slug": "asteroids-3d",
+  "title": "Asteroids 3D",
+  "shortSummary": "Jogo 3D inspirado no clássico Asteroids, desenvolvido em Unity.",
+  "description": "Projeto pessoal de jogo 3D inspirado no clássico Asteroids dos arcades. A proposta transforma a referência original em uma experiência com mais profundidade visual, ação e exploração em ambiente tridimensional.",
+  "category": "Games",
+  "type": "game",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": ["web", "android"],
+  "languages": ["C#"],
+  "technologies": ["Unity3D", "WebGL", "Android"],
+  "tags": ["unity", "jogo", "webgl", "3d", "android"],
+  "audience": "Jogadores e visitantes interessados em projetos de jogos autorais.",
+  "problem": "Reimaginar um clássico arcade em uma experiência 3D jogável no navegador.",
+  "goal": "Demonstrar domínio de Unity, gameplay, build WebGL e publicação de jogo.",
+  "cover": "images/asteroids3d_2.jpg",
+  "gallery": [
+    { "src": "images/asteroids3d_2.jpg", "alt": "Asteroids 3D screenshot 1" },
+    { "src": "images/asteroids3d_3.jpg", "alt": "Asteroids 3D screenshot 2" },
+    { "src": "images/asteroids3d_4.jpg", "alt": "Asteroids 3D screenshot 3" },
+    { "src": "images/asteroids3d_5.jpg", "alt": "Asteroids 3D screenshot 4" },
+    { "src": "images/asteroids3d_6.jpg", "alt": "Asteroids 3D screenshot 5" },
+    { "src": "images/asteroids3d_7.jpg", "alt": "Asteroids 3D screenshot 6" },
+    { "src": "images/asteroids3d_8.jpg", "alt": "Asteroids 3D screenshot 7" },
+    { "src": "images/asteroids3d_9.jpg", "alt": "Asteroids 3D screenshot 8" }
+  ],
+  "links": [
+    {
+      "label": "Jogar online",
+      "url": "/content/projects/asteroids-3d/play/release1.5/index.html",
+      "type": "demo",
+      "primary": true
+    },
+    {
+      "label": "Download Android/WebGL",
+      "url": "https://github.com/sevenleo/asteroids/releases/tag/1.5.1",
+      "type": "download"
+    },
+    {
+      "label": "Vídeos",
+      "url": "https://www.youtube.com/embed/videoseries?list=PLYjQvKE6yiHxvsZzzCwadVhCxmGK8Xjav",
+      "type": "video"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Release 1.5.1",
+      "url": "https://github.com/sevenleo/asteroids/releases/tag/1.5.1"
+    }
+  ],
+  "versions": [
+    {
+      "version": "1.5.1",
+      "date": "2018-01-01",
+      "summary": "Release pública com builds Android e WebGL."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2018-01-01",
+      "title": "Release 1.5.1"
+    }
+  ],
+  "createdAt": "2018-01-01",
+  "updatedAt": "2018-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

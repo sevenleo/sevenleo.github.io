@@ -1,0 +1,19 @@
+{
+  "title": "Bacharelado em Ciência da Computação",
+  "type": "Graduação",
+  "institution": "Universidade Federal do Rio de Janeiro (UFRJ)",
+  "status": "completed",
+  "period": "2024",
+  "order": 1,
+  "description": [
+    "Formação acadêmica voltada para fundamentos de computação, desenvolvimento de software, estruturas de dados, algoritmos e sistemas.",
+    "Base técnica aplicada em projetos pessoais, profissionais e experimentais."
+  ],
+  "highlights": [
+    "Ciência da Computação",
+    "Algoritmos",
+    "Estruturas de Dados",
+    "Engenharia de Software",
+    "Projetos Técnicos"
+  ]
+}

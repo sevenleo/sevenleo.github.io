@@ -1,0 +1,44 @@
+{
+  "slug": "textwatcher",
+  "title": "TextWatcher",
+  "shortSummary": "Extensão para monitorar alterações em páginas e avisar quando um texto aparece.",
+  "description": "Extensão para Chrome que monitora alterações em páginas web. Ao encontrar um texto específico, emite alerta sonoro e envia notificação ao usuário.",
+  "category": "Extensões",
+  "type": "extension",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "mvp",
+  "platforms": ["browser", "web"],
+  "languages": ["JavaScript", "HTML", "CSS"],
+  "technologies": ["Chrome Extension", "DOM", "Notifications"],
+  "tags": ["monitoramento", "chrome", "alertas", "texto"],
+  "audience": "Usuários que acompanham páginas que mudam e dependem de um texto específico aparecer.",
+  "problem": "Verificar manualmente uma página em busca de mudanças é repetitivo e falho.",
+  "goal": "Automatizar o monitoramento visual/textual e alertar o usuário no momento certo.",
+  "cover": "textwatcher.png",
+  "gallery": [
+    {
+      "src": "textwatcher.png",
+      "alt": "Ícone do TextWatcher"
+    }
+  ],
+  "links": [
+    {
+      "label": "Abrir landing page",
+      "url": "https://textwatcher.netlify.app",
+      "type": "landing",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2025-01-01",
+      "title": "Publicação da landing page"
+    }
+  ],
+  "createdAt": "2025-01-01",
+  "updatedAt": "2025-01-01",
+  "contentReviewedAt": "2026-06-06"
+}

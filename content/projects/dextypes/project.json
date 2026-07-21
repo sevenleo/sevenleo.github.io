@@ -1,0 +1,48 @@
+{
+    "slug": "dextypes",
+    "title": "DexTypes",
+    "shortSummary": "Assistente interativo de vantagens de tipos Pokémon com sobreposição em tempo de jogo para consulta rápida offline.",
+    "description": "DexTypes é um aplicativo Android que funciona como um assistente de jogo para conhecer as vantagens e desvantagens de tipos Pokémon durante o gameplay. O aplicativo oferece dois modos principais: um modo de visualização detalhada de tipos individuais com seus matchups de ataque e defesa, e um modo de batalha que permite simular matchups entre dois Pokémon de tipos diferentes. Além disso, inclui uma bolha de sobreposição flutuante que pode permanecer ativa enquanto o usuário joga outros aplicativos, oferecendo acesso rápido às informações de tipo sem deixar o jogo. Construído com Jetpack Compose, o aplicativo oferece uma interface moderna, suporte a vibração tátil configurável, modo compacto e ajuste de opacidade para melhor usabilidade durante o jogo.",
+    "category": "Games",
+    "type": "mobile-app",
+    "status": "active",
+    "visibility": "private",
+    "maturity": "stable",
+    "platforms": [
+        "android"
+    ],
+    "languages": [
+        "Kotlin"
+    ],
+    "technologies": [
+        "Android",
+        "Jetpack Compose",
+        "Material Design 3",
+        "Android Services",
+        "SharedPreferences"
+    ],
+    "tags": [
+        "pokemon",
+        "gaming",
+        "overlay",
+        "tipo-matchup",
+        "assistant"
+    ],
+    "audience": "Jogadores de Pokémon que desejam consultar rapidamente vantagens e desvantagens de tipos durante o jogo sem sair da aplicação.",
+    "problem": "Durante o gameplay de Pokémon, é comum ter dúvidas sobre quais tipos são efetivos contra os adversários, exigindo que o jogador saia do jogo ou acesse fontes externas, interrompendo o fluxo do jogo.",
+    "goal": "Fornecer uma ferramenta de consulta rápida e acessível que exiba informações precisas sobre matchups de tipos Pokémon, disponível como uma bolha flutuante durante o jogo para referência instantânea.",
+    "cover": "cover.png",
+    "gallery": [],
+    "links": [
+        {
+            "label": "Repositório GitHub",
+            "url": "https://github.com/sevenleo/DexTypes",
+            "type": "repository",
+            "primary": true
+        }
+    ],
+    "downloads": [],
+    "createdAt": "2026-05-10",
+    "updatedAt": "2026-05-26",
+    "contentReviewedAt": "2026-06-21"
+}

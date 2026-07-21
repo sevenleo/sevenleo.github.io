@@ -1,0 +1,63 @@
+{
+  "slug": "shareaudiopc",
+  "title": "ShareAudioPC",
+  "shortSummary": "Transmissor e receptor de áudio em tempo real via rede local (LAN) para Windows e Linux com baixa latência.",
+  "description": "O ShareAudioPC é uma aplicação desktop nativa em C++20 projetada para transmissão e recepção de áudio em tempo real na rede local (LAN) com ultrabaixa latência. O sistema permite capturar o áudio do computador transmissor e transmiti-lo via TCP (porta 33777) para outros computadores receptores ou dispositivos na mesma rede. Conta com suporte a áudio não comprimido PCM e compressão Opus, detecção automática híbrida TCP/HTTP com player Web integrado para navegadores, controle de volume sincronizado com o sistema operacional Windows, reconexão automática em caso de desconexão e interface gráfica compacta em Qt6 Widgets além de uma ferramenta CLI completa.",
+  "category": "Sistemas",
+  "type": "internal-system",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "production",
+  "platforms": [
+    "desktop",
+    "linux",
+    "web"
+  ],
+  "languages": [
+    "C++",
+    "CMake",
+    "HTML",
+    "JavaScript"
+  ],
+  "technologies": [
+    "C++20",
+    "Qt6",
+    "CMake",
+    "miniaudio",
+    "Asio",
+    "Opus",
+    "Web Audio API"
+  ],
+  "tags": [
+    "audio",
+    "lan",
+    "streaming",
+    "realtime",
+    "low-latency",
+    "cpp20",
+    "qt6",
+    "opus"
+  ],
+  "audience": "Desenvolvedores, gamers, criadores de conteúdo e usuários que precisam compartilhar o som do computador com outros dispositivos na rede local com alta qualidade e baixa latência.",
+  "problem": "Transmitir o áudio do sistema para outros computadores na rede local costuma depender de softwares complexos, placas virtuais pesadas ou plataformas baseadas na nuvem que introduzem atrasos e latência indesejados.",
+  "goal": "Oferecer uma solução nativa leve, rápida e multiplataforma em C++20 para transmissão de áudio LAN em tempo real, com suporte a CLI, interface gráfica Qt6 e reprodução em navegadores.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver repositório",
+      "url": "https://github.com/sevenleo/ShareAudioPC",
+      "type": "repository",
+      "primary": true
+    },
+    {
+      "label": "Aplicativo Android (ShareAudioMobile)",
+      "url": "https://github.com/sevenleo/ShareAudioMobile",
+      "type": "repository"
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-07-06",
+  "updatedAt": "2026-07-21",
+  "contentReviewedAt": "2026-07-21"
+}

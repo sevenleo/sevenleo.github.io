@@ -1,0 +1,61 @@
+{
+  "slug": "answer2me",
+  "title": "Answer2Me",
+  "shortSummary": "Bot Python que monitora arquivos de texto em tempo real e utiliza IA para gerar respostas, resumos ou conversas sobre o conteudo escrito.",
+  "description": "Answer2Me e um bot de terminal que acompanha a escrita de arquivos de texto em tempo real e envia automaticamente o conteudo para modelos de IA. Enquanto o usuario escreve em seu editor preferido, o bot detecta novas linhas, acumula o texto ate um limite configuravel e dispara uma consulta para provedores como Google Gemini, OpenRouter ou Groq. A resposta da IA e exibida diretamente no terminal, eliminando a necessidade de alternar entre ferramentas.\n\nO projeto tambem oferece um modo de chat manual interativo, no estilo WhatsApp ou Telegram, para conversas diretas com a IA. Os modos de comportamento sao definidos em arquivos JSON que podem ser recarregados a quente, permitindo alternar entre respostas curtas informais, conversas naturais ou resumos objetivos sem modificar o codigo.\n\nConstruido com uma arquitetura extensivel baseada em plugins, o Answer2Me permite adicionar novos provedores de IA simplesmente criando um novo arquivo Python no diretorio de modelos.",
+  "category": "Bots",
+  "type": "bot",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": ["desktop", "linux", "windows", "macos"],
+  "languages": ["Python"],
+  "technologies": [
+    "Google Gemini API",
+    "OpenRouter API",
+    "Groq API",
+    "watchdog",
+    "python-dotenv",
+    "colorama"
+  ],
+  "tags": [
+    "bot",
+    "ia",
+    "cli",
+    "monitoramento",
+    "automacao",
+    "terminal"
+  ],
+  "audience": "Escritores, desenvolvedores e criadores que desejam assistencia de IA durante a escrita sem precisar sair do editor de texto ou do terminal.",
+  "problem": "Para obter respostas de IA enquanto escrevia, era necessario copiar e colar manualmente o texto entre o editor e o chat da IA, interrompendo o fluxo de trabalho e quebrando a concentracao.",
+  "goal": "Permitir que o usuario receba respostas da IA automaticamente enquanto escreve, mantendo o foco no conteudo e eliminando a alternancia entre ferramentas.",
+  "links": [
+    {
+      "label": "Repositorio no GitHub",
+      "url": "https://github.com/sevenleo/Answer2Me",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-02-11",
+      "summary": "Primeira versao estavel com multiplos provedores de IA"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-02-06",
+      "title": "Primeiro prototipo funcional"
+    },
+    {
+      "date": "2026-02-11",
+      "title": "Versao estavel com provedores Gemini, OpenRouter e Groq"
+    }
+  ],
+  "createdAt": "2026-02-06",
+  "updatedAt": "2026-02-11",
+  "contentReviewedAt": "2026-06-17"
+}

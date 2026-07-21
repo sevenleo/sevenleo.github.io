@@ -1,0 +1,50 @@
+{
+  "slug": "projeto-investigalim",
+  "title": "Projeto Investigalim",
+  "shortSummary": "Manutenção de blog e website de projeto de extensão em engenharia de alimentos.",
+  "description": "Projeto de extensão ligado ao curso de engenharia de alimentos, com atuação em manutenção do blog e do website.",
+  "category": "Sites",
+  "type": "website",
+  "status": "draft",
+  "visibility": "public",
+  "maturity": "legacy",
+  "platforms": [
+    "web"
+  ],
+  "languages": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "technologies": [
+    "Blog",
+    "Website"
+  ],
+  "tags": [
+    "site",
+    "blog",
+    "extensao",
+    "ufrj"
+  ],
+  "audience": "Participantes e público do projeto de extensão.",
+  "problem": "Projetos acadêmicos precisam publicar informações e registros de atividades.",
+  "goal": "Manter presença digital para comunicação do projeto.",
+  "cover": "",
+  "gallery": [],
+  "links": [],
+  "downloads": [],
+  "versions": [],
+  "timeline": [
+    {
+      "date": "2016-01-01",
+      "title": "Início da atuação"
+    },
+    {
+      "date": "2017-12-31",
+      "title": "Encerramento do ciclo"
+    }
+  ],
+  "createdAt": "2016-01-01",
+  "updatedAt": "2017-12-31",
+  "contentReviewedAt": "2026-06-06"
+}

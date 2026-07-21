@@ -1,0 +1,67 @@
+{
+  "slug": "cidade-viva",
+  "title": "Cidade Viva",
+  "shortSummary": "Plataforma colaborativa para denunciar e acompanhar problemas urbanos com geolocalização, mapa interativo e moderação.",
+  "description": "O Cidade Viva é uma plataforma web colaborativa que permite a qualquer cidadão registrar e acompanhar problemas urbanos como buracos, iluminação, acessibilidade, transporte, infraestrutura, bem-estar animal e indícios de corrupção. As denúncias podem ser feitas de forma anônima ou autenticada (com Magic Link sem senha ou login Google), incluem upload de fotos, seleção de categoria e subcategoria dinâmicas, e localização via GPS ou seleção manual no mapa. Um mapa interativo construído com Leaflet e OpenStreetMap exibe as ocorrências com filtros por status, categoria, bairro e período, além de uma camada de heatmap para identificar regiões críticas. A aplicação conta com sistema de votos, comentários moderados, acompanhamento de denúncias (follow), notificações em tempo real, compartilhamento direto via WhatsApp e link, busca avançada e estatísticas por bairro. Um painel administrativo completo permite gestão de denúncias, usuários (incluindo banimento), categorias, localizações, moderação de comentários, exportação em CSV/PDF e gráficos de métricas. Toda a segurança é garantida por Row Level Security em todas as tabelas, sistema de papéis (user, moderator, admin) com função SECURITY DEFINER e isolamento de conteúdo banido ou privado.",
+  "category": "Sistemas",
+  "type": "webapp",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "production",
+  "cover": "cover.png",
+  "platforms": [
+    "web",
+    "cloud"
+  ],
+  "languages": [
+    "TypeScript",
+    "HTML",
+    "CSS",
+    "SQL"
+  ],
+  "technologies": [
+    "React",
+    "Vite",
+    "TypeScript",
+    "TailwindCSS",
+    "shadcn/ui",
+    "Lovable Cloud",
+    "Supabase",
+    "PostgreSQL",
+    "Leaflet",
+    "OpenStreetMap",
+    "Nominatim",
+    "Framer Motion",
+    "React Hook Form",
+    "Zod",
+    "Recharts",
+    "Vitest",
+    "Playwright"
+  ],
+  "tags": [
+    "denuncias",
+    "cidades",
+    "mapa",
+    "geolocalizacao",
+    "colaborativo",
+    "moderacao",
+    "heatmap",
+    "pwa"
+  ],
+  "audience": "Cidadãos, ativistas urbanos e equipes de prefeituras ou organizações sociais que precisam reportar, visualizar e acompanhar problemas urbanos de forma transparente e colaborativa.",
+  "problem": "Problemas urbanos como buracos, falhas de iluminação, barreiras de acessibilidade e falta de manutenção costumam ser reportados por canais dispersos (telefone, redes sociais, ouvidorias) sem visibilidade pública, sem georreferenciamento e sem acompanhamento do status, o que dificulta cobrança e priorização.",
+  "goal": "Centralizar denúncias urbanas em um mapa colaborativo público, com autenticação simples sem senha, moderação e painel administrativo, tornando visíveis os pontos críticos da cidade e o andamento de cada ocorrência.",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Abrir aplicação",
+      "url": "https://cidade-viva.lovable.app",
+      "type": "demo",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2025-08-01",
+  "updatedAt": "2026-06-22",
+  "contentReviewedAt": "2026-06-22"
+}

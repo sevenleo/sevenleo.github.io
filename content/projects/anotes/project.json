@@ -1,0 +1,14 @@
+{
+  "slug": "Anotes",
+  "title": "Anotes",
+  "visibility": "private",
+  "status": "draft",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/sevenleo/#",
+      "type": "repository",
+      "primary": true
+    }
+  ]
+}

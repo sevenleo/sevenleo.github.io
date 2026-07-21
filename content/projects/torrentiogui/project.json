@@ -1,0 +1,54 @@
+{
+    "slug": "torrentiogui",
+    "title": "Torrentio Standalone GUI",
+    "shortSummary": "Interface web independente para indexação de torrents com lookup enriquecido de metadados e redirecionamento para reprodutores locais com um clique.",
+    "description": "O Torrentio Standalone GUI é um cliente web independente projetado para indexar e pesquisar torrents por meio do ecossistema do addon Torrentio do Stremio de maneira ágil e otimizada. Sem exigir a instalação do cliente pesado Stremio, o sistema conecta-se à API do Cinemeta para recuperar metadados cinemáticos ricos — como pôsteres, sinopses e classificações de streaming —, oferecendo recursos de filtragem de streams por resolução (4K, 1080p, 720p), codec de vídeo (HEVC, AVC), tamanho de arquivo e provedores de sementes (seeders). Além de permitir a exportação direta de links magnéticos (magnet links), o painel apresenta links profundos dedicados à inicialização imediata do conteúdo em reprodutores externos comuns de mercado como VLC, IINA, MX Player, Infuse e PotPlayer.",
+    "category": "Ferramentas",
+    "type": "webapp",
+    "status": "stable",
+    "visibility": "public",
+    "maturity": "production",
+    "platforms": [
+        "web"
+    ],
+    "languages": [
+        "TypeScript",
+        "HTML",
+        "CSS"
+    ],
+    "technologies": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "TailwindCSS",
+        "Express",
+        "Node.js",
+        "Cinemeta API",
+        "Torrentio API"
+    ],
+    "tags": [
+        "torrent",
+        "stremio",
+        "torrentio",
+        "video-streaming",
+        "magnet-links",
+        "media-player"
+    ],
+    "audience": "Usuários que consomem mídias via rede BitTorrent e que buscam uma solução leve, independente e livre de configurações adicionais para encontrar magnet links ou disparar mídias diretamente em reprodutores dedicados no computador ou dispositivo móvel.",
+    "problem": "A dependência da interface pesada e fechada do aplicativo cliente do Stremio para consultar e obter links organizados pelo motor de addons Torrentio.",
+    "goal": "Fornecer uma aplicação de alta velocidade e de tela única onde o usuário pesquisa títulos cinematográficos, seleciona rapidamente o arquivo de seu interesse a partir de fontes públicas e o reproduz em seu player favorito instantaneamente.",
+    "cover": "cover.png",
+    "gallery": [],
+    "links": [
+        {
+            "label": "Abrir demonstração",
+            "url": "https://torrentio-standalone-gui-924460996410.us-east1.run.app/",
+            "type": "demo",
+            "primary": true
+        }
+    ],
+    "downloads": [],
+    "createdAt": "2026-05-24",
+    "updatedAt": "2026-06-21",
+    "contentReviewedAt": "2026-06-21"
+}

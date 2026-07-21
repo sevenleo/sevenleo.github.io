@@ -1,0 +1,60 @@
+{
+  "slug": "shareaudiomobile",
+  "title": "ShareAudioMobile",
+  "shortSummary": "Transmissão de áudio do sistema Android em tempo real via Wi-Fi local para navegadores web e receptores nativos com latência ultra-baixa.",
+  "description": "O ShareAudioMobile é uma aplicação de alta performance para Android desenvolvida em Kotlin, projetada para capturar o áudio interno do sistema (músicas, jogos, vídeos) e transmiti-lo em tempo real com latência ultra-baixa para qualquer dispositivo na mesma rede Wi-Fi local. O aplicativo atua como um servidor HTTP/TCP embarcado que serve uma interface web em HTML5/JS (com Web Audio API e WebCodecs) e suporta conexão nativa de fundo via AudioReceiverService. Oferece 3 modos de transmissão (Efficient com Opus 128kbps, Balanced com PCM 2048b e Fast com PCM 1024b), além de compatibilidade com Android TV e otimização de tamanho via minificação R8 e ABI splits.",
+  "category": "Mobile",
+  "type": "mobile-app",
+  "status": "active",
+  "visibility": "public",
+  "maturity": "production",
+  "platforms": [
+    "android",
+    "web"
+  ],
+  "languages": [
+    "Kotlin",
+    "HTML",
+    "JavaScript",
+    "CSS",
+    "Shell"
+  ],
+  "technologies": [
+    "Android SDK",
+    "Jetpack Compose",
+    "MediaCodec",
+    "Opus",
+    "AudioRecord",
+    "Web Audio API",
+    "WebCodecs",
+    "Kotlin Coroutines",
+    "Gradle"
+  ],
+  "tags": [
+    "audio-streaming",
+    "android",
+    "realtime",
+    "low-latency",
+    "opus",
+    "pcm",
+    "web-audio",
+    "android-tv"
+  ],
+  "audience": "Usuários de dispositivos Android que desejam transmitir o áudio do sistema em tempo real para navegadores web, computadores ou outros aparelhos na mesma rede Wi-Fi local.",
+  "problem": "Transmitir o áudio de um dispositivo Android para outros aparelhos na rede local geralmente requer cabos físicos, conexões Bluetooth com pareamento limitado ou softwares pesados com alta latência e dependência da internet.",
+  "goal": "Capturar o áudio do sistema Android no nível do dispositivo e transmiti-lo via Wi-Fi local com latência de poucos milissegundos (~10-40ms), sem necessidade de servidores externos ou cadastros.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver repositório",
+      "url": "https://github.com/sevenleo/ShareAudioMobile",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-07-06",
+  "updatedAt": "2026-07-21",
+  "contentReviewedAt": "2026-07-21"
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "goingon",
+  "title": "GoingOn",
+  "shortSummary": "Aplicativo Android que lê notificações em voz alta quando um headset compatível está conectado, com regras personalizadas por aplicativo e sumarização com IA Groq.",
+  "description": "GoingOn é um aplicativo nativo Android desenvolvido em Kotlin, projetado para ler notificações elegíveis em voz alta somente quando um headset compatível está conectado (Bluetooth A2DP/SCO, BLE ou cabeado/USB). O projeto utiliza uma arquitetura modular para desacoplar captura de notificações, resolução de regras, processamento de texto, speech e execução de ações. Oferece dois modos de experiência do usuário: um modo Easy com controles globais e por aplicativo, e um modo Advanced com seis switches independentes de automação (tts read, dismiss, mark as read, read repeated messages, save to history e save to repeat memory). Também inclui um módulo plugável de processamento de texto com IA alimentado pela Groq API (com suporte aos modelos Llama e Mixtral) para resumir notificações, além de um bounded repeat-memory store para evitar leituras duplicadas.",
+  "category": "Automação",
+  "type": "mobile-app",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "mvp",
+  "platforms": [
+    "android"
+  ],
+  "languages": [
+    "Kotlin"
+  ],
+  "technologies": [
+    "Android SDK",
+    "Jetpack Compose",
+    "Hilt",
+    "Kotlin Coroutines",
+    "Proto DataStore",
+    "Groq API"
+  ],
+  "tags": [
+    "android",
+    "accessibility",
+    "text-to-speech",
+    "notifications",
+    "automation",
+    "ai"
+  ],
+  "audience": "Pessoas que se deslocam, motoristas, ciclistas e usuários de headsets que desejam leitura de notificações hands-free, personalizável e sem excesso de ruído.",
+  "problem": "Ler notificações manualmente enquanto se está ocupado ou em trânsito é inseguro, e leitores de tela comuns falam todas as notificações de forma indiscriminada, causando ruído auditivo e repetição de mensagens duplicadas.",
+  "goal": "Fornecer um serviço de leitura de notificações estável, altamente personalizável e contextual, que filtre spam e, opcionalmente, resuma mensagens com IA, ativo somente quando headsets estão conectados.",
+  "cover": "",
+  "gallery": [],
+  "links": [
+    {
+      "label": "GitHub Repository",
+      "url": "https://github.com/sevenleo/goingon",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "versions": [
+    {
+      "version": "1.0.0",
+      "date": "2026-06-17",
+      "summary": "Lançamento MVP estável com recursos completos de processamento de texto local e com IA"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-03-13",
+      "title": "Protótipo initial",
+      "description": "Concluídos o notification listener principal, o headset routing e a configuração básica de TTS."
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Fase de stabilization e preparação para release",
+      "description": "Implementados 25 fixes estratégicos, refinada a integração com Groq AI, adicionada seleção de voz e preparado o MVP público."
+    }
+  ],
+  "createdAt": "2026-03-13",
+  "updatedAt": "2026-06-17",
+  "contentReviewedAt": "2026-06-17"
+}

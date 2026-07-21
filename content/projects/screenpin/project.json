@@ -1,0 +1,32 @@
+{
+  "slug": "screenpin",
+  "title": "ScreenPin",
+  "shortSummary": "Utilitário de alto desempenho para Windows 11 que simula desktops virtuais independentes por monitor.",
+  "description": "O ScreenPin é um utilitário desenvolvido em AutoHotkey v2 para contornar uma limitação nativa do sistema de Desktops Virtuais do Windows 11: a falta de isolamento por monitor. Por padrão, ao alternar de desktop no Windows, a transição afeta todos os monitores conectados simultaneamente.\n\nO ScreenPin resolve esse problema implementando uma simulação transparente onde um monitor selecionado pelo usuário (o 'Fixed Monitor') permanece estático (fixo) enquanto os outros monitores alternam livremente entre os desktops. Isso é alcançado por meio de uma estratégia robusta de migração instantânea de janelas (Instant Window Migration), movendo as janelas para o desktop de destino em microssegundos antes da conclusão da transição, mantendo suas coordenadas exatas e proporcionando uma experiência livre de oscilações (zero-flicker). É uma alternativa altamente estável e portátil ao recurso nativo de 'fixar janelas', que costuma falhar com aplicativos UWP ou após atualizações do sistema operacional.",
+  "category": "Ferramentas",
+  "type": "automation",
+  "status": "stable",
+  "visibility": "public",
+  "maturity": "stable",
+  "platforms": ["desktop"],
+  "languages": ["AutoHotkey"],
+  "technologies": ["AutoHotkey", "C++", "COM API"],
+  "tags": ["autohotkey", "windows-11", "virtual-desktops", "productivity", "window-management"],
+  "audience": "Profissionais e usuários do Windows 11 que utilizam múltiplos monitores e desejam manter aplicativos de referência, chat ou painéis fixos em uma tela enquanto alternam áreas de trabalho nas outras.",
+  "problem": "O sistema de desktops virtuais do Windows 11 altera o desktop em todos os monitores ao mesmo tempo, sem opção nativa estável de manter um monitor fixo independente.",
+  "goal": "Implementar um isolamento virtual por monitor de alta performance por meio de migração instantânea de janelas, garantindo que o monitor selecionado permaneça inalterado ao trocar de desktop.",
+  "cover": "cover.png",
+  "gallery": [],
+  "links": [
+    {
+      "label": "Ver repositório",
+      "url": "https://github.com/sevenleo/ScreenPin",
+      "type": "repository",
+      "primary": true
+    }
+  ],
+  "downloads": [],
+  "createdAt": "2026-02-09",
+  "updatedAt": "2026-03-24",
+  "contentReviewedAt": "2026-06-19"
+}
